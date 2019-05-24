@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2019/5/23 22:49:10                           */
+/* Created on:     2019/5/24 10:55:29                           */
 /*==============================================================*/
 
 
@@ -218,11 +218,11 @@ go
 /* Table: sys_chat_course                                       */
 /*==============================================================*/
 create table sys_chat_course (
-   id                   int                  not null,
+   id                   int                  identity,
    course_id            int                  null,
    user_id              int                  null,
    msg                  varchar(1000)        null,
-   seq                  int                  identity,
+   seq                  int                  null,
    date                 datetime             null,
    constraint PK_SYS_CHAT_COURSE primary key nonclustered (id)
 )
@@ -232,7 +232,7 @@ go
 /* Table: sys_chat_ts                                           */
 /*==============================================================*/
 create table sys_chat_ts (
-   id                   int                  not null,
+   id                   int                  identity,
    student_id           int                  null,
    teacher_id           int                  null,
    course_id            int                  null,
@@ -278,7 +278,7 @@ go
 /* Table: sys_course                                            */
 /*==============================================================*/
 create table sys_course (
-   id                   int                  not null,
+   id                   int                  identity,
    class_id             int                  null,
    teacher_id           int                  null,
    course_name          varchar(100)         null,
@@ -293,7 +293,7 @@ go
 /* Table: sys_course_file                                       */
 /*==============================================================*/
 create table sys_course_file (
-   id                   int                  not null,
+   id                   int                  identity,
    course_id            int                  null,
    type                 int                  null,
    file_name            varchar(100)         null,
@@ -327,12 +327,12 @@ go
 /* Table: sys_course_job                                        */
 /*==============================================================*/
 create table sys_course_job (
-   id                   int                  not null,
+   id                   int                  identity,
    course_id            int                  null,
    job_name             varchar(100)         null,
    description          varchar(1000)        null,
    date                 datetime             null,
-   seq                  int                  identity,
+   seq                  int                  null,
    constraint PK_SYS_COURSE_JOB primary key nonclustered (id)
 )
 go
@@ -356,7 +356,7 @@ go
 /* Table: sys_question_job                                      */
 /*==============================================================*/
 create table sys_question_job (
-   id                   int                  not null,
+   id                   int                  identity,
    question_id          int                  null,
    job_id               int                  null,
    constraint PK_SYS_QUESTION_JOB primary key nonclustered (id)
@@ -367,7 +367,7 @@ go
 /* Table: sys_questions                                         */
 /*==============================================================*/
 create table sys_questions (
-   id                   int                  not null,
+   id                   int                  identity,
    question_name        varchar(100)         null,
    question_type        int                  null,
    answer               varchar(1000)        null,
@@ -443,7 +443,7 @@ go
 /* Table: sys_role_permission                                   */
 /*==============================================================*/
 create table sys_role_permission (
-   id                   int                  not null,
+   id                   int                  identity,
    role_id              int                  null,
    permission_id        int                  null,
    state                int                  null,
@@ -455,7 +455,7 @@ go
 /* Table: sys_students_questions                                */
 /*==============================================================*/
 create table sys_students_questions (
-   id                   int                  not null,
+   id                   int                  identity,
    user_id              int                  null,
    question_id          int                  null,
    date                 datetime             null,
@@ -470,7 +470,7 @@ go
 /* Table: sys_user                                              */
 /*==============================================================*/
 create table sys_user (
-   id                   int                  not null,
+   id                   int                  identity,
    name                 varchar(20)          null,
    sex                  varchar(2)           null,
    work_no              varchar(20)          null,
