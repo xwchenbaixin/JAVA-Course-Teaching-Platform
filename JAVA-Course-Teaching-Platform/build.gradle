@@ -22,5 +22,6 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	
-	compile	fileTree(dir:'lib',includes:['*.jar'])
+	compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.47'
+
 }

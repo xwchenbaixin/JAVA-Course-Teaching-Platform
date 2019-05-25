@@ -12,10 +12,5 @@ import com.jctp.beans.User;
 @Mapper
 public interface StudentMapper {
 	@Select("SELECT * FROM SYS_USER")
-	@Results(
-		{
-			@Result(column = "role",property = "roleId")
-		}
-	)
 	List<User> listUsers();
 }
