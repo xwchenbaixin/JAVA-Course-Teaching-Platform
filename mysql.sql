@@ -1,39 +1,39 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2019/5/25 11:50:00                           */
+/* Created on:     2019/5/25 13:59:34                           */
 /*==============================================================*/
 
 
-drop table if exists sys_chat_course;
+drop table if exists jctp_chat_course;
 
-drop table if exists sys_chat_ts;
+drop table if exists jctp_chat_ts;
 
-drop table if exists sys_class;
+drop table if exists jctp_class;
 
-drop table if exists sys_course;
+drop table if exists jctp_course;
 
-drop table if exists sys_course_file;
+drop table if exists jctp_course_file;
 
-drop table if exists sys_course_job;
+drop table if exists jctp_course_job;
 
-drop table if exists sys_permission;
+drop table if exists jctp_permission;
 
-drop table if exists sys_question_job;
+drop table if exists jctp_question_job;
 
-drop table if exists sys_questions;
+drop table if exists jctp_questions;
 
-drop table if exists sys_role;
+drop table if exists jctp_role;
 
-drop table if exists sys_role_permission;
+drop table if exists jctp_role_permission;
 
-drop table if exists sys_students_questions;
+drop table if exists jctp_students_questions;
 
-drop table if exists sys_user;
+drop table if exists jctp_user;
 
 /*==============================================================*/
-/* Table: sys_chat_course                                       */
+/* Table: jctp_chat_course                                      */
 /*==============================================================*/
-create table sys_chat_course
+create table jctp_chat_course
 (
    id                   int not null auto_increment,
    course_id            int,
@@ -45,9 +45,9 @@ create table sys_chat_course
 );
 
 /*==============================================================*/
-/* Table: sys_chat_ts                                           */
+/* Table: jctp_chat_ts                                          */
 /*==============================================================*/
-create table sys_chat_ts
+create table jctp_chat_ts
 (
    id                   int not null auto_increment,
    student_id           int,
@@ -62,9 +62,9 @@ create table sys_chat_ts
 );
 
 /*==============================================================*/
-/* Table: sys_class                                             */
+/* Table: jctp_class                                            */
 /*==============================================================*/
-create table sys_class
+create table jctp_class
 (
    id                   int not null,
    college              varchar(100),
@@ -72,9 +72,9 @@ create table sys_class
 );
 
 /*==============================================================*/
-/* Table: sys_course                                            */
+/* Table: jctp_course                                           */
 /*==============================================================*/
-create table sys_course
+create table jctp_course
 (
    id                   int not null auto_increment,
    class_id             int,
@@ -87,9 +87,9 @@ create table sys_course
 );
 
 /*==============================================================*/
-/* Table: sys_course_file                                       */
+/* Table: jctp_course_file                                      */
 /*==============================================================*/
-create table sys_course_file
+create table jctp_course_file
 (
    id                   int not null auto_increment,
    course_id            int,
@@ -102,9 +102,9 @@ create table sys_course_file
 );
 
 /*==============================================================*/
-/* Table: sys_course_job                                        */
+/* Table: jctp_course_job                                       */
 /*==============================================================*/
-create table sys_course_job
+create table jctp_course_job
 (
    id                   int not null auto_increment,
    course_id            int,
@@ -116,9 +116,9 @@ create table sys_course_job
 );
 
 /*==============================================================*/
-/* Table: sys_permission                                        */
+/* Table: jctp_permission                                       */
 /*==============================================================*/
-create table sys_permission
+create table jctp_permission
 (
    id                   int not null auto_increment,
    name                 varchar(50),
@@ -131,9 +131,9 @@ create table sys_permission
 );
 
 /*==============================================================*/
-/* Table: sys_question_job                                      */
+/* Table: jctp_question_job                                     */
 /*==============================================================*/
-create table sys_question_job
+create table jctp_question_job
 (
    id                   int not null auto_increment,
    question_id          int,
@@ -142,9 +142,9 @@ create table sys_question_job
 );
 
 /*==============================================================*/
-/* Table: sys_questions                                         */
+/* Table: jctp_questions                                        */
 /*==============================================================*/
-create table sys_questions
+create table jctp_questions
 (
    id                   int not null auto_increment,
    question_name        varchar(100),
@@ -169,9 +169,9 @@ create table sys_questions
 );
 
 /*==============================================================*/
-/* Table: sys_role                                              */
+/* Table: jctp_role                                             */
 /*==============================================================*/
-create table sys_role
+create table jctp_role
 (
    id                   int not null auto_increment,
    name                 varchar(20),
@@ -180,9 +180,9 @@ create table sys_role
 );
 
 /*==============================================================*/
-/* Table: sys_role_permission                                   */
+/* Table: jctp_role_permission                                  */
 /*==============================================================*/
-create table sys_role_permission
+create table jctp_role_permission
 (
    id                   int not null auto_increment,
    role_id              int,
@@ -192,9 +192,9 @@ create table sys_role_permission
 );
 
 /*==============================================================*/
-/* Table: sys_students_questions                                */
+/* Table: jctp_students_questions                               */
 /*==============================================================*/
-create table sys_students_questions
+create table jctp_students_questions
 (
    id                   int not null auto_increment,
    user_id              int,
@@ -207,9 +207,9 @@ create table sys_students_questions
 );
 
 /*==============================================================*/
-/* Table: sys_user                                              */
+/* Table: jctp_user                                             */
 /*==============================================================*/
-create table sys_user
+create table jctp_user
 (
    id                   int not null auto_increment,
    name                 varchar(20),
@@ -223,54 +223,54 @@ create table sys_user
    primary key (id)
 );
 
-alter table sys_chat_course add constraint FK_Reference_10 foreign key (course_id)
-      references sys_course (id) on delete restrict on update restrict;
+alter table jctp_chat_course add constraint FK_Reference_10 foreign key (course_id)
+      references jctp_course (id) on delete restrict on update restrict;
 
-alter table sys_chat_course add constraint FK_Reference_11 foreign key (user_id)
-      references sys_user (id) on delete restrict on update restrict;
+alter table jctp_chat_course add constraint FK_Reference_11 foreign key (user_id)
+      references jctp_user (id) on delete restrict on update restrict;
 
-alter table sys_chat_ts add constraint FK_Reference_12 foreign key (course_id)
-      references sys_course (id) on delete restrict on update restrict;
+alter table jctp_chat_ts add constraint FK_Reference_12 foreign key (course_id)
+      references jctp_course (id) on delete restrict on update restrict;
 
-alter table sys_chat_ts add constraint FK_Reference_13 foreign key (student_id)
-      references sys_user (id) on delete restrict on update restrict;
+alter table jctp_chat_ts add constraint FK_Reference_13 foreign key (student_id)
+      references jctp_user (id) on delete restrict on update restrict;
 
-alter table sys_chat_ts add constraint FK_Reference_14 foreign key (teacher_id)
-      references sys_user (id) on delete restrict on update restrict;
+alter table jctp_chat_ts add constraint FK_Reference_14 foreign key (teacher_id)
+      references jctp_user (id) on delete restrict on update restrict;
 
-alter table sys_course add constraint FK_Reference_15 foreign key (teacher_id)
-      references sys_user (id) on delete restrict on update restrict;
+alter table jctp_course add constraint FK_Reference_15 foreign key (teacher_id)
+      references jctp_user (id) on delete restrict on update restrict;
 
-alter table sys_course add constraint FK_Reference_7 foreign key (class_id)
-      references sys_class (id) on delete restrict on update restrict;
+alter table jctp_course add constraint FK_Reference_7 foreign key (class_id)
+      references jctp_class (id) on delete restrict on update restrict;
 
-alter table sys_course_file add constraint FK_Reference_5 foreign key (course_id)
-      references sys_course (id) on delete restrict on update restrict;
+alter table jctp_course_file add constraint FK_Reference_5 foreign key (course_id)
+      references jctp_course (id) on delete restrict on update restrict;
 
-alter table sys_course_job add constraint FK_Reference_4 foreign key (course_id)
-      references sys_course (id) on delete restrict on update restrict;
+alter table jctp_course_job add constraint FK_Reference_4 foreign key (course_id)
+      references jctp_course (id) on delete restrict on update restrict;
 
-alter table sys_question_job add constraint FK_Reference_16 foreign key (question_id)
-      references sys_questions (id) on delete restrict on update restrict;
+alter table jctp_question_job add constraint FK_Reference_16 foreign key (question_id)
+      references jctp_questions (id) on delete restrict on update restrict;
 
-alter table sys_question_job add constraint FK_Reference_17 foreign key (job_id)
-      references sys_course_job (id) on delete restrict on update restrict;
+alter table jctp_question_job add constraint FK_Reference_17 foreign key (job_id)
+      references jctp_course_job (id) on delete restrict on update restrict;
 
-alter table sys_role_permission add constraint FK_Reference_2 foreign key (role_id)
-      references sys_role (id) on delete restrict on update restrict;
+alter table jctp_role_permission add constraint FK_Reference_2 foreign key (role_id)
+      references jctp_role (id) on delete restrict on update restrict;
 
-alter table sys_role_permission add constraint FK_Reference_3 foreign key (permission_id)
-      references sys_permission (id) on delete restrict on update restrict;
+alter table jctp_role_permission add constraint FK_Reference_3 foreign key (permission_id)
+      references jctp_permission (id) on delete restrict on update restrict;
 
-alter table sys_students_questions add constraint FK_Reference_18 foreign key (question_id)
-      references sys_questions (id) on delete restrict on update restrict;
+alter table jctp_students_questions add constraint FK_Reference_18 foreign key (question_id)
+      references jctp_questions (id) on delete restrict on update restrict;
 
-alter table sys_students_questions add constraint FK_Reference_19 foreign key (user_id)
-      references sys_user (id) on delete restrict on update restrict;
+alter table jctp_students_questions add constraint FK_Reference_19 foreign key (user_id)
+      references jctp_user (id) on delete restrict on update restrict;
 
-alter table sys_user add constraint FK_Reference_1 foreign key (role_id)
-      references sys_role (id) on delete restrict on update restrict;
+alter table jctp_user add constraint FK_Reference_1 foreign key (role_id)
+      references jctp_role (id) on delete restrict on update restrict;
 
-alter table sys_user add constraint FK_Reference_9 foreign key (class_id)
-      references sys_class (id) on delete restrict on update restrict;
+alter table jctp_user add constraint FK_Reference_9 foreign key (class_id)
+      references jctp_class (id) on delete restrict on update restrict;
 
