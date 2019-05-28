@@ -11,6 +11,6 @@ import com.jctp.beans.User;
 
 @Mapper
 public interface StudentMapper {
-	@Select("SELECT * FROM SYS_USER")
+	@Select("SELECT * FROM JCTP_USER")
 	List<User> listUsers();
 }

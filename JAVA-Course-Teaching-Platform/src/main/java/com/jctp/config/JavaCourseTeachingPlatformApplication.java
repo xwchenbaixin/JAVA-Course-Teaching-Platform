@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.jctp.controller","com.jctp.service.impl"})
+@ComponentScan(basePackages = {"com.jctp"})
 @MapperScan(basePackages = "com.jctp.mapper")
 public class JavaCourseTeachingPlatformApplication {
 	public static void main(String[] args) {

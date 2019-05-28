@@ -28,4 +28,17 @@ public class StudentController {
 	public List<User> lilstUsers(){
 		return studentService.listUsers();
 	}
+	
+	@RequestMapping("/teacher")
+	@ResponseBody
+	public String teacherTest() {
+		return "teacher welcome";
+	}
+	
+	@RequestMapping("/student")
+	@ResponseBody
+	public String studentTest() {
+		return "student welcome";
+	}
+	
 }
