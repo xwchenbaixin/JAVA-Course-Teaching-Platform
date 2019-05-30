@@ -48,13 +48,13 @@ public class MyFilterSecurityInterceptor extends AbstractSecurityInterceptor imp
 
 
     public void invoke(FilterInvocation fi) throws IOException, ServletException {
-		//fiÀïÃæÓĞÒ»¸ö±»À¹½ØµÄurl
-		//ÀïÃæµ÷ÓÃMyInvocationSecurityMetadataSourceµÄgetAttributes(Object object)Õâ¸ö·½·¨»ñÈ¡fi¶ÔÓ¦µÄËùÓĞÈ¨ÏŞ
-		//ÔÙµ÷ÓÃMyAccessDecisionManagerµÄdecide·½·¨À´Ğ£ÑéÓÃ»§µÄÈ¨ÏŞÊÇ·ñ×ã¹»
+		//fié‡Œé¢æœ‰ä¸€ä¸ªè¢«æ‹¦æˆªçš„url
+		//é‡Œé¢è°ƒç”¨MyInvocationSecurityMetadataSourceçš„getAttributes(Object object)è¿™ä¸ªæ–¹æ³•è·å–fiå¯¹åº”çš„æ‰€æœ‰æƒé™
+		//å†è°ƒç”¨MyAccessDecisionManagerçš„decideæ–¹æ³•æ¥æ ¡éªŒç”¨æˆ·çš„æƒé™æ˜¯å¦è¶³å¤Ÿ
         InterceptorStatusToken token = super.beforeInvocation(fi);
         System.out.println("filter");
         try {
-        	//Ö´ĞĞÏÂÒ»¸öÀ¹½ØÆ÷
+        	//æ‰§è¡Œä¸‹ä¸€ä¸ªæ‹¦æˆªå™¨
             fi.getChain().doFilter(fi.getRequest(), fi.getResponse());
         } finally {
             super.afterInvocation(token, null);

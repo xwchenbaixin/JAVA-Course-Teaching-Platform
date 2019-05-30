@@ -32,29 +32,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		//System.out.println("¼ÓÃÜºó:"+new BCryptPasswordEncoder().encode("cbx318"));
+		//System.out.println("åŠ å¯†å:"+new BCryptPasswordEncoder().encode("cbx318"));
 		auth.userDetailsService(userPermissionService).passwordEncoder(passwordEncoder());
 	}
 	
 	@Override
     public void configure(WebSecurity web) {
-        web.ignoring().antMatchers("/layui/**");
+		//ä¸»è¦æ˜¯é…ç½®URL
+        web.ignoring().antMatchers("/gentelella/**");
     }
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
-			.anyRequest().authenticated()//ÈÎºÎÇëÇó£¬µÇÂ¼ºó¿ÉÒÔ·ÃÎÊ
+			.anyRequest().authenticated()//ä»»ä½•è¯·æ±‚ï¼Œç™»å½•åå¯ä»¥è®¿é—®
 			.and()
 			.formLogin()
-			.loginPage("/login")//µÇÂ½½çÃæÒ³ÃæÌø×ªURL
-			//.loginProcessingUrl("/")//µÇÂ½½çÃæ·¢ÆğµÇÂ½ÇëÇóµÄURL
+			.loginPage("/login")//ç™»é™†ç•Œé¢é¡µé¢è·³è½¬URL
+			//.loginProcessingUrl("/")//ç™»é™†ç•Œé¢å‘èµ·ç™»é™†è¯·æ±‚çš„URL
 			.failureUrl("/login?error")
-			.permitAll()//µÇÂ¼Ò³ÃæÓÃ»§ÈÎÒâ·ÃÎÊ
+			.permitAll()//ç™»å½•é¡µé¢ç”¨æˆ·ä»»æ„è®¿é—®
 			.and()
 			.logout()
-			.logoutSuccessUrl("/home")  //ÍË³öµÇÂ¼ºóµÄÄ¬ÈÏurlÊÇ"/home"
-			.permitAll()//×¢ÏúĞĞÎªÈÎÒâ·ÃÎÊ
+			.logoutSuccessUrl("/login")  //é€€å‡ºç™»å½•åçš„é»˜è®¤urlæ˜¯"/login"
+			.permitAll()//æ³¨é”€è¡Œä¸ºä»»æ„è®¿é—®
 			.and()
 			.csrf().disable();
 		http.addFilterBefore(myFilterSecurityInterceptor, FilterSecurityInterceptor.class);

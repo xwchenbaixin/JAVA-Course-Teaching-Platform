@@ -22,9 +22,9 @@ import java.util.*;
 /**
  * 
  * @author CBX
- * @Desc Ö÷Òª¹¦ÄÜÊÇ»ñÈ¡È¨ÏŞ±íÖĞµÄÈ¨ÏŞ£¬²¢·µ»ØCollection<ConfigAttribute> array;
+ * @Desc ä¸»è¦åŠŸèƒ½æ˜¯è·å–æƒé™è¡¨ä¸­çš„æƒé™ï¼Œå¹¶è¿”å›Collection<ConfigAttribute> array;
  */
-@Service
+@Service("myInvocationSecurityMetadataSourceService")
 public class MyInvocationSecurityMetadataSourceService  implements
         FilterInvocationSecurityMetadataSource {
 
@@ -34,13 +34,13 @@ public class MyInvocationSecurityMetadataSourceService  implements
     private HashMap<String, Collection<ConfigAttribute>> map =null;
 
     /**
-     * ¼ÓÔØÈ¨ÏŞ±íÖĞËùÓĞÈ¨ÏŞ
+     * åŠ è½½æƒé™è¡¨ä¸­æ‰€æœ‰æƒé™
      */
     public void loadResourceDefine(){
         map = new HashMap<>();
         Collection<ConfigAttribute> array;
         ConfigAttribute cfg;
-        //»ñÈ¡½ÇÉ«È¨ÏŞ±íÖĞµÄËùÓĞÊı¾İ
+        //è·å–è§’è‰²æƒé™è¡¨ä¸­çš„æ‰€æœ‰æ•°æ®
         List<RolePermission> RolePermissionList = userPermissionMapper.getRolePermissions();
         
         for(RolePermission rp : RolePermissionList) {
@@ -48,23 +48,23 @@ public class MyInvocationSecurityMetadataSourceService  implements
             array = new ArrayList<>();
             cfg = new SecurityConfig(rp.getRole().getName());
             System.out.println("MyInvo:"+rp.getRole().getName());
-            //´Ë´¦Ö»Ìí¼ÓÁËÓÃ»§µÄÃû×Ö£¬ÆäÊµ»¹¿ÉÒÔÌí¼Ó¸ü¶àÈ¨ÏŞµÄĞÅÏ¢£¬ÀıÈçÇëÇó·½·¨µ½ConfigAttributeµÄ¼¯ºÏÖĞÈ¥¡£
-            //´Ë´¦Ìí¼ÓµÄĞÅÏ¢½«»á×÷ÎªMyAccessDecisionManagerÀàµÄdecideµÄµÚÈı¸ö²ÎÊı¡£
+            //æ­¤å¤„åªæ·»åŠ äº†ç”¨æˆ·çš„åå­—ï¼Œå…¶å®è¿˜å¯ä»¥æ·»åŠ æ›´å¤šæƒé™çš„ä¿¡æ¯ï¼Œä¾‹å¦‚è¯·æ±‚æ–¹æ³•åˆ°ConfigAttributeçš„é›†åˆä¸­å»ã€‚
+            //æ­¤å¤„æ·»åŠ çš„ä¿¡æ¯å°†ä¼šä½œä¸ºMyAccessDecisionManagerç±»çš„decideçš„ç¬¬ä¸‰ä¸ªå‚æ•°ã€‚
             array.add(cfg);
-            //ÓÃÈ¨ÏŞµÄgetUrl() ×÷ÎªmapµÄkey£¬ÓÃConfigAttributeµÄ¼¯ºÏ×÷Îª value£¬
+            //ç”¨æƒé™çš„getUrl() ä½œä¸ºmapçš„keyï¼Œç”¨ConfigAttributeçš„é›†åˆä½œä¸º valueï¼Œ
             map.put(rp.getPermission().getUrl(), array);
         }
 
     }
 
-    //´Ë·½·¨ÊÇÎªÁËÅĞ¶¨ÓÃ»§ÇëÇóµÄurl ÊÇ·ñÔÚÈ¨ÏŞ±íÖĞ£¬Èç¹ûÔÚÈ¨ÏŞ±íÖĞ£¬Ôò·µ»Ø¸ø decide ·½·¨£¬ÓÃÀ´ÅĞ¶¨ÓÃ»§ÊÇ·ñÓĞ´ËÈ¨ÏŞ¡£Èç¹û²»ÔÚÈ¨ÏŞ±íÖĞÔò·ÅĞĞ¡£
+    //æ­¤æ–¹æ³•æ˜¯ä¸ºäº†åˆ¤å®šç”¨æˆ·è¯·æ±‚çš„url æ˜¯å¦åœ¨æƒé™è¡¨ä¸­ï¼Œå¦‚æœåœ¨æƒé™è¡¨ä¸­ï¼Œåˆ™è¿”å›ç»™ decide æ–¹æ³•ï¼Œç”¨æ¥åˆ¤å®šç”¨æˆ·æ˜¯å¦æœ‰æ­¤æƒé™ã€‚å¦‚æœä¸åœ¨æƒé™è¡¨ä¸­åˆ™æ”¾è¡Œã€‚
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
         
-    	//Èç¹ûmap Îª¿ÕµÄÇé¿öÏÂÔò»ñÈ¡Êı¾İ¿âÖĞÈ¨ÏŞ±íµÄÊı¾İ
+    	//å¦‚æœmap ä¸ºç©ºçš„æƒ…å†µä¸‹åˆ™è·å–æ•°æ®åº“ä¸­æƒé™è¡¨çš„æ•°æ®
     	if(map ==null) loadResourceDefine();
         System.out.println("map is not null");
-        //object ÖĞ°üº¬ÓÃ»§ÇëÇóµÄrequest ĞÅÏ¢Ò²¾ÍÊÇÇëÇóµÄURL
+        //object ä¸­åŒ…å«ç”¨æˆ·è¯·æ±‚çš„request ä¿¡æ¯ä¹Ÿå°±æ˜¯è¯·æ±‚çš„URL
         HttpServletRequest request = ((FilterInvocation) object).getHttpRequest();
         
         AntPathRequestMatcher matcher;
@@ -76,13 +76,12 @@ public class MyInvocationSecurityMetadataSourceService  implements
             matcher = new AntPathRequestMatcher(resUrl);
             System.out.println("matcher:"+matcher);
             if(matcher.matches(request)) {
-            
-            	System.out.println("Æ¥Åä³É¹¦");
+            	System.out.println("åŒ¹é…æˆåŠŸ");
                 return map.get(resUrl);
             }
-            System.out.println("URL²»ÔÚÈ¨ÏŞ±íÖĞ");
+            System.out.println("URLä¸åœ¨æƒé™è¡¨ä¸­");
         }
-        //URL²»ÔÚÈ¨ÏŞ±íÖĞ ,Ôò¿ÉÒÔ·ÃÎÊ
+        //URLä¸åœ¨æƒé™è¡¨ä¸­ ,åˆ™å¯ä»¥è®¿é—®
         return null;
     }
 

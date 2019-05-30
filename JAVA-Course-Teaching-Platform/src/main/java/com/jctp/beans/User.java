@@ -8,12 +8,12 @@ public class User {
 	private int id;
 	private String name;
 	
-	@Pattern(regexp = "^ÄĞ|Å®$",message = "ĞÔ±ğ±ØĞëÊÇÄĞ»òÅ®")
+	@Pattern(regexp = "^ç”·|å¥³$",message = "æ€§åˆ«å¿…é¡»æ˜¯ç”·æˆ–å¥³")
 	private String sex;
 	
 	private String workNo;
 	
-	@Pattern(regexp = "^[1][3,4,5,6,7,8][0-9]{9}$",message = "µç»°ºÅÂë²»ÕıÈ·")
+	@Pattern(regexp = "^[1][3,4,5,6,7,8][0-9]{9}$",message = "ç”µè¯å·ç ä¸æ­£ç¡®")
 	private String phone;
 	private int roleId;
 	private int roleName;
@@ -21,9 +21,9 @@ public class User {
 	private int classId;
 	private String className;
 	
-	@NotBlank(message = "ÃÜÂë²»Îª¿Õ")
-	@Size(max=16,min=8,message = "ÃÜÂë³¤¶ÈÔÚ8-16Î»")
-	@Pattern(regexp = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$",message = "ÃÜÂëĞèÒªÍ¬Ê±º¬ÓĞÊı×ÖºÍ×ÖÄ¸")
+	@NotBlank(message = "å¯†ç ä¸ä¸ºç©º")
+	@Size(max=16,min=8,message = "å¯†ç é•¿åº¦åœ¨8-16ä½")
+	@Pattern(regexp = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$",message = "å¯†ç éœ€è¦åŒæ—¶å«æœ‰æ•°å­—å’Œå­—æ¯")
 	private String password;
 	
 	public int getId() {

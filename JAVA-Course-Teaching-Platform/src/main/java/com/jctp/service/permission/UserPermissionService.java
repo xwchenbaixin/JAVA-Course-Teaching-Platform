@@ -25,7 +25,7 @@ public class UserPermissionService implements UserDetailsService{
 		// TODO Auto-generated method stub
 		User user=userPermissionMapper.getUserByWorkNo(workno);
 		if(user==null) {
-			throw new UsernameNotFoundException("ÕËºÅ²»´æÔÚ»òÃÜÂë´íÎó");
+			throw new UsernameNotFoundException("è´¦å·ä¸å­˜åœ¨æˆ–å¯†ç é”™è¯¯");
 		}
 		Role role=userPermissionMapper.getRoleListById(user.getRoleId());
 		

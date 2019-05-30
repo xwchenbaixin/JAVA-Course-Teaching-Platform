@@ -15,10 +15,10 @@ import java.util.Iterator;
 @Service("myAccessDecisionManager")
 public class MyAccessDecisionManager implements AccessDecisionManager {
 
-    // decide ·½·¨ÊÇÅĞ¶¨ÊÇ·ñÓµÓĞÈ¨ÏŞµÄ¾ö²ß·½·¨£¬
-    // authentication ÊÇÊÍCustomUserServiceÖĞÑ­»·Ìí¼Óµ½ GrantedAuthority ¶ÔÏóÖĞµÄÈ¨ÏŞĞÅÏ¢¼¯ºÏ.
-    // object °üº¬¿Í»§¶Ë·¢ÆğµÄÇëÇóµÄrequsetĞÅÏ¢£¬¿É×ª»»Îª HttpServletRequest request = ((FilterInvocation) object).getHttpRequest();
-    // configAttributes ÎªMyInvocationSecurityMetadataSourceµÄgetAttributes(Object object)Õâ¸ö·½·¨·µ»ØµÄ½á¹û£¬´Ë·½·¨ÊÇÎªÁËÅĞ¶¨ÓÃ»§ÇëÇóµÄurl ÊÇ·ñÔÚÈ¨ÏŞ±íÖĞ£¬Èç¹ûÔÚÈ¨ÏŞ±íÖĞ£¬Ôò·µ»Ø¸ø decide ·½·¨£¬ÓÃÀ´ÅĞ¶¨ÓÃ»§ÊÇ·ñÓĞ´ËÈ¨ÏŞ¡£Èç¹û²»ÔÚÈ¨ÏŞ±íÖĞÔò·ÅĞĞ¡£
+    // decide æ–¹æ³•æ˜¯åˆ¤å®šæ˜¯å¦æ‹¥æœ‰æƒé™çš„å†³ç­–æ–¹æ³•ï¼Œ
+    // authentication æ˜¯é‡ŠCustomUserServiceä¸­å¾ªç¯æ·»åŠ åˆ° GrantedAuthority å¯¹è±¡ä¸­çš„æƒé™ä¿¡æ¯é›†åˆ.
+    // object åŒ…å«å®¢æˆ·ç«¯å‘èµ·çš„è¯·æ±‚çš„requsetä¿¡æ¯ï¼Œå¯è½¬æ¢ä¸º HttpServletRequest request = ((FilterInvocation) object).getHttpRequest();
+    // configAttributes ä¸ºMyInvocationSecurityMetadataSourceçš„getAttributes(Object object)è¿™ä¸ªæ–¹æ³•è¿”å›çš„ç»“æœï¼Œæ­¤æ–¹æ³•æ˜¯ä¸ºäº†åˆ¤å®šç”¨æˆ·è¯·æ±‚çš„url æ˜¯å¦åœ¨æƒé™è¡¨ä¸­ï¼Œå¦‚æœåœ¨æƒé™è¡¨ä¸­ï¼Œåˆ™è¿”å›ç»™ decide æ–¹æ³•ï¼Œç”¨æ¥åˆ¤å®šç”¨æˆ·æ˜¯å¦æœ‰æ­¤æƒé™ã€‚å¦‚æœä¸åœ¨æƒé™è¡¨ä¸­åˆ™æ”¾è¡Œã€‚
     @Override
     public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
 
@@ -28,15 +28,15 @@ public class MyAccessDecisionManager implements AccessDecisionManager {
         ConfigAttribute c;
         
         String needRole;
-        //±éÀú´ËURL°üº¬µÄÈ¨ÏŞ
+        //éå†æ­¤URLåŒ…å«çš„æƒé™
         for(Iterator<ConfigAttribute> iter = configAttributes.iterator(); iter.hasNext(); ) {
             c = iter.next();
-            //»ñÈ¡½ÇÉ«Ãû×Ö
+            //è·å–è§’è‰²åå­—
             needRole = c.getAttribute();
             System.out.println("deciCf:"+c.getAttribute());
-            //authentication ÊÇÔÚ UserPermissionService ´æ·ÅµÄÈ¨ÏŞ¼¯ºÏ£¬È¨ÏŞ¸ù¾İRoleÀ´»ñÈ¡¡£´æ·ÅµÄÊÇRoleName
+            //authentication æ˜¯åœ¨ UserPermissionService å­˜æ”¾çš„æƒé™é›†åˆï¼Œæƒé™æ ¹æ®Roleæ¥è·å–ã€‚å­˜æ”¾çš„æ˜¯RoleName
             for(GrantedAuthority ga : authentication.getAuthorities()) {
-            	//Èç¹ûÇëÇóµÄURLÖĞ°üº¬¸ÃÓÃ»§µÄÈ¨ÏŞ£¬Ôò¼ÌĞø´¦ÀíÊ£ÏÂµÄÇëÇó¡£
+            	//å¦‚æœè¯·æ±‚çš„URLä¸­åŒ…å«è¯¥ç”¨æˆ·çš„æƒé™ï¼Œåˆ™ç»§ç»­å¤„ç†å‰©ä¸‹çš„è¯·æ±‚ã€‚
             	System.out.println("deci:"+ga.getAuthority());
             	System.out.println("needRole:"+needRole);
                 if(needRole.trim().equals(ga.getAuthority())) {
@@ -44,7 +44,7 @@ public class MyAccessDecisionManager implements AccessDecisionManager {
                 }
             }
         }
-        //±éÀúÍêËùÓĞµÄµÄÈ¨ÏŞÒÔºó£¬ÓÖÃ»°üº¬Õâ¸öÈ¨ÏŞ¡£
+        //éå†å®Œæ‰€æœ‰çš„çš„æƒé™ä»¥åï¼Œåˆæ²¡åŒ…å«è¿™ä¸ªæƒé™ã€‚
         System.out.println("no Right");
         throw new AccessDeniedException("No Right");
     }
