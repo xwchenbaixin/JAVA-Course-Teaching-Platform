@@ -219,7 +219,7 @@ create table jctp_user
    role_id              int,
    state                int,
    class_id             int,
-   password             varchar(16),
+   password             varchar(256),
    primary key (id)
 );
 
