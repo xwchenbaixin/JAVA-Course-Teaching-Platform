@@ -15,15 +15,15 @@ import com.jctp.beans.User;
 import com.jctp.mapper.UserPermissionMapper;
 
 @Service("userPermissionService")
-public class UserPermissionService implements UserDetailsService{
-	
+public class MyUserDetailsService implements UserDetailsService{
 	@Autowired
 	private UserPermissionMapper userPermissionMapper;
-	
+
+    
 	@Override
-	public UserDetails loadUserByUsername(String workno) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String workNo) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
-		User user=userPermissionMapper.getUserByWorkNo(workno);
+		User user=userPermissionMapper.getUserByWorkNo(workNo);
 		if(user==null) {
 			throw new UsernameNotFoundException("账号不存在或密码错误");
 		}
@@ -36,6 +36,10 @@ public class UserPermissionService implements UserDetailsService{
 		System.out.println("username:"+user.getWorkNo());
 		System.out.println("password:"+user.getPassword());
 		return new org.springframework.security.core.userdetails.User(user.getWorkNo(),user.getPassword(),authorities);
+	}
+	
+	public User getUserByWordNo(String workNo) {
+		return userPermissionMapper.getUserByWorkNo(workNo);
 	}
 	
 }

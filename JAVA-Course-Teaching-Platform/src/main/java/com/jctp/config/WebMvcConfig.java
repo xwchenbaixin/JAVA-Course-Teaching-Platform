@@ -11,7 +11,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport{
 	@Override
 	protected void addViewControllers(ViewControllerRegistry registry) {
 		// TODO Auto-generated method stub
-		registry.addViewController("/login").setViewName("login");
+		//registry.addViewController("/login").setViewName("login");
 	}
 
 	@Override

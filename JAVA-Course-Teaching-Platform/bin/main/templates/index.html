@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Gentelella Alela! |</title>
+<title>课程教学平台</title>
 
 <!-- Bootstrap -->
 <link th:href="@{/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css}"
@@ -31,8 +31,8 @@
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="index.html" class="site_title"><i class="fa fa-paw"></i>
-							<span>Gentelella Alela!</span></a>
+						<a href="/" class="site_title"><i class="fa fa-paw"></i>
+							<span>课程教学平台</span></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -40,12 +40,13 @@
 					<!-- menu profile quick info -->
 					<div class="profile clearfix">
 						<div class="profile_pic">
-							<img src="/gentelella/images/img.jpg" alt="..."
+							<img th:src="${user.titleImg}" alt="..."
 								class="img-circle profile_img">
 						</div>
 						<div class="profile_info">
-							<span>Welcome,</span>
-							<h2>John Doe</h2>
+							
+							<h2 th:text="'您好,'+${user.name}"></h2>
+							<span th:text="${user.roleName}"></span>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -57,33 +58,31 @@
 					<div id="sidebar-menu"
 						class="main_menu_side hidden-print main_menu">
 						<div class="menu_section">
-							<h3>General</h3>
+							<h3>基础功能</h3>
 							<ul class="nav side-menu">
-								<li><a><i class="fa fa-home"></i> Home </a></li>
-										
-								<li><a><i class="fa fa-edit"></i> Forms</a></li>
-								<li><a><i class="fa fa-desktop"></i> UI Elements</a></li>
-								<li><a><i class="fa fa-table"></i> Tables</a> </li>
-								<li><a><i class="fa fa-bar-chart-o"></i> Data
-										Presentation </a></li>
-								<li><a><i class="fa fa-clone"></i>Layouts <span
+								<li class="active"><a><i class="fa fa-home"></i> 所有课程 </a></li>
+								<li><a><i class="fa fa-edit"></i> 代码编辑器</a></li>
+								<li><a><i class="fa fa-desktop"></i> 收件箱</a></li>
+								<li><a><i class="fa fa-table"></i> 数据表格</a> </li>
+								<li><a><i class="fa fa-bar-chart-o"></i> 数据统计 </a></li>
+								<!-- <li><a><i class="fa fa-clone"></i>Layouts <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
 										<li><a href="fixed_footer.html">Fixed Footer</a></li>
-									</ul></li>
+									</ul></li> -->
 							</ul>
 						</div>
 						<div class="menu_section">
 							<h3>Live On</h3>
 							<ul class="nav side-menu">
-								<li><a><i class="fa fa-bug"></i> Additional Pages <span
+								<li><a><i class="fa fa-bug"></i> 用户管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="e_commerce.html">E-commerce</a></li>
-										<li><a href="projects.html">Projects</a></li>
-										<li><a href="project_detail.html">Project Detail</a></li>
-										<li><a href="contacts.html">Contacts</a></li>
+										<li><a href="e_commerce.html">教师管理</a></li>
+										<li><a href="projects.html">学生管理</a></li>
+										<li><a href="project_detail.html">系主任管理</a></li>
+										<li><a href="contacts.html">班级管理</a></li>
 										<li><a href="profile.html">Profile</a></li>
 									</ul></li>
 								<li><a><i class="fa fa-windows"></i> Extras <span
@@ -144,10 +143,10 @@
 						</div>
 
 						<ul class="nav navbar-nav navbar-right">
-							<li class=""><a href="javascript:;"
+							<li class=""><a  href="javascript:;"
 								class="user-profile dropdown-toggle" data-toggle="dropdown"
-								aria-expanded="false"> <img src="/gentelella/getimages/img.jpg" alt="">John
-									Doe <span class=" fa fa-angle-down"></span>
+								aria-expanded="false"> <img th:src="${user.titleImg}" alt="" th:text="${user.name}"> 
+								<span class=" fa fa-angle-down"></span>
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">
 									<li><a href="javascript:;"> Profile</a></li>
@@ -232,7 +231,7 @@
 						<div class="col-md-3 col-sm-3 col-xs-3">
 							<div class="x_panel">
 								<div class="x_title">
-									<h2>Java高级编程Java高级编程Java高级编程</h2>
+									<h2><a th:href="@{#}">Java高级编程Java高级编程Java高级编程</a></h2>
 									<ul class="nav navbar-right panel_toolbox">
 									
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -260,7 +259,7 @@
 						<div class="col-md-3 col-sm-3 col-xs-3">
 							<div class="x_panel">
 								<div class="x_title">
-									<h2>Java高级编程Java高级编程Java高级编程</h2>
+									<h2><a th:href="@{#}">Java高级编程Java高级编程Java高级编程</a></h2>
 									<ul class="nav navbar-right panel_toolbox">
 									
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -275,103 +274,216 @@
 									<div class="clearfix"></div>
 								</div>
 								<div class="x_content" id="content">
-									
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-md-3 col-sm-3 col-xs-3">
-							<div class="x_panel">
-								<div class="x_title">
-									<h2>Java高级编程Java高级编程Java高级编程</h2>
-									<ul class="nav navbar-right panel_toolbox">
-									
-										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown" role="button" aria-expanded="false"><i
-												class="fa fa-wrench"></i></a>
-											<ul class="dropdown-menu" role="menu">
-												<li><a href="#">Settings 1</a></li>
-												<li><a href="#">Settings 2</a></li>
-											</ul>
-										</li>
-									</ul>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content" id="content">
-									
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-md-3 col-sm-3 col-xs-3">
-							<div class="x_panel">
-								<div class="x_title">
-									<h2>Java高级编程Java高级编程Java高级编程</h2>
-									<ul class="nav navbar-right panel_toolbox">
-									
-										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown" role="button" aria-expanded="false"><i
-												class="fa fa-wrench"></i></a>
-											<ul class="dropdown-menu" role="menu">
-												<li><a href="#">Settings 1</a></li>
-												<li><a href="#">Settings 2</a></li>
-											</ul>
-										</li>
-									</ul>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content" id="content">
-									
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-md-3 col-sm-3 col-xs-3">
-							<div class="x_panel">
-								<div class="x_title">
-									<h2>Java高级编程Java高级编程Java高级编程</h2>
-									<ul class="nav navbar-right panel_toolbox">
-									
-										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown" role="button" aria-expanded="false"><i
-												class="fa fa-wrench"></i></a>
-											<ul class="dropdown-menu" role="menu">
-												<li><a href="#">Settings 1</a></li>
-												<li><a href="#">Settings 2</a></li>
-											</ul>
-										</li>
-									</ul>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content" id="content">
-									
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-md-3 col-sm-3 col-xs-3">
-							<div class="x_panel">
-								<div class="x_title">
-									<h2>Java高级编程Java高级编程Java高级编程</h2>
-									<ul class="nav navbar-right panel_toolbox">
-									
-										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown" role="button" aria-expanded="false"><i
-												class="fa fa-wrench"></i></a>
-											<ul class="dropdown-menu" role="menu">
-												<li><a href="#">Settings 1</a></li>
-												<li><a href="#">Settings 2</a></li>
-											</ul>
-										</li>
-									</ul>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content" id="content">
-									
+									<div class="content-img">fwaf</div>
+									<div class="course-footer">
+										<p>任课教师：张恒峰</p>
+										<p>班级组：162041</p>
+									</div>
 								</div>
 								
 							</div>
 						</div>
+						
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2><a th:href="@{#}">Java高级编程Java高级编程Java高级编程</a></h2>
+									<ul class="nav navbar-right panel_toolbox">
+									
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-expanded="false"><i
+												class="fa fa-wrench"></i></a>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">Settings 1</a></li>
+												<li><a href="#">Settings 2</a></li>
+											</ul>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content" id="content">
+									<div class="content-img">fwaf</div>
+									<div class="course-footer">
+										<p>任课教师：张恒峰</p>
+										<p>班级组：162041</p>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2><a th:href="@{#}">Java高级编程Java高级编程Java高级编程</a></h2>
+									<ul class="nav navbar-right panel_toolbox">
+									
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-expanded="false"><i
+												class="fa fa-wrench"></i></a>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">Settings 1</a></li>
+												<li><a href="#">Settings 2</a></li>
+											</ul>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content" id="content">
+									<div class="content-img">fwaf</div>
+									<div class="course-footer">
+										<p>任课教师：张恒峰</p>
+										<p>班级组：162041</p>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2><a th:href="@{#}">Java高级编程Java高级编程Java高级编程</a></h2>
+									<ul class="nav navbar-right panel_toolbox">
+									
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-expanded="false"><i
+												class="fa fa-wrench"></i></a>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">Settings 1</a></li>
+												<li><a href="#">Settings 2</a></li>
+											</ul>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content" id="content">
+									<div class="content-img">fwaf</div>
+									<div class="course-footer">
+										<p>任课教师：张恒峰</p>
+										<p>班级组：162041</p>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2><a th:href="@{#}">Java高级编程Java高级编程Java高级编程</a></h2>
+									<ul class="nav navbar-right panel_toolbox">
+									
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-expanded="false"><i
+												class="fa fa-wrench"></i></a>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">Settings 1</a></li>
+												<li><a href="#">Settings 2</a></li>
+											</ul>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content" id="content">
+									<div class="content-img">fwaf</div>
+									<div class="course-footer">
+										<p>任课教师：张恒峰</p>
+										<p>班级组：162041</p>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2><a th:href="@{#}">Java高级编程Java高级编程Java高级编程</a></h2>
+									<ul class="nav navbar-right panel_toolbox">
+									
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-expanded="false"><i
+												class="fa fa-wrench"></i></a>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">Settings 1</a></li>
+												<li><a href="#">Settings 2</a></li>
+											</ul>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content" id="content">
+									<div class="content-img">fwaf</div>
+									<div class="course-footer">
+										<p>任课教师：张恒峰</p>
+										<p>班级组：162041</p>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2><a th:href="@{#}">Java高级编程Java高级编程Java高级编程</a></h2>
+									<ul class="nav navbar-right panel_toolbox">
+									
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-expanded="false"><i
+												class="fa fa-wrench"></i></a>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">Settings 1</a></li>
+												<li><a href="#">Settings 2</a></li>
+											</ul>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content" id="content">
+									<div class="content-img">fwaf</div>
+									<div class="course-footer">
+										<p>任课教师：张恒峰</p>
+										<p>班级组：162041</p>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2><a th:href="@{#}">Java高级编程Java高级编程Java高级编程</a></h2>
+									<ul class="nav navbar-right panel_toolbox">
+									
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-expanded="false"><i
+												class="fa fa-wrench"></i></a>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">Settings 1</a></li>
+												<li><a href="#">Settings 2</a></li>
+											</ul>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content" id="content">
+									<div class="content-img">fwaf</div>
+									<div class="course-footer">
+										<p>任课教师：张恒峰</p>
+										<p>班级组：162041</p>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						
+						
+						
+						
+						
 					</div>
 				</div>
 			</div>
@@ -396,7 +508,7 @@
 	<!-- FastClick -->
 	<script th:src="@{/gentelella/vendors/fastclick/lib/fastclick.js}"></script>
 	<!-- NProgress -->
-	<script src="@{/gentelella/vendors/nprogress/nprogress.js}"></script>
+	<script th:src="@{/gentelella/vendors/nprogress/nprogress.js}"></script>
 
 	<!-- Custom Theme Scripts -->
 	<script th:src="@{/gentelella/js/custom.min.js}"></script>

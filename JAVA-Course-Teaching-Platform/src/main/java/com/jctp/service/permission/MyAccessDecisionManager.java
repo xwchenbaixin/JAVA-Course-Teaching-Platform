@@ -33,12 +33,9 @@ public class MyAccessDecisionManager implements AccessDecisionManager {
             c = iter.next();
             //获取角色名字
             needRole = c.getAttribute();
-            System.out.println("deciCf:"+c.getAttribute());
             //authentication 是在 UserPermissionService 存放的权限集合，权限根据Role来获取。存放的是RoleName
             for(GrantedAuthority ga : authentication.getAuthorities()) {
             	//如果请求的URL中包含该用户的权限，则继续处理剩下的请求。
-            	System.out.println("deci:"+ga.getAuthority());
-            	System.out.println("needRole:"+needRole);
                 if(needRole.trim().equals(ga.getAuthority())) {
                     return;
                 }

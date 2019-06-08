@@ -4,6 +4,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 public class User {
 	private int id;
 	private String name;
@@ -16,7 +19,7 @@ public class User {
 	@Pattern(regexp = "^[1][3,4,5,6,7,8][0-9]{9}$",message = "电话号码不正确")
 	private String phone;
 	private int roleId;
-	private int roleName;
+	private String roleName;
 	private int state;
 	private int classId;
 	private String className;
@@ -25,7 +28,20 @@ public class User {
 	@Size(max=16,min=8,message = "密码长度在8-16位")
 	@Pattern(regexp = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$",message = "密码需要同时含有数字和字母")
 	private String password;
+	private String titleImg;
 	
+	public String getTitleImg() {
+		return titleImg;
+	}
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 	public int getId() {
 		return id;
 	}
@@ -62,10 +78,11 @@ public class User {
 	public void setRoleId(int roleId) {
 		this.roleId = roleId;
 	}
-	public int getRoleName() {
+	
+	public String getRoleName() {
 		return roleName;
 	}
-	public void setRoleName(int roleName) {
+	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
 	public int getState() {

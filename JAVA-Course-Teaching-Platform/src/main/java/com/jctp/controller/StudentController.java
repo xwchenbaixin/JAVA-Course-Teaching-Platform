@@ -16,12 +16,7 @@ public class StudentController {
 	
 	@Autowired
 	private StudentService studentService;
-	
-	@RequestMapping("/")
-	public String index(Model model) {
-		model.addAttribute("Users",studentService.listUsers());
-		return "index";
-	}
+
 	
 	@RequestMapping("/listUsers")
 	@ResponseBody

@@ -16,10 +16,10 @@ import com.jctp.beans.User;
 
 @Mapper
 public interface UserPermissionMapper {
-	@Select("SELECT * FROM JCTP_USER WHERE work_no=#{workNo}")
+	@Select("SELECT *,r.name as role_name,u.id as id FROM JCTP_USER u LEFT JOIN JCTP_ROLE R ON U.`role_id`=R.`id` LEFT JOIN JCTP_CLASS C ON U.`class_id` = C.`id`  WHERE work_no=16204110 AND U.state=1")
 	public User getUserByWorkNo(@Param("workNo") String workNo);
 
-	@Select("SELECT * FROM JCTP_ROLE WHERE ID=#{role_id}")
+	@Select("SELECT * FROM JCTP_ROLE WHERE ID=#{role_id} and state=1")
 	public Role getRoleListById(@Param("role_id") int role_id);
 	
 	
