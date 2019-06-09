@@ -4,6 +4,7 @@
 /*==============================================================*/
 
 
+<<<<<<< HEAD
 drop table if exists jctp_chat_course;
 
 drop table if exists jctp_chat_ts;
@@ -29,10 +30,38 @@ drop table if exists jctp_role_permission;
 drop table if exists jctp_students_questions;
 
 drop table if exists jctp_user;
+=======
+DROP TABLE IF EXISTS jctp_chat_course;
+
+DROP TABLE IF EXISTS jctp_chat_ts;	
+
+DROP TABLE IF EXISTS jctp_class;
+
+DROP TABLE IF EXISTS jctp_course;
+
+DROP TABLE IF EXISTS jctp_course_file;
+
+DROP TABLE IF EXISTS jctp_course_job;
+
+DROP TABLE IF EXISTS jctp_permission;
+
+DROP TABLE IF EXISTS jctp_question_job;
+
+DROP TABLE IF EXISTS jctp_questions;
+
+DROP TABLE IF EXISTS jctp_role;
+
+DROP TABLE IF EXISTS jctp_role_permission;
+
+DROP TABLE IF EXISTS jctp_students_questions;
+
+DROP TABLE IF EXISTS jctp_user;
+>>>>>>> e6d3476417879417c55ba423291edb31a6295cf0
 
 /*==============================================================*/
 /* Table: jctp_chat_course                                      */
 /*==============================================================*/
+<<<<<<< HEAD
 create table jctp_chat_course
 (
    id                   int not null auto_increment,
@@ -42,11 +71,23 @@ create table jctp_chat_course
    seq                  int,
    date                 datetime,
    primary key (id)
+=======
+CREATE TABLE jctp_chat_course
+(
+   id                   INT NOT NULL AUTO_INCREMENT,
+   course_id            INT,
+   user_id              INT,
+   msg                  VARCHAR(1000),
+   seq                  INT,
+   DATE                 DATETIME,
+   PRIMARY KEY (id)
+>>>>>>> e6d3476417879417c55ba423291edb31a6295cf0
 );
 
 /*==============================================================*/
 /* Table: jctp_chat_ts                                          */
 /*==============================================================*/
+<<<<<<< HEAD
 create table jctp_chat_ts
 (
    id                   int not null auto_increment,
@@ -59,21 +100,44 @@ create table jctp_chat_ts
             1-��ʦ�ѻظ�',
    date                 datetime,
    primary key (id)
+=======
+CREATE TABLE jctp_chat_ts
+(
+   id                   INT NOT NULL AUTO_INCREMENT,
+   student_id           INT,
+   teacher_id           INT,
+   course_id            INT,
+   student_msg          VARCHAR(1000),
+   teacher_msg          VARCHAR(1000),
+   state                INT COMMENT '0-教师未回复
+            1-教师已回复',
+   DATE                 DATETIME,
+   PRIMARY KEY (id)
+>>>>>>> e6d3476417879417c55ba423291edb31a6295cf0
 );
 
 /*==============================================================*/
 /* Table: jctp_class                                            */
 /*==============================================================*/
+<<<<<<< HEAD
 create table jctp_class
 (
    id                   int not null,
    college              varchar(100),
    primary key (id)
+=======
+CREATE TABLE jctp_class
+(
+   id                   INT NOT NULL,
+   college              VARCHAR(100),
+   PRIMARY KEY (id)
+>>>>>>> e6d3476417879417c55ba423291edb31a6295cf0
 );
 
 /*==============================================================*/
 /* Table: jctp_course                                           */
 /*==============================================================*/
+<<<<<<< HEAD
 create table jctp_course
 (
    id                   int not null auto_increment,
@@ -84,11 +148,24 @@ create table jctp_course
    grade                int,
    term                 int,
    primary key (id)
+=======
+CREATE TABLE jctp_course
+(
+   id                   INT NOT NULL AUTO_INCREMENT,
+   class_id             INT,
+   teacher_id           INT,
+   course_name          VARCHAR(100),
+   create_date          DATETIME,
+   grade                INT,
+   term                 INT,
+   PRIMARY KEY (id)
+>>>>>>> e6d3476417879417c55ba423291edb31a6295cf0
 );
 
 /*==============================================================*/
 /* Table: jctp_course_file                                      */
 /*==============================================================*/
+<<<<<<< HEAD
 create table jctp_course_file
 (
    id                   int not null auto_increment,
@@ -99,11 +176,24 @@ create table jctp_course_file
    file_path            varchar(200),
    state                int,
    primary key (id)
+=======
+CREATE TABLE jctp_course_file
+(
+   id                   INT NOT NULL AUTO_INCREMENT,
+   course_id            INT,
+   TYPE                 INT COMMENT '1-视频
+            2-文档以及PPT',
+   file_name            VARCHAR(100),
+   file_path            VARCHAR(200),
+   state                INT,
+   PRIMARY KEY (id)
+>>>>>>> e6d3476417879417c55ba423291edb31a6295cf0
 );
 
 /*==============================================================*/
 /* Table: jctp_course_job                                       */
 /*==============================================================*/
+<<<<<<< HEAD
 create table jctp_course_job
 (
    id                   int not null auto_increment,
@@ -113,11 +203,23 @@ create table jctp_course_job
    date                 datetime,
    seq                  int,
    primary key (id)
+=======
+CREATE TABLE jctp_course_job
+(
+   id                   INT NOT NULL AUTO_INCREMENT,
+   course_id            INT,
+   job_name             VARCHAR(100),
+   description          VARCHAR(1000),
+   DATE                 DATETIME,
+   seq                  INT,
+   PRIMARY KEY (id)
+>>>>>>> e6d3476417879417c55ba423291edb31a6295cf0
 );
 
 /*==============================================================*/
 /* Table: jctp_permission                                       */
 /*==============================================================*/
+<<<<<<< HEAD
 create table jctp_permission
 (
    id                   int not null auto_increment,
@@ -128,22 +230,44 @@ create table jctp_permission
    method               varchar(10),
    state                int,
    primary key (id)
+=======
+CREATE TABLE jctp_permission
+(
+   id                   INT NOT NULL AUTO_INCREMENT,
+   NAME                 VARCHAR(50),
+   description          VARCHAR(200),
+   url                  VARCHAR(100),
+   pid                  INT,
+   method               VARCHAR(10),
+   state                INT,
+   PRIMARY KEY (id)
+>>>>>>> e6d3476417879417c55ba423291edb31a6295cf0
 );
 
 /*==============================================================*/
 /* Table: jctp_question_job                                     */
 /*==============================================================*/
+<<<<<<< HEAD
 create table jctp_question_job
 (
    id                   int not null auto_increment,
    question_id          int,
    job_id               int,
    primary key (id)
+=======
+CREATE TABLE jctp_question_job
+(
+   id                   INT NOT NULL AUTO_INCREMENT,
+   question_id          INT,
+   job_id               INT,
+   PRIMARY KEY (id)
+>>>>>>> e6d3476417879417c55ba423291edb31a6295cf0
 );
 
 /*==============================================================*/
 /* Table: jctp_questions                                        */
 /*==============================================================*/
+<<<<<<< HEAD
 create table jctp_questions
 (
    id                   int not null auto_increment,
@@ -154,6 +278,18 @@ create table jctp_questions
             3-�����
             4-������',
    answer               varchar(1000) comment 'json���ݸ�ʽ
+=======
+CREATE TABLE jctp_questions
+(
+   id                   INT NOT NULL AUTO_INCREMENT,
+   question_name        VARCHAR(100),
+   question_type        INT COMMENT '0-填空题
+            1-选择题
+            2-判断题
+            3-简答题
+            4-代码题',
+   answer               VARCHAR(1000) COMMENT 'json数据格式
+>>>>>>> e6d3476417879417c55ba423291edb31a6295cf0
             [
                 {
                     input::1,
@@ -164,24 +300,39 @@ create table jctp_questions
                     output:2
                 }
             ]',
+<<<<<<< HEAD
    seq                  int,
    primary key (id)
+=======
+   seq                  INT,
+   PRIMARY KEY (id)
+>>>>>>> e6d3476417879417c55ba423291edb31a6295cf0
 );
 
 /*==============================================================*/
 /* Table: jctp_role                                             */
 /*==============================================================*/
+<<<<<<< HEAD
 create table jctp_role
 (
    id                   int not null auto_increment,
    name                 varchar(20),
    state                int,
    primary key (id)
+=======
+CREATE TABLE jctp_role
+(
+   id                   INT NOT NULL AUTO_INCREMENT,
+   NAME                 VARCHAR(20),
+   state                INT,
+   PRIMARY KEY (id)
+>>>>>>> e6d3476417879417c55ba423291edb31a6295cf0
 );
 
 /*==============================================================*/
 /* Table: jctp_role_permission                                  */
 /*==============================================================*/
+<<<<<<< HEAD
 create table jctp_role_permission
 (
    id                   int not null auto_increment,
@@ -189,11 +340,21 @@ create table jctp_role_permission
    permission_id        int,
    state                int,
    primary key (id)
+=======
+CREATE TABLE jctp_role_permission
+(
+   id                   INT NOT NULL AUTO_INCREMENT,
+   role_id              INT,
+   permission_id        INT,
+   state                INT,
+   PRIMARY KEY (id)
+>>>>>>> e6d3476417879417c55ba423291edb31a6295cf0
 );
 
 /*==============================================================*/
 /* Table: jctp_students_questions                               */
 /*==============================================================*/
+<<<<<<< HEAD
 create table jctp_students_questions
 (
    id                   int not null auto_increment,
@@ -204,11 +365,24 @@ create table jctp_students_questions
    score                double,
    state                int,
    primary key (id)
+=======
+CREATE TABLE jctp_students_questions
+(
+   id                   INT NOT NULL AUTO_INCREMENT,
+   user_id              INT,
+   question_id          INT,
+   DATE                 DATETIME,
+   up_answer            VARCHAR(1000),
+   score                DOUBLE,
+   state                INT,
+   PRIMARY KEY (id)
+>>>>>>> e6d3476417879417c55ba423291edb31a6295cf0
 );
 
 /*==============================================================*/
 /* Table: jctp_user                                             */
 /*==============================================================*/
+<<<<<<< HEAD
 create table jctp_user
 (
    id                   int not null auto_increment,
@@ -273,4 +447,70 @@ alter table jctp_user add constraint FK_Reference_1 foreign key (role_id)
 
 alter table jctp_user add constraint FK_Reference_9 foreign key (class_id)
       references jctp_class (id) on delete restrict on update restrict;
+=======
+CREATE TABLE jctp_user
+(
+   id                   INT NOT NULL AUTO_INCREMENT,
+   NAME                 VARCHAR(20),
+   sex                  VARCHAR(2),
+   work_no              VARCHAR(20),
+   phone                VARCHAR(11),
+   role_id              INT,
+   state                INT,
+   class_id             INT,
+   PASSWORD             VARCHAR(16),
+   PRIMARY KEY (id)
+);
+
+ALTER TABLE jctp_chat_course ADD CONSTRAINT FK_Reference_10 FOREIGN KEY (course_id)
+      REFERENCES jctp_course (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE jctp_chat_course ADD CONSTRAINT FK_Reference_11 FOREIGN KEY (user_id)
+      REFERENCES jctp_user (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE jctp_chat_ts ADD CONSTRAINT FK_Reference_12 FOREIGN KEY (course_id)
+      REFERENCES jctp_course (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE jctp_chat_ts ADD CONSTRAINT FK_Reference_13 FOREIGN KEY (student_id)
+      REFERENCES jctp_user (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE jctp_chat_ts ADD CONSTRAINT FK_Reference_14 FOREIGN KEY (teacher_id)
+      REFERENCES jctp_user (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE jctp_course ADD CONSTRAINT FK_Reference_15 FOREIGN KEY (teacher_id)
+      REFERENCES jctp_user (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE jctp_course ADD CONSTRAINT FK_Reference_7 FOREIGN KEY (class_id)
+      REFERENCES jctp_class (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE jctp_course_file ADD CONSTRAINT FK_Reference_5 FOREIGN KEY (course_id)
+      REFERENCES jctp_course (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE jctp_course_job ADD CONSTRAINT FK_Reference_4 FOREIGN KEY (course_id)
+      REFERENCES jctp_course (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE jctp_question_job ADD CONSTRAINT FK_Reference_16 FOREIGN KEY (question_id)
+      REFERENCES jctp_questions (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE jctp_question_job ADD CONSTRAINT FK_Reference_17 FOREIGN KEY (job_id)
+      REFERENCES jctp_course_job (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE jctp_role_permission ADD CONSTRAINT FK_Reference_2 FOREIGN KEY (role_id)
+      REFERENCES jctp_role (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE jctp_role_permission ADD CONSTRAINT FK_Reference_3 FOREIGN KEY (permission_id)
+      REFERENCES jctp_permission (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE jctp_students_questions ADD CONSTRAINT FK_Reference_18 FOREIGN KEY (question_id)
+      REFERENCES jctp_questions (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE jctp_students_questions ADD CONSTRAINT FK_Reference_19 FOREIGN KEY (user_id)
+      REFERENCES jctp_user (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE jctp_user ADD CONSTRAINT FK_Reference_1 FOREIGN KEY (role_id)
+      REFERENCES jctp_role (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE jctp_user ADD CONSTRAINT FK_Reference_9 FOREIGN KEY (class_id)
+      REFERENCES jctp_class (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+>>>>>>> e6d3476417879417c55ba423291edb31a6295cf0
 
