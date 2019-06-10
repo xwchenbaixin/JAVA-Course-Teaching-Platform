@@ -1,20 +1,30 @@
 package com.jctp.config;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.authentication.logout.DelegatingLogoutSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.server.authentication.logout.HttpStatusReturningServerLogoutSuccessHandler;
 
 import com.jctp.service.permission.LoginFailureHandler;
 import com.jctp.service.permission.LoginSuccessHandler;
@@ -81,5 +91,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
 			.invalidSessionUrl("/login");//session失效以后跳转的连接
 		http.addFilterBefore(myFilterSecurityInterceptor, FilterSecurityInterceptor.class);
+		
 	}
 }

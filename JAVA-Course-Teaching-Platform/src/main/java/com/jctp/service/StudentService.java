@@ -3,9 +3,9 @@ package com.jctp.service;
 import java.util.List;
 
 
-import com.jctp.beans.User;
+import com.jctp.beans.User1;
 
 
 public interface StudentService {
-	List<User> listUsers ();
+	List<User1> listUsers ();
 }

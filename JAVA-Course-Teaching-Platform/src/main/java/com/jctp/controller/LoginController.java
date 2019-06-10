@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.jctp.beans.User;
+import com.jctp.beans.User1;
 import com.jctp.service.permission.MyUserDetailsService;
 
 @Controller

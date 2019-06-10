@@ -13,9 +13,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.context.SecurityContextPersistenceFilter;
 import org.springframework.stereotype.Component;
 
 import com.jctp.beans.User;
+import com.jctp.beans.User1;
 import com.jctp.mapper.UserPermissionMapper;
 @Component
 public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler{
@@ -25,13 +28,7 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 		Authentication authentication) throws IOException, ServletException {
-		/*
-		// 获取当前用户(domain接收)
-		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		User user=userPermissionMapper.getUserByWorkNo(userDetails.getUsername());
-		request.getSession().setAttribute("user", user);
-		System.out.println("登录成功!");
-		*/
+		
 		super.onAuthenticationSuccess(request, response, authentication);
 	}
 

@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jctp.beans.User;
+import com.jctp.beans.User1;
 import com.jctp.service.StudentService;
 
 @Controller
@@ -20,7 +20,7 @@ public class StudentController {
 	
 	@RequestMapping("/listUsers")
 	@ResponseBody
-	public List<User> lilstUsers(){
+	public List<User1> lilstUsers(){
 		return studentService.listUsers();
 	}
 	

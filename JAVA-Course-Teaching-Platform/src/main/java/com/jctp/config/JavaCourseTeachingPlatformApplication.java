@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.jctp.beans.User;
+import com.jctp.beans.User1;
 import com.jctp.mapper.UserPermissionMapper;
 
 @SpringBootApplication

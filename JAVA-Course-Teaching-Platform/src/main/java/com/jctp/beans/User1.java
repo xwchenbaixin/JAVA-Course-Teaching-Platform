@@ -1,13 +1,18 @@
 package com.jctp.beans;
 
+import java.util.Collection;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-public class User {
+public class User1 extends org.springframework.security.core.userdetails.User{
+	
 	private int id;
 	private String name;
 	
@@ -29,6 +34,11 @@ public class User {
 	@Pattern(regexp = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$",message = "密码需要同时含有数字和字母")
 	private String password;
 	private String titleImg;
+	
+	public User1(String username, String password,
+			Collection<? extends GrantedAuthority> authorities) {
+		super(username, password, true, true, true, true, authorities);
+	}
 	
 	public String getTitleImg() {
 		return titleImg;
@@ -108,6 +118,33 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	
