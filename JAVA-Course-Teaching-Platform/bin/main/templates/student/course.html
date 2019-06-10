@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org" 
+>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Meta, title, CSS, favicons, etc. -->
@@ -15,8 +17,8 @@
 
 <body class="nav-md">
 	<div class="container body">
-		<div sec:authorize="hasRole('TEACHER')" class="main_container">
-		
+		<div class="main_container">
+			
 			<!-- 引入公共菜单 -->
 			<div th:replace="/common/component :: MENU"  ></div>
 

@@ -47,6 +47,7 @@ public class MyInvocationSecurityMetadataSourceService  implements
  
             array = new ArrayList<>();
             cfg = new SecurityConfig(rp.getRole().getName());
+            System.err.println(rp.getRole().getName());
             //此处只添加了用户的名字，其实还可以添加更多权限的信息，例如请求方法到ConfigAttribute的集合中去。
             //此处添加的信息将会作为MyAccessDecisionManager类的decide的第三个参数。
             array.add(cfg);

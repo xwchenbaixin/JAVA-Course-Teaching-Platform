@@ -44,7 +44,9 @@ public class MyUserDetailsService implements UserDetailsService{
 		Role role=userPermissionMapper.getRoleListById(user.getRoleId());
 		
 		List<SimpleGrantedAuthority> authorities=new ArrayList<SimpleGrantedAuthority>();
-		authorities.add(new SimpleGrantedAuthority(role.getName()));
+		//之所以要添加"ROLE_"是因为前端的thymeleaf-extras-springsecurity5校验的时候，
+		//sec:authorize="hasRole('TEACHER')",只有在这里加ROLE_才能识别TEACHER
+		authorities.add(new SimpleGrantedAuthority("ROLE_"+role.getName()));
 		
 		System.out.println("role name:"+role.getName());
 		
