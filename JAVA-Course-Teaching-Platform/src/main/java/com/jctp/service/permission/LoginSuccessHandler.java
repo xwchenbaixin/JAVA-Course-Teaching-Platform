@@ -18,13 +18,9 @@ import org.springframework.security.web.context.SecurityContextPersistenceFilter
 import org.springframework.stereotype.Component;
 
 import com.jctp.beans.User;
-import com.jctp.beans.User1;
 import com.jctp.mapper.UserPermissionMapper;
 @Component
 public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler{
-	@Autowired
-	private UserPermissionMapper userPermissionMapper;
-
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 		Authentication authentication) throws IOException, ServletException {

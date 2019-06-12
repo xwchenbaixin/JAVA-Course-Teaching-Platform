@@ -13,7 +13,6 @@ import com.jctp.beans.Permission;
 import com.jctp.beans.Role;
 import com.jctp.beans.RolePermission;
 import com.jctp.beans.User;
-import com.jctp.beans.User1;
 
 @Mapper
 public interface UserPermissionMapper {

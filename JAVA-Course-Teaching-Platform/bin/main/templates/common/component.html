@@ -4,30 +4,28 @@
 <!-- publicCss -->
 <head th:fragment="PUBLIC-CSS">
 		<!-- Bootstrap -->
-		<link th:href="@{/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css}"
+		<link th:href="@{/gentelella/vendors/bootstrap/dist/css/bootstrap.css}"
 			rel="stylesheet">
 		<!-- Font Awesome -->
-		<link th:href="@{/gentelella/vendors/font-awesome/css/font-awesome.min.css}"
+		<link th:href="@{/gentelella/vendors/font-awesome/css/font-awesome.css}"
 			rel="stylesheet">
 		<!-- NProgress -->
 		<link th:href="@{/gentelella/vendors/nprogress/nprogress.css}" rel="stylesheet">
 		
 		<!-- Custom Theme Style -->
-		<link th:href="@{/gentelella/css/custom.min.css}" rel="stylesheet">
+		<link th:href="@{/gentelella/css/custom.css}" rel="stylesheet">
 </head>
 
 <body th:fragment="PUBLIC-JS">
 <!-- jQuery -->
-	<script th:src="@{/gentelella/vendors/jquery/dist/jquery.min.js}"></script>
+	<script th:src="@{/gentelella/vendors/jquery/dist/jquery-3.4.1.js}"></script>
 	<!-- Bootstrap -->
-	<script th:src="@{/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js}"></script>
+	<script th:src="@{/gentelella/vendors/bootstrap/dist/js/bootstrap.js}"></script>
 	<!-- FastClick -->
 	<script th:src="@{/gentelella/vendors/fastclick/lib/fastclick.js}"></script>
 	<!-- NProgress -->
 	<script th:src="@{/gentelella/vendors/nprogress/nprogress.js}"></script>
 	<!-- Custom Theme Scripts -->
-	<script th:src="@{/gentelella/js/custom.min.js}"></script>
-	<script th:src="@{/gentelella/js/task.js}"></script>
 </body>
 
 <div class="col-md-3 left_col" th:fragment="MENU">
@@ -62,11 +60,11 @@
 			<div class="menu_section">
 				<h3>基础功能</h3>
 				<ul class="nav side-menu">
-					<li class="active"><a href="/turnPage/student/index"><i class="fa fa-home" ></i> 所有课程 </a></li>
-					<li ><a href="/turnPage/student/codeEditor"><i class="fa fa-edit"></i> 代码编辑器</a></li>
-					<li><a><i class="fa fa-desktop"></i> 收件箱</a></li>
-					<li><a><i class="fa fa-table"></i> 数据表格</a> </li>
-					<li><a><i class="fa fa-bar-chart-o"></i> 数据统计</a></li>
+					<li sec:authorize="hasRole('STUDENT')"class="active"><a href="/turnPage/student/index"><i class="fa fa-home" ></i> 所有课程 </a></li>
+					<li sec:authorize="hasRole('STUDENT')"><a href="/turnPage/student/codeEditor"><i class="fa fa-edit"></i> 代码编辑器</a></li>
+					<li sec:authorize="hasRole('STUDENT')"><a><i class="fa fa-desktop"></i> 收件箱</a></li>
+					<li sec:authorize="hasRole('TEACHER')"><a><i class="fa fa-table"></i> 数据表格</a> </li>
+					<li sec:authorize="hasRole('TEACHER')"><a><i class="fa fa-bar-chart-o"></i> 数据统计</a></li>
 					
 					<li sec:authorize="hasRole('TEACHER')"><a><i class="fa fa-bar-chart-o"></i> 数据管理</a></li>
 					<!-- <li><a><i class="fa fa-clone"></i>Layouts <span
@@ -75,9 +73,45 @@
 							<li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
 							<li><a href="fixed_footer.html">Fixed Footer</a></li>
 						</ul></li> -->
+					<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-home"></i>教师管理<span class="fa fa-chevron-down"></span></a>
+	                    <ul class="nav child_menu">
+	                      <li><a href="addusers" >增加教师</a></li>
+	                      <li><a href="searchallteacher">其他操作</a></li>
+	                    </ul>
+                  	</li>
+                  	<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-edit"></i>学生管理<span class="fa fa-chevron-down"></span></a>
+	                    <ul class="nav child_menu">
+	                      <li><a href="addusers1">增加学生</a></li>
+	                      <li><a href="searchallstudent">其他操作</a></li>
+	                    </ul>
+                  	</li>
+                  	<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-desktop"></i>课程管理<span class="fa fa-chevron-down"></span></a>
+	                    <ul class="nav child_menu">
+	                      <li><a href="home2.html" >增加课程</a></li>
+	                      <li><a href="media_gallery.html">其他操作</a></li>
+	                    </ul>
+                  	</li>
+                  	<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-table"></i>班级管理<span class="fa fa-chevron-down"></span></a>
+	                    <ul class="nav child_menu">
+	                      <li><a href="tables.html">增加班级</a></li>
+	                      <li><a href="tables_dynamic.html">其他操作</a></li>
+	                    </ul>
+                  	</li>
+                  	<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-bar-chart-o"></i>题库管理<span class="fa fa-chevron-down"></span></a>
+	                    <ul class="nav child_menu">
+	                      <li><a href="chartjs.html">增加题库</a></li>
+	                      <li><a href="chartjs2.html">其他操作</a></li>
+	                    </ul>
+                  	</li>
+                  	<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-clone"></i>作业管理<span class="fa fa-chevron-down"></span></a>
+	                    <ul class="nav child_menu">
+	                      <li><a href="fixed_sidebar.html">增加作业</a></li>
+	                      <li><a href="fixed_footer.html">其他操作</a></li>
+	                    </ul>
+                  	</li>	
 				</ul>
 			</div>
-			<div class="menu_section">
+			 <!-- <div class="menu_section">
 				<h3>Live On</h3>
 				<ul class="nav side-menu">
 					<li><a><i class="fa fa-bug"></i> 用户管理 <span
@@ -116,7 +150,7 @@
 							class="fa fa-laptop"></i> Landing Page <span
 							class="label label-success pull-right">Coming Soon</span></a></li>
 				</ul>
-			</div>
+			</div> -->
 	
 		</div>
 		<!-- /sidebar menu -->

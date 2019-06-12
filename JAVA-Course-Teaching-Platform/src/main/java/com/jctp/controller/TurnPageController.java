@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.jctp.beans.User1;
 import com.jctp.mapper.UserPermissionMapper;
 
 @Controller

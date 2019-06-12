@@ -21,7 +21,6 @@ import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.stereotype.Service;
 
-import com.jctp.beans.User1;
 import com.jctp.mapper.UserPermissionMapper;
 
 import java.io.IOException;
