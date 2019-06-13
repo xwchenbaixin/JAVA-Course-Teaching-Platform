@@ -1,4 +1,17 @@
-ï»¿# JAVA-Course-Teaching-Platform
-JAVA Webé«˜çº§ç¼–ç¨‹å¤§ä½œä¸š
-2019-5-22 
-	1ã€ä¸Šä¼ é¡¹ç›®æ–‡æ¡£ã€‚
+# JAVA-Course-Teaching-Platform
+<<<<<<< HEAD
+JAVA Web¸ß¼¶±à³Ì´ó×÷Òµ
+>>2019-5-22 ÉÏ´«ÏîÄ¿ÎÄµµ¡£<br>
+>>2019-5-28 ÉÏ´«´úÂë<br>
+>>2019-6-3 ÉÏ´«´úÂë<br>
+>>2019-6-8 ÉÏ´«´úÂë<br>
+=======
+##JAVA Web¸ß¼¶±à³Ì´ó×÷Òµ<br>
+>2019-5-22 <br>
+>>1¡¢ÉÏ´«ÏîÄ¿ÎÄµµ¡£<br>
+>2019-5-24<br>
+>>1¡¢zlp·ÖÖ§²âÊÔ<br>
+>>2019-5-26Ìá½»´úÂë<br>
+>>2019-6-6Ìá½»´úÂë<br>
+
+>>>>>>> e6d3476417879417c55ba423291edb31a6295cf0
