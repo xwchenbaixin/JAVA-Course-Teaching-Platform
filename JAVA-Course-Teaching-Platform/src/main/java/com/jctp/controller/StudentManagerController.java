@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jctp.beans.User;
-import com.jctp.common.PageModel;
-import com.jctp.common.RequestModel;
-import com.jctp.common.ResponseModel;
+import com.jctp.model.PageModel;
+import com.jctp.model.RequestModel;
+import com.jctp.model.ResponseModel;
 import com.jctp.service.StudentManagerService;
 
 @Controller
@@ -23,25 +23,49 @@ public class StudentManagerController {
 	@Autowired
 	private StudentManagerService studentService;
 
-	
+	/**
+	 * DESC:获取所有Users数据
+	 * @param reqModel
+	 * @return ResponseModel
+	 */
 	@RequestMapping("/listUsers")
 	@ResponseBody
 	public ResponseModel<User> lilstUsers(@RequestBody RequestModel<User> reqModel){
 		//System.out.println("pageSize:"+reqModel.getPageModel().getPageSize());
-		PageModel pageModel=reqModel.getPageModel();
-		ResponseModel<User> resModel=studentService.listUsers(pageModel.getOffset(),pageModel.getPageSize());
+		ResponseModel<User> resModel=studentService.listUsers(reqModel);
 		
 		return resModel;
 	}
+	
+	/**
+	 * DESC:更新Student数据
+	 * @param user
+	 * @return ResponseModel
+	 */
 	@RequestMapping("/update")
 	@ResponseBody
 	public ResponseModel<User> update(@RequestBody User user) {
-		System.out.println(studentService.update(user));
-		ResponseModel<User> resModel=new ResponseModel<User>();
-		resModel.setStatus(200);
-		resModel.setMsg("修改成功");
-		return resModel;
+
+		return studentService.update(user);
 	}
+	/**
+	 * DESC:添加数据
+	 * @param user
+	 * @return ResponseModel
+	 */
+	@RequestMapping("/insert")
+	@ResponseBody
+	public ResponseModel<User> insert(@RequestBody User user) {
+		return studentService.insert(user);
+	}
+	
+	@RequestMapping("/delete")
+	@ResponseBody
+	public ResponseModel<User> delete(@RequestBody User user) {
+		return studentService.delete(user);
+	}
+	
+	
 	@RequestMapping("/teacher")
 	@ResponseBody
 	public String teacherTest() {

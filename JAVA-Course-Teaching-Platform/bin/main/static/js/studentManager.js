@@ -2,38 +2,15 @@
  * 
  */
 $(document).ready(function() {
-	InitMainTable();
-	
-	$("#updateBtn").click(function(){
-		$.ajax("/studentManager/update",
-		        {
-		            dataType: "json", // 预期服务器返回的数据类型。
-		            type: "POST", //  请求方式 POST或GET
-		            crossDomain:true,  // 跨域请求
-		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
-		            // 发送到服务器的数据
-		            data:JSON.stringify({
-		            	"id"		:	$("#stuId").val(),
-		    			"workNo"	:	$("#stuWorkNo").val(),
-		    			"name"		:	$("#stuName").val(),
-		    			"sex"		:	$("#stuSex").val(),
-		            }),
-		          
-		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
-		            // 请求成功后的回调函数。
-		            success: function(data){
-		                    alert(data.msg);
-		                    $('#table').bootstrapTable('refresh');
-		            },
-		            error: function(){
-		                alert("请求错误，请检查网络连接");
-		           }
-		    })
-	})
+	initMainTable();
+	initUpdate();
+	initDelete();
+	initSearch();
+	initInsert();
 })
 var $table;
 //初始化bootstrap-table的内容
-function InitMainTable () {
+function initMainTable () {
     //记录页面bootstrap-table全局变量$table，方便应用
     var queryUrl = '/studentManager/listUsers';
 	//var rows= $("#table").bootstrapTable('getSelections');
@@ -45,6 +22,7 @@ function InitMainTable () {
         cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
         pagination: true,                   //是否显示分页（*）
         sortable: true,                     //是否启用排序
+        sortName:"id",
         sortOrder: "asc",                   //排序方式
         singleSelect:"true",				//只能选一行
         sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
@@ -62,15 +40,26 @@ function InitMainTable () {
         showToggle: true,                   //是否显示详细视图和列表视图的切换按钮
         //cardView: false,                    //是否显示详细视图
         //detailView: false,                  //是否显示父子表
+//        search:true,
+//        searchAlign: 'left',
+//        searchOnEnterKey:true,
+        buttonsAlign:'left',				//buttons方向
+        toolbarAlign:'right',				//自定义toolbar方向
         //得到查询的参数
         queryParams : function (params) {
             //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+        	console.log(params)
             var temp = {   
+        		param:{
+        			name:$("#searchName").val(),
+        			workNo:$("#searchWorkNo").val()
+        		},
                 pageModel:{
-                	pageSize: params.limit,                         //页面大小
-                    pageIndex: (params.offset / params.limit) + 1,   //页码
+                	limit: params.limit,                         //页面大小
+                    page: (params.offset / params.limit) + 1,   //页码
+                    offset:params.offset,
                     sort: params.sort,      //排序列名  
-                    sortOrder: params.order //排位命令（desc，asc） 
+                    order: params.order //排位命令（desc，asc） 
                 }
             	
             };
@@ -95,6 +84,7 @@ function InitMainTable () {
         }, {
             field: 'workNo',
             title: '学号/工号',
+            sortable: true
             //formatter: linkFormatter
         }, {
             field: 'password',
@@ -135,18 +125,124 @@ function InitMainTable () {
 
 function actionFormatter(value,row,index,field){
 	return [
-		'<button id="tableEditor" type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal">编辑</button>',
-		'<button id="tableDelete" type="button" class="btn btn-danger">删除</button>'
+		'<button id="tableEditor" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#updateModal">编辑</button>',
+		'<button id="tableDelete" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">删除</button>'
 	].join("");
 }
 var operateEvents={
 		"click #tableEditor":function(e,value,row,index){
-			$("#stuId").val(row.id);
-			$("#stuWorkNo").val(row.workNo);
-			$("#stuName").val(row.name);
-			$("#stuSex").val(row.sex);
+			$("#updateStuId").val(row.id);
+			$("#updateStuWorkNo").val(row.workNo);
+			$("#updateStuName").val(row.name);
+			$("#updateStuSex").val(row.sex);
 		},
 		"click #tableDelete":function(e,value,row,index){
-			
+			//设置隐藏域ID
+			$("#deleteId").val(row.id);
+			$("#deleteInfo").text("Id:"+row.id+",Name:"+row.name);
 		}
+}
+
+
+//数据增加
+function initInsert(){
+	$("#insertBtn").click(function(){
+		$.ajax("/studentManager/insert",
+		        {
+		            dataType: "json", // 预期服务器返回的数据类型。
+		            type: "POST", //  请求方式 POST或GET
+		            crossDomain:true,  // 跨域请求
+		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
+		            // 发送到服务器的数据
+		            data:JSON.stringify({
+		            	//"id"		:	$("#updateStuId").val(),
+		    			"workNo"	:	$("#insertStuWorkNo").val(),
+		    			"name"		:	$("#insertStuName").val(),
+		    			"sex"		:	$("#insertStuSex").val(),
+		            }),
+		          
+		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
+		            // 请求成功后的回调函数。
+		            success: function(data){
+		            	$("#resMsg").text(data.msg);
+	               		$("#resInfoModal").modal('show');
+		                if(data.status==200){
+			            	$("#insertModal").modal('hide');
+		                    $('#table').bootstrapTable('refresh');
+		                }
+		            },
+		            error: function(){
+		                alert("请求错误，请检查网络连接");
+		           }
+		    })
+	})
+}
+//数据修改
+function initUpdate(){
+	$("#updateBtn").click(function(){
+		$.ajax("/studentManager/update",
+		        {
+		            dataType: "json", // 预期服务器返回的数据类型。
+		            type: "POST", //  请求方式 POST或GET
+		            crossDomain:true,  // 跨域请求
+		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
+		            // 发送到服务器的数据
+		            data:JSON.stringify({
+		            	"id"		:	$("#updateStuId").val(),
+		    			"workNo"	:	$("#updateStuWorkNo").val(),
+		    			"name"		:	$("#updateStuName").val(),
+		    			"sex"		:	$("#updateStuSex").val(),
+		            }),
+		          
+		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
+		            // 请求成功后的回调函数。
+		            success: function(data){
+		            	$("#resMsg").text(data.msg);
+	               		$("#resInfoModal").modal('show');
+		                if(data.status==200){
+			            	$("#updateModal").modal('hide');
+		                    $('#table').bootstrapTable('refresh');
+		                }
+		            },
+		            error: function(){
+		                alert("请求错误，请检查网络连接");
+		           }
+		    })
+	})
+}
+//数据删除
+function initDelete(){
+	$("#deleteBtn").click(function(){
+		$.ajax("/studentManager/delete",
+		        {
+		            dataType: "json", // 预期服务器返回的数据类型。
+		            type: "POST", //  请求方式 POST或GET
+		            crossDomain:true,  // 跨域请求
+		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
+		            // 发送到服务器的数据
+		            data:JSON.stringify({
+		            	"id"		:	$("#deleteId").val()
+		            }),
+		          
+		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
+		            // 请求成功后的回调函数。
+		            success: function(data){
+	               		$("#deleteModal").modal('hide');
+		            	$("#resMsg").text(data.msg);
+	               		$("#resInfoModal").modal('show');
+		               	if(data.status==200){
+		               		$('#table').bootstrapTable('refresh');
+		               	}
+		               	
+		            },
+		            error: function(){
+		                alert("请求错误，请检查网络连接");
+		           }
+		    })
+	})
+}
+function initSearch(){
+	$("#search").click(function(){
+		$('#table').bootstrapTable('refresh');
+	})
 }

@@ -1,4 +1,4 @@
-package com.jctp.common;
+package com.jctp.model;
 
 public class RequestModel<T> {
 	private T param;

@@ -1,4 +1,4 @@
-package com.jctp.common;
+package com.jctp.model;
 
 import java.util.List;
 
