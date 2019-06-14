@@ -15,4 +15,5 @@ encoding//src/main/java/com/jctp/service/permission/MyAccessDecisionManager.java
 encoding//src/main/java/com/jctp/service/permission/MyFilterSecurityInterceptor.java=UTF-8
 encoding//src/main/java/com/jctp/service/permission/MyInvocationSecurityMetadataSourceService.java=UTF-8
 encoding//src/main/java/com/jctp/service/permission/MyUserDetailsService.java=UTF-8
+encoding//src/main/resources/templates/common/component.html=UTF-8
 encoding/<project>=UTF-8

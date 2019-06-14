@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>课程教学平台</title>
+
+<!-- 引入公共CSS -->
+<div th:replace="/common/component :: PUBLIC-CSS" ></div>
+
+<!-- My css -->
+
+<link th:href="@{/css/doHomework.css}" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<!-- 引入公共菜单 -->
+			<div th:replace="/common/component :: MENU"  ></div>
+			
+
+			<!-- top navigation -->
+			<div class="top_nav">
+				<div class="nav_menu">
+					<nav>
+						<div class="nav toggle">
+							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+						</div>
+
+						<ul class="nav navbar-nav navbar-right">
+							<li class=""><a  href="javascript:;"
+								class="user-profile dropdown-toggle" data-toggle="dropdown"
+								aria-expanded="false"> <img th:src="${session.SPRING_SECURITY_CONTEXT.authentication.principal.titleImg}" alt="" th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.name}"> 
+								<span class=" fa fa-angle-down"></span>
+							</a>
+								<ul class="dropdown-menu dropdown-usermenu pull-right">
+									<li><a href="javascript:;"> Profile</a></li>
+									<li><a href="javascript:;"> <span
+											class="badge bg-red pull-right">50%</span> <span>Settings</span>
+									</a></li>
+									<li><a href="javascript:;">Help</a></li>
+									<li><a href="login.html"><i
+											class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+								</ul></li>
+
+							<li role="presentation" class="dropdown"><a
+								href="javascript:;" class="dropdown-toggle info-number"
+								data-toggle="dropdown" aria-expanded="false"> <i
+									class="fa fa-envelope-o"></i> <span class="badge bg-green">6</span>
+							</a>
+								<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
+									role="menu">
+									<li><a> <span class="image"><img
+												src="/gentelella/images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+													Smith</span> <span class="time">3 mins ago</span>
+										</span> <span class="message"> Film festivals used to be
+												do-or-die moments for movie makers. They were where... </span>
+									</a></li>
+									<li><a> <span class="image"><img
+												src="/gentelella/images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+													Smith</span> <span class="time">3 mins ago</span>
+										</span> <span class="message"> Film festivals used to be
+												do-or-die moments for movie makers. They were where... </span>
+									</a></li>
+									<li><a> <span class="image"><img
+												src="/gentelella/images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+													Smith</span> <span class="time">3 mins ago</span>
+										</span> <span class="message"> Film festivals used to be
+												do-or-die moments for movie makers. They were where... </span>
+									</a></li>
+									<li><a> <span class="image"><img
+												src="/gentelella/images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+													Smith</span> <span class="time">3 mins ago</span>
+										</span> <span class="message"> Film festivals used to be
+												do-or-die moments for movie makers. They were where... </span>
+									</a></li>
+									<li>
+										<div class="text-center">
+											<a> <strong>See All Alerts</strong> <i
+												class="fa fa-angle-right"></i>
+											</a>
+										</div>
+									</li>
+								</ul></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- /top navigation -->
+
+
+			<div class="main1118" style="padding: 0 40px 80px; background: #fff;">
+				<div class="title1118">
+					<div class="fr operations">
+						<i></i> <b></b>
+						<ul>
+							<li><a href="javascript:;" class="addTopics">新建话题</a></li>
+						</ul>
+					</div>
+					<a
+						href="/bbscircle/reply-me?clazzid=8082897&amp;courseId=204039059&amp;cpi=31048961&amp;ut=s"
+						class="fr greenFont">回复我的</a> <a
+						href="/bbscircle/my-grouptopic?clazzid=8082897&amp;courseId=204039059&amp;cpi=31048961&amp;ut=s"
+						class="fr greenFont">我的话题</a> <a
+						href="/bbscircle/grouptopic?courseId=204039059&amp;clazzid=8082897&amp;showChooseClazzId=8082897&amp;ut=s&amp;enc=0f37178af135f976d6dc9ecce474a8fe&amp;cpi=31048961"><span
+						class="spanFont fl">全部话题</span></a>
+
+					<div class="fl search">
+						<form method="get" id="searchGroupTopicForm"
+							action="/bbscircle/grouptopic" onsubmit="return validate_form()">
+							<input id="kw" name="keyword" type="text" class="inp fl"
+								placeholder="请输入关键字"> <input type="hidden" id="classId"
+								name="clazzid" value="8082897"> <input type="hidden"
+								name="courseId" value="204039059"> <input type="hidden"
+								name="cpi" id="cpi" value="31048961"> <input
+								type="hidden" name="ut" value="s"> <input type="hidden"
+								name="showChooseClazzId" value="8082897"> <input
+								type="hidden" name="chapterId" value="0"> <input
+								type="hidden" name="label" value=""> <input
+								type="hidden" name="enc"
+								value="0f37178af135f976d6dc9ecce474a8fe"> <input
+								type="submit" class="sub fl" value=" " onclick="validate_form()">
+						</form>
+					</div>
+				</div>
+				<input type="hidden" name="lastGetTopicListTime"
+					id="lastGetTopicListTime" value="1560428699352">
+				<form method="post" id="addGroupTopicForm"
+					action="/bbscircle/grouptopic/publish">
+
+					<input type="text" style="display: none"> <input
+						id="c_title" name="title" type="text" class="listTitle"
+						placeholder="新建话题" style="margin-top: 20px">
+					<div class="listTop"
+						style="height: 210px; overflow: hidden; margin-top: 0px;">
+						<input type="hidden" id="classId" name="clazzid" value="8082897">
+						<input type="hidden" name="courseId" value="204039059"> <input
+							type="hidden" name="ut" value="s"> <input type="hidden"
+							name="folderId" value=""> <input type="hidden"
+							name="folderName" value=""> <input type="hidden"
+							name="attachmentFile" id="attachmentFile" value=""> <input
+							type="hidden" id="chooseClazzId" name="chooseClazzId"
+							value="8082897"> <input type="hidden" name="cpi"
+							value="31048961">
+						<textarea id="textarea" name="content" class="listText"></textarea>
+						<div class="listBtn">
+							<a href="javascript:;" class="fr cancel"
+								style="color: #999; margin-left: 10px">取消</a> <a
+								href="javascript:;" class="qdBtn fr" style="margin: 0"
+								onclick="submitGroupTopicForm(this,'addGroupTopicForm')">确定</a>
+							<object id="SWFUpload_0" type="application/x-shockwave-flash"
+								data="/js/swfupload/swfupload.swf" width="55" height="15"
+								class="swfupload">
+								<param name="wmode" value="opaque">
+								<param name="movie" value="/js/swfupload/swfupload.swf">
+								<param name="quality" value="high">
+								<param name="menu" value="false">
+								<param name="allowScriptAccess" value="always">
+								<param name="flashvars"
+									value="movieName=SWFUpload_0&amp;uploadURL=%2Fedit%2FswfUploadImage%3Fuid%3D45808899&amp;useQueryString=false&amp;requeueOnError=false&amp;httpSuccess=&amp;assumeSuccessTimeout=0&amp;params=&amp;filePostName=Filedata&amp;fileTypes=*.jpg%3B*.jpeg%3B*.gif%3B*.png&amp;fileTypesDescription=All%20Images&amp;fileSizeLimit=20000000B&amp;fileUploadLimit=0&amp;fileQueueLimit=0&amp;debugEnabled=false&amp;buttonImageURL=%2Fimages%2Fgroup%2FaddImage.png&amp;buttonWidth=55&amp;buttonHeight=15&amp;buttonText=&amp;buttonTextTopPadding=0&amp;buttonTextLeftPadding=0&amp;buttonTextStyle=color%3A%20%23000000%3B%20font-size%3A%2016pt%3B&amp;buttonAction=-110&amp;buttonDisabled=false&amp;buttonCursor=-2">
+							</object>
+
+							<div style="margin-left: 14px; float: left; margin-top: 0px;">
+								<a title="添加附件" style="width: 84px; height: 26px" class="fileA"
+									id="addFileA" disable="false"><img
+									style="float: left; margin-left: 6px; margin-top: 0px"
+									src="/images/group/addAttachments.png"></a> <input
+									type="file" id="file" name="file" class="fileInput"
+									title="添加附件"
+									onchange="if(initTopicAttachmentFile()){addTopicAttachmentFile('listTop');}">
+							</div>
+						</div>
+
+					</div>
+				</form>
