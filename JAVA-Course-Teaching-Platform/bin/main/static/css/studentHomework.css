@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+.nav-li-active{
+	background-color: #D9DEE4 !important;
+}
+.nav-li{
+	float:left !important;
+}
+.c-title>h2>a{
+	font-size:14px !important;	
+}
+.x_content{
+	height:140px;
+}
+
+.x_title>ul{
+	max-width: 10%;
+	min-width:10px;
+}
+.dropdown{
+	float:right !important;
+}
+.content-info{
+	width: 100%;
+    height: 100px;
+    background-color: white;
+	
+}
+
+.course-footer{
+	width: 100%;
+    height: 40px;
+    /* background: blue; */
+    bottom: 0;
+    margin-top: 10px;
+    padding: 2px;
+    line-height: 14px;
+    overflow: hidden;
+}
+.c-title h2{
+	margin: 5px 0 6px;
+    float: left;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.c-toggle{
+	float: left;
+    padding-top: 16px;
+}

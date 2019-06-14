@@ -15,12 +15,12 @@ import com.jctp.mapper.UserPermissionMapper;
 
 @Controller
 public class TurnPageController {
-	@RequestMapping("/turnPage/{packageName}/{pageName}")
-	public String turnPage(@PathVariable("packageName") String packageName,@PathVariable("pageName") String pageName,Model model) {
-		
+	@RequestMapping("/turnPage")
+	public String turnPage(String role,String pn,Model model) {
+
 		//从数据库查找该ID对应的界面
 	
-		return packageName+"/"+pageName;
+		return role+"/"+pn;
 	}
 	
 	@RequestMapping("/")

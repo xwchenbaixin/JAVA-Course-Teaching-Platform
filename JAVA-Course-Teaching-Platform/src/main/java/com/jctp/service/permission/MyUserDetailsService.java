@@ -65,5 +65,6 @@ public class MyUserDetailsService implements UserDetailsService{
 	public User getUserByWordNo(String workNo) {
 		return userPermissionMapper.getUserByWorkNo(workNo);
 	}
+
 	
 }

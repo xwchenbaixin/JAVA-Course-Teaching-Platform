@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org" 
+>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>课程教学平台</title>
+<div th:replace="/common/component :: PUBLIC-CSS" ></div>
+<!-- My css -->
+<link th:href="@{/css/studentHomework.css}" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			
+			<!-- 引入公共菜单 -->
+			<div th:replace="/common/component :: MENU"  ></div>
+
+			<!-- top navigation -->
+			<div class="top_nav">
+				<div class="nav_menu">
+					<nav>
+						<div class="nav toggle">
+							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+						</div>
+						<div class="nav c-toggle" >
+							<div class="c-title">
+								<h2><a href="/turnPage/student/course" title="Java高级编程Java高级编程Java高级编程">Java高级编程Java高级编程Java高级编程</a></h2>
+							</div>
+						</div>
+						
+						<ul class="nav navbar-nav navbar-right">
+							
+				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-index}">首页</a></li>
+				            <li class="nav-li"><a href="#">任务</a></li>
+				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-dataStatistics}">统计</a></li>
+				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-material}">资料</a></li>
+				            <li class="nav-li"><a href="#">通知</a></li>
+				            <li class="nav-li nav-li-active"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-homework}">作业</a></li>
+				            <li class="nav-li"><a href="#">考试</a></li>
+				            <li class="nav-li"><a href="#">讨论</a></li>
+				         	
+				         
+							<!-- 引入公共个人数据设置和收件箱预览 -->
+							<li th:include="/common/component :: NAV-RIGHT-SETTING"></li>
+							<li th:include="/common/component :: NAV-RIGHT-INBOX"></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- /top navigation -->
+
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+					<div class="page-title">
+						<div class="title_left">
+							<h3>我的作业</h3>
+						</div>
+
+						<div class="title_right">
+							<div
+								class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+								<div class="input-group">
+									<input type="text" class="form-control"
+										placeholder="Search for..." id ="search"> <span
+										class="input-group-btn">
+										<button class="btn btn-default" type="button">Go!</button>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="clearfix"></div>
+
+					<div class="row">
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>
+										<a th:href="@{/turnPage/student/doHomework}" title="作业">作业一作业一作业一作业一</a>
+									</h2>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content" id="content">
+									<div class="content-info" id="testClick">
+										<font size="3">开始时间：2019年6月1日 8:20:00</font> <br> <font size="3">截止时间：2019年6月6日 8:20:00</font>
+										<br> <font size="3">作业状态：未提交</font> <br>
+									</div>
+
+									<div id="footer">
+
+										<button onclick="window.location.href='doHomework.html'"
+											type="button" class="btn btn-danger btn-sm"
+											style="width: 100%;">做作业</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>
+										<a th:href="@{/turnPage/student/doHomework}" title="作业">作业一作业一作业一作业一</a>
+									</h2>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content" id="content">
+									<div class="content-info" id="testClick">
+										<font size="3">开始时间：2019年6月1日 8:20:00</font> <br> <font size="3">截止时间：2019年6月6日 8:20:00</font>
+										<br> <font size="3">作业状态：未提交</font> <br>
+									</div>
+
+									<div id="footer">
+
+										<button onclick="window.location.href='doHomework.html'"
+											type="button" class="btn btn-danger btn-sm"
+											style="width: 100%;">做作业</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>
+										<a th:href="@{/turnPage/student/doHomework}" title="作业">作业一作业一作业一作业一</a>
+									</h2>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content" id="content">
+									<div class="content-info" id="testClick">
+										<font size="3">开始时间：2019年6月1日 8:20:00</font> <br> <font size="3">截止时间：2019年6月6日 8:20:00</font>
+										<br> <font size="3">作业状态：未提交</font> <br>
+									</div>
+
+									<div id="footer">
+
+										<button onclick="window.location.href='doHomework.html'"
+											type="button" class="btn btn-danger btn-sm"
+											style="width: 100%;">做作业</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>
+										<a th:href="@{/turnPage/student/doHomework}" title="作业">作业一作业一作业一作业一</a>
+									</h2>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content" id="content">
+									<div class="content-info" id="testClick">
+										<font size="3">开始时间：2019年6月1日 8:20:00</font> <br> <font size="3">截止时间：2019年6月6日 8:20:00</font>
+										<br> <font size="3">作业状态：未提交</font> <br>
+									</div>
+
+									<div id="footer">
+
+										<button onclick="window.location.href='doHomework.html'"
+											type="button" class="btn btn-danger btn-sm"
+											style="width: 100%;">做作业</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>
+										<a th:href="@{/turnPage/student/doHomework}" title="作业">作业一作业一作业一作业一</a>
+									</h2>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content" id="content">
+									<div class="content-info" id="testClick">
+										<font size="3">开始时间：2019年6月1日 8:20:00</font> <br> <font size="3">截止时间：2019年6月6日 8:20:00</font>
+										<br> <font size="3">作业状态：未提交</font> <br>
+									</div>
+
+									<div id="footer">
+
+										<button onclick="window.location.href='doHomework.html'"
+											type="button" class="btn btn-danger btn-sm"
+											style="width: 100%;">做作业</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						
+						
+					</div>
+				</div>
+			</div>
+			<!-- /page content -->
+
+			<!-- footer content -->
+			<footer>
+				<div class="pull-right">
+					Gentelella - Bootstrap Admin Template by <a
+						href="https://colorlib.com">Colorlib</a>
+				</div>
+				<div class="clearfix"></div>
+			</footer>
+			<!-- /footer content -->
+		</div>
+	</div>
+	<!-- 引入公共JS -->
+	<div th:replace="/common/component :: PUBLIC-JS" ></div>
+	
+	
+</body>
+</html>

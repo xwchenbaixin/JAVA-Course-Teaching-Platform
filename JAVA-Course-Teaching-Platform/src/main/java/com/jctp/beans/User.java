@@ -74,7 +74,7 @@ public class User implements UserDetails, CredentialsContainer {
 	private String sex;
 	
 	private String workNo;
-	
+
 	@Pattern(regexp = "^[1][3,4,5,6,7,8][0-9]{9}$",message = "电话号码不正确")
 	private String phone;
 	private int roleId;
@@ -86,7 +86,7 @@ public class User implements UserDetails, CredentialsContainer {
 	@NotBlank(message = "密码不为空")
 	@Size(max=16,min=8,message = "密码长度在8-16位")
 	@Pattern(regexp = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$",message = "密码需要同时含有数字和字母")
-	private String titleImg;
+	private String avatar;
 	
 	// ~ Constructors
 	// ===================================================================================================
@@ -177,15 +177,12 @@ public class User implements UserDetails, CredentialsContainer {
 	public void setClassName(String className) {
 		this.className = className;
 	}
-
-	public String getTitleImg() {
-		return titleImg;
+	public String getAvatar() {
+		return avatar;
 	}
-
-	public void setTitleImg(String titleImg) {
-		this.titleImg = titleImg;
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

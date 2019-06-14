@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org" 
+>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>课程教学平台</title>
+<div th:replace="/common/component :: PUBLIC-CSS" ></div>
+<!-- My css -->
+<link th:href="@{/css/material.css}" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			
+			<!-- 引入公共菜单 -->
+			<div th:replace="/common/component :: MENU"  ></div>
+
+			<!-- top navigation -->
+			<div class="top_nav">
+				<div class="nav_menu">
+					<nav>
+						<div class="nav toggle">
+							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+						</div>
+						<div class="nav c-toggle" >
+							<div class="c-title">
+								<h2><a href="/turnPage/student/course" title="Java高级编程Java高级编程Java高级编程">Java高级编程Java高级编程Java高级编程</a></h2>
+							</div>
+						</div>
+						
+						<ul class="nav navbar-nav navbar-right">
+							
+				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-index}">首页</a></li>
+				            <li class="nav-li"><a href="#">任务</a></li>
+				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-dataStatistics}">统计</a></li>
+				            <li class="nav-li nav-li-active"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-material}">资料</a></li>
+				            <li class="nav-li"><a href="#">通知</a></li>
+				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-homework}">作业</a></li>
+				            <li class="nav-li"><a href="#">考试</a></li>
+				            <li class="nav-li"><a href="#">讨论</a></li>
+				         	
+				         	<!-- 引入公共个人数据设置和收件箱预览 -->
+							<li th:include="/common/component :: NAV-RIGHT-SETTING"></li>
+							<li th:include="/common/component :: NAV-RIGHT-INBOX"></li>
+							
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- /top navigation -->
+
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+					<div class="page-title">
+						<div class="title_left">
+							<h3>我的资料</h3>
+						</div>
+
+						<div class="title_right">
+							<div
+								class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+								<div class="input-group">
+									<input type="text" class="form-control"
+										placeholder="Search for..." id ="search"> <span
+										class="input-group-btn">
+										<button class="btn btn-default" type="button">Go!</button>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="clearfix"></div>
+
+					<div class="row">
+						
+						<table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>序号</th>
+                          <th>名称</th>
+                          <th>发布时间</th>
+                          <th>发布者</th>
+                          <th>操作</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>资料1</td>
+                          <td>2019年7月1日 18:00:00</td>
+                          <td>@mdo</td>
+                          <td><button type="button" class="btn btn-info btn-sm">下载</button></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>资料1</td>
+                          <td>2019年7月1日 18:00:00</td>
+                          <td>@mdo</td>
+                          <td><button type="button" class="btn btn-info btn-sm">下载</button></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>资料1</td>
+                          <td>2019年7月1日 18:00:00</td>
+                          <td>@mdo</td>
+                          <td><button type="button" class="btn btn-info btn-sm">下载</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+						
+					</div>
+				</div>
+			</div>
+			<!-- /page content -->
+
+			<!-- footer content -->
+			<footer>
+				<div class="pull-right">
+					Gentelella - Bootstrap Admin Template by <a
+						href="https://colorlib.com">Colorlib</a>
+				</div>
+				<div class="clearfix"></div>
+			</footer>
+			<!-- /footer content -->
+		</div>
+	</div>
+	<!-- 引入公共JS -->
+	<div th:replace="/common/component :: PUBLIC-JS" ></div>
+	<script type="text/javascript" th:src="@{/js/material.js}"></script>
+	
+</body>
+</html>

@@ -1,9 +1,7 @@
 /build
-/test
-/map/tool
-/theme/tool
-/theme/thumb
-todo
+/doc
+/index.html
+
 npm-debug.log
 
 

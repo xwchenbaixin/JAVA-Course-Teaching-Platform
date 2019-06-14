@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org" 
+>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>课程教学平台</title>
+<div th:replace="/common/component :: PUBLIC-CSS" ></div>
+<!-- My css -->
+<link th:href="@{/css/studentIndex.css}" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			
+			<!-- 引入公共菜单 -->
+			<div th:replace="/common/component :: MENU"  ></div>
+
+			<!-- top navigation -->
+			<div class="top_nav">
+				<div class="nav_menu">
+					<nav>
+						<div class="nav toggle">
+							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+						</div>
+						<div class="nav c-toggle" >
+							<div class="c-title">
+								<h2><a href="/turnPage/student/course" title="Java高级编程Java高级编程Java高级编程">Java高级编程Java高级编程Java高级编程</a></h2>
+							</div>
+						</div>
+						
+						<ul class="nav navbar-nav navbar-right">
+							
+				            <li class="nav-li nav-li-active"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-index}">首页</a></li>
+				            <li class="nav-li"><a href="#">任务</a></li>
+				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-dataStatistics}">统计</a></li>
+				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-material}">资料</a></li>
+				            <li class="nav-li"><a href="#">通知</a></li>
+				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-homework}">作业</a></li>
+				            <li class="nav-li"><a href="#">考试</a></li>
+				            <li class="nav-li"><a href="#">讨论</a></li>
+				         
+							<!-- 引入公共个人数据设置和收件箱预览 -->
+							<li th:include="/common/component :: NAV-RIGHT-SETTING"></li>
+							<li th:include="/common/component :: NAV-RIGHT-INBOX"></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- /top navigation -->
+
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+					
+
+					<div class="clearfix"></div>
+
+					<div class="row">
+						<div class="col-md-6 col-sm-6 col-xs-6">
+							<div class="panel panel-danger">
+							 	<div class="panel-heading">需上交作业</div>
+						    	<table class="table table-hover">
+			                      <thead>
+			                        <tr>
+			                          <th>序号</th>
+			                          <th>作业名称</th>
+			                          <th>截止时间</th>
+			                          <th>剩余时间</th>
+			                          <th>操作</th>
+			                        </tr>
+			                      </thead>
+			                      <tbody>
+			                        <tr>
+			                          <th scope="row">1</th>
+			                          <td>第一次作业</td>
+			                          <td>2019年8月1日 18:00:00</td>
+			                          <td>8h</td>
+			                          <td><button type="button" class="btn btn-danger btn-sm">做作业</button></td>
+			                        </tr>
+			                        <tr>
+			                          <th scope="row">2</th>
+			                          <td>第二次作业</td>
+			                          <td>2019年8月1日 18:00:00</td>
+			                          <td>8h</td>
+			                          <td><button type="button" class="btn btn-danger btn-sm">做作业</button></td>
+			                        </tr>
+			                        <tr>
+			                          <th scope="row">3</th>
+			                          <td>第三次作业</td>
+			                          <td>2019年8月1日 18:00:00</td>
+			                          <td>8h</td>
+			                          <td><button type="button" class="btn btn-danger btn-sm">做作业</button></td>
+			                        </tr>
+			                      </tbody>
+			                    </table>
+							</div>
+							
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-6">
+							<div class="panel panel-info">
+							 	<div class="panel-heading">课程答疑消息</div>
+						    	<div class="list-group">
+								  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+								  <a href="#" class="list-group-item">Morbi leo risus</a>
+								  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+								  <a href="#" class="list-group-item">Vestibulum at eros</a>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<!-- /page content -->
+
+			<!-- footer content -->
+			<footer>
+				<div class="pull-right">
+					Gentelella - Bootstrap Admin Template by <a
+						href="https://colorlib.com">Colorlib</a>
+				</div>
+				<div class="clearfix"></div>
+			</footer>
+			<!-- /footer content -->
+		</div>
+	</div>
+	<!-- 引入公共JS -->
+	<div th:replace="/common/component :: PUBLIC-JS" ></div>
+	
+	
+</body>
+</html>
