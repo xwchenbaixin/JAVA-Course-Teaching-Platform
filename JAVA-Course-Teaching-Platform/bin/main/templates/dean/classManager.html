@@ -25,8 +25,6 @@
 		<div class="main_container">
 			<!-- 引入公共菜单 -->
 			<div th:replace="/common/component :: MENU"  ></div>
-			
-
 			<!-- top navigation -->
 			<div class="top_nav">
 				<div class="nav_menu">
@@ -34,7 +32,6 @@
 						<div class="nav toggle">
 							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
 						</div>
-
 						<ul class="nav navbar-nav navbar-right">
 							<!-- 引入公共个人数据设置和收件箱预览 -->
 							<li th:include="/common/component :: NAV-RIGHT-SETTING"></li>
@@ -53,11 +50,11 @@
 							<div id="toolbar">
 								<div class="row" style="width:480px">
 									<div class="col-md-4 col-sm-4 col-xs-4">
-										<input type="text" class="form-control" id="searchName" placeholder="请输入学生姓名">
+										<input type="text" class="form-control" id="searchCollege" placeholder="请输入院系名">
 									</div>
 									<div class="col-md-6 col-sm-6 col-xs-6">
 										<div class="input-group">
-									      <input type="text" class="form-control" id="searchWorkNo" placeholder="请输入学生学号">
+									      <input type="text" class="form-control" id="searchId" placeholder="请输入班级编号">
 									      <span class="input-group-btn">
 									        <button class="btn btn-default" type="button" id="search">搜索</button>
 									      </span>
@@ -96,43 +93,24 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">学生数据添加</h4>
+	        <h4 class="modal-title">班级数据添加</h4>
 	      </div>
 	      <!-- 主题内容 -->
 	      <div class="modal-body">
 	        <div class="row">
 	          	<div class="col-md-6">
 	         		<div class="input-group">
-					  	<span class="input-group-addon" >学号</span>
-					  	<input type="text" class="form-control" id="insertStuWorkNo" aria-describedby="basic-addon3">
+					  	<span class="input-group-addon" >班级编号</span>
+					  	<input type="text" class="form-control" id="insertClaId" aria-describedby="basic-addon3">
 					</div>
 	          	</div>
 	          	<div class="col-md-6">
 	          		<div class="input-group">
-					  <span class="input-group-addon" >姓名</span>
-					  <input type="text" class="form-control" id="insertStuName" aria-describedby="basic-addon3">
+					  <span class="input-group-addon" >院系名</span>
+					  <input type="text" class="form-control" id="insertClaCollege" aria-describedby="basic-addon3">
 					</div>
 			  	</div>
-	          	<div class="col-md-6">
-	         		<div class="input-group">
-					  	<span class="input-group-addon" >性别</span>
-					  	<input type="text" class="form-control" id="insertStuSex" aria-describedby="basic-addon3">
-					</div>
-	          	</div>
-	          	 	<div class="col-md-6">
-	         		<div class="input-group">
-					  	<span class="input-group-addon" >班级</span>
-					  	<input type="text" class="form-control" id="insertStuClassId" aria-describedby="basic-addon3">
-					</div>
-	          	</div>
-	          	<div class="col-md-6">
-	         		<div class="input-group">
-					  	<span class="input-group-addon" >电话</span>
-					  	<input type="text" class="form-control" id="insertStuPhone" aria-describedby="basic-addon3">
-					</div>
-	          	</div>
 	        </div>
-	        
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -148,45 +126,21 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">学生数据修改</h4>
+	        <h4 class="modal-title">班级数据修改</h4>
 	      </div>
 	      <!-- 主题内容 -->
 	      <div class="modal-body">
 	        <div class="row">
 	        	<div class="col-md-6">
 	         		<div class="input-group">
-					  	<span class="input-group-addon" >ID</span>
-					  	<input type="text" class="form-control" id="updateStuId" aria-describedby="basic-addon3" readonly="readonly">
+					  	<span class="input-group-addon" >班级编号</span>
+					  	<input type="text" class="form-control" id="updateClaId" aria-describedby="basic-addon3" readonly="readonly">
 					</div>
 	          	</div>
 	          	<div class="col-md-6">
 	         		<div class="input-group">
-					  	<span class="input-group-addon" >学号</span>
-					  	<input type="text" class="form-control" id="updateStuWorkNo" aria-describedby="basic-addon3">
-					</div>
-	          	</div>
-	          	<div class="col-md-6">
-	          		<div class="input-group">
-					  <span class="input-group-addon" >姓名</span>
-					  <input type="text" class="form-control" id="updateStuName" aria-describedby="basic-addon3">
-					</div>
-			  	</div>
-	          	<div class="col-md-6">
-	         		<div class="input-group">
-					  	<span class="input-group-addon" >性别</span>
-					  	<input type="text" class="form-control" id="updateStuSex" aria-describedby="basic-addon3">
-					</div>
-	          	</div>
-	          	<div class="col-md-6">
-	         		<div class="input-group">
-					  	<span class="input-group-addon" >班级</span>
-					  	<input type="text" class="form-control" id="updateStuClassId" aria-describedby="basic-addon3">
-					</div>
-	          	</div>
-	          	<div class="col-md-6">
-	         		<div class="input-group">
-					  	<span class="input-group-addon" >电话</span>
-					  	<input type="text" class="form-control" id="updateStuPhone" aria-describedby="basic-addon3">
+					  	<span class="input-group-addon" >院系名</span>
+					  	<input type="text" class="form-control" id="updateClaCollege" aria-describedby="basic-addon3">
 					</div>
 	          	</div>
 	        </div>
@@ -206,7 +160,7 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">学生数据删除</h4>
+	        <h4 class="modal-title">班级数据删除</h4>
 	      </div>
 	      <!-- 主题内容 -->
 	      <div class="modal-body">
@@ -251,7 +205,7 @@
 	<script th:src="@{/bootstrapTable/bootstrap-table.js}"></script>
 	<script th:src="@{/bootstrapTable/locale/bootstrap-table-zh-CN.js}"></script>
 	
-	<script th:src="@{/js/XstudentManager.js}"></script>
+	<script th:src="@{/js/XclassManager.js}"></script>
 </body>
 
 </html>

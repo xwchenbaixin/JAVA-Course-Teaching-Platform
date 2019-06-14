@@ -96,7 +96,7 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">学生数据添加</h4>
+	        <h4 class="modal-title">教师数据添加</h4>
 	      </div>
 	      <!-- 主题内容 -->
 	      <div class="modal-body">
@@ -104,31 +104,25 @@
 	          	<div class="col-md-6">
 	         		<div class="input-group">
 					  	<span class="input-group-addon" >学号</span>
-					  	<input type="text" class="form-control" id="insertStuWorkNo" aria-describedby="basic-addon3">
+					  	<input type="text" class="form-control" id="insertTeaWorkNo" aria-describedby="basic-addon3">
 					</div>
 	          	</div>
 	          	<div class="col-md-6">
 	          		<div class="input-group">
 					  <span class="input-group-addon" >姓名</span>
-					  <input type="text" class="form-control" id="insertStuName" aria-describedby="basic-addon3">
+					  <input type="text" class="form-control" id="insertTeaName" aria-describedby="basic-addon3">
 					</div>
 			  	</div>
 	          	<div class="col-md-6">
 	         		<div class="input-group">
 					  	<span class="input-group-addon" >性别</span>
-					  	<input type="text" class="form-control" id="insertStuSex" aria-describedby="basic-addon3">
-					</div>
-	          	</div>
-	          	 	<div class="col-md-6">
-	         		<div class="input-group">
-					  	<span class="input-group-addon" >班级</span>
-					  	<input type="text" class="form-control" id="insertStuClassId" aria-describedby="basic-addon3">
+					  	<input type="text" class="form-control" id="insertTeaSex" aria-describedby="basic-addon3">
 					</div>
 	          	</div>
 	          	<div class="col-md-6">
 	         		<div class="input-group">
 					  	<span class="input-group-addon" >电话</span>
-					  	<input type="text" class="form-control" id="insertStuPhone" aria-describedby="basic-addon3">
+					  	<input type="text" class="form-control" id="insertTeaPhone" aria-describedby="basic-addon3">
 					</div>
 	          	</div>
 	        </div>
@@ -148,7 +142,7 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">学生数据修改</h4>
+	        <h4 class="modal-title">教师数据修改</h4>
 	      </div>
 	      <!-- 主题内容 -->
 	      <div class="modal-body">
@@ -156,37 +150,31 @@
 	        	<div class="col-md-6">
 	         		<div class="input-group">
 					  	<span class="input-group-addon" >ID</span>
-					  	<input type="text" class="form-control" id="updateStuId" aria-describedby="basic-addon3" readonly="readonly">
+					  	<input type="text" class="form-control" id="updateTeaId" aria-describedby="basic-addon3" readonly="readonly">
 					</div>
 	          	</div>
 	          	<div class="col-md-6">
 	         		<div class="input-group">
 					  	<span class="input-group-addon" >学号</span>
-					  	<input type="text" class="form-control" id="updateStuWorkNo" aria-describedby="basic-addon3">
+					  	<input type="text" class="form-control" id="updateTeaWorkNo" aria-describedby="basic-addon3">
 					</div>
 	          	</div>
 	          	<div class="col-md-6">
 	          		<div class="input-group">
 					  <span class="input-group-addon" >姓名</span>
-					  <input type="text" class="form-control" id="updateStuName" aria-describedby="basic-addon3">
+					  <input type="text" class="form-control" id="updateTeaName" aria-describedby="basic-addon3">
 					</div>
 			  	</div>
 	          	<div class="col-md-6">
 	         		<div class="input-group">
 					  	<span class="input-group-addon" >性别</span>
-					  	<input type="text" class="form-control" id="updateStuSex" aria-describedby="basic-addon3">
-					</div>
-	          	</div>
-	          	<div class="col-md-6">
-	         		<div class="input-group">
-					  	<span class="input-group-addon" >班级</span>
-					  	<input type="text" class="form-control" id="updateStuClassId" aria-describedby="basic-addon3">
+					  	<input type="text" class="form-control" id="updateTeaSex" aria-describedby="basic-addon3">
 					</div>
 	          	</div>
 	          	<div class="col-md-6">
 	         		<div class="input-group">
 					  	<span class="input-group-addon" >电话</span>
-					  	<input type="text" class="form-control" id="updateStuPhone" aria-describedby="basic-addon3">
+					  	<input type="text" class="form-control" id="updateTeaPhone" aria-describedby="basic-addon3">
 					</div>
 	          	</div>
 	        </div>
@@ -206,7 +194,7 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">学生数据删除</h4>
+	        <h4 class="modal-title">教师数据删除</h4>
 	      </div>
 	      <!-- 主题内容 -->
 	      <div class="modal-body">
@@ -251,7 +239,7 @@
 	<script th:src="@{/bootstrapTable/bootstrap-table.js}"></script>
 	<script th:src="@{/bootstrapTable/locale/bootstrap-table-zh-CN.js}"></script>
 	
-	<script th:src="@{/js/XstudentManager.js}"></script>
+	<script th:src="@{/js/XteacherManager.js}"></script>
 </body>
 
 </html>

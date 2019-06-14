@@ -67,7 +67,6 @@
 									<div class="col-md-2 col-sm-2 col-xs-2">
 										<button id="tableInsert" type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertModal">新增</button>
 									</div>
-									
 								</div>
 							</div>
 							<table id="table"></table>
@@ -120,8 +119,20 @@
 					  	<input type="text" class="form-control" id="insertStuSex" aria-describedby="basic-addon3">
 					</div>
 	          	</div>
+	          	 	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >班级</span>
+					  	<input type="text" class="form-control" id="insertStuClassId" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >电话</span>
+					  	<input type="text" class="form-control" id="insertStuPhone" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
 	        </div>
-	 
+	        
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -164,6 +175,18 @@
 	         		<div class="input-group">
 					  	<span class="input-group-addon" >性别</span>
 					  	<input type="text" class="form-control" id="updateStuSex" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >班级</span>
+					  	<input type="text" class="form-control" id="updateStuClassId" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >电话</span>
+					  	<input type="text" class="form-control" id="updateStuPhone" aria-describedby="basic-addon3">
 					</div>
 	          	</div>
 	        </div>
@@ -228,7 +251,7 @@
 	<script th:src="@{/bootstrapTable/bootstrap-table.js}"></script>
 	<script th:src="@{/bootstrapTable/locale/bootstrap-table-zh-CN.js}"></script>
 	
-	<script th:src="@{/js/studentManager.js}"></script>
+	<script th:src="@{/js/XstudentManager.js}"></script>
 </body>
 
 </html>
