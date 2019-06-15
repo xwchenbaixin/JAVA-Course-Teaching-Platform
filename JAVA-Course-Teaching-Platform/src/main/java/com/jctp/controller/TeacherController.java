@@ -1,5 +1,6 @@
 package com.jctp.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,9 +16,9 @@ import com.jctp.service.TeacherService;
 @Controller
 @RequestMapping("/teacher")
 public class TeacherController {
-
 	@Autowired
 	private TeacherService teacherService;
+	
 	@RequestMapping("/listHomework")
 	@ResponseBody
 	public ResponseModel<Homework> listHomework(@RequestBody RequestModel<Homework> reqModel){
