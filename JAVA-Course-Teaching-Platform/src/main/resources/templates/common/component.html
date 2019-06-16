@@ -62,15 +62,15 @@
 			<div class="menu_section">
 				<h3>基础功能</h3>
 				<ul class="nav side-menu">
-					<li sec:authorize="hasRole('STUDENT')" th:class="${#strings.contains(param.pn,'allStudentCourses')}?'active':'' "	><a href="/turnPage?role=student&pn=allStudentCourses"><i class="fa fa-home" ></i> 所有课程 </a></li>
-					<li sec:authorize="hasRole('STUDENT')" th:class="${#strings.contains(param.pn,'codeEditor')}?'active':'' "			><a href="/turnPage?role=student&pn=codeEditor"><i class="fa fa-edit"></i> 代码编辑器</a></li>
+					<li sec:authorize="hasAnyRole('STUDENT','TEACHER')" th:class="${#strings.contains(param.pn,'allStudentCourses')}?'active':'' "	><a href="/turnPage?role=student&pn=allStudentCourses"><i class="fa fa-home" ></i> 所有课程 </a></li>
+					<li sec:authorize="hasAnyRole('STUDENT','TEACHER')" th:class="${#strings.contains(param.pn,'codeEditor')}?'active':'' "			><a href="/turnPage?role=student&pn=codeEditor"><i class="fa fa-edit"></i> 代码编辑器</a></li>
 					<li sec:authorize="hasRole('STUDENT')" th:class="${#strings.contains(param.pn,'inbox')}?'active':'' "				><a href="/turnPage?role=student&pn=inbox"><i class="fa fa-envelope-o"></i> 收件箱</a></li>
 					<li sec:authorize="hasRole('STUDENT')" th:class="${#strings.contains(param.pn,'inbox')}?'active':'' "				><a href="/turnPage?role=student&pn=inbox"><i class="fa fa-comment-o"></i> 动态</a></li>
 					
 					<li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'dataTable')}?'active':'' "			><a href="/turnPage?role=student&pn=dataTable"><i class="fa fa-table"></i> 数据表格</a> </li>
 					<li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'dataStatistics')}?'active':'' "		><a href="/turnPage?role=student&pn=dataStatistics"><i class="fa fa-bar-chart-o"></i> 数据统计</a></li>
 					
-					<li sec:authorize="hasRole('TEACHER')"><a><i class="fa fa-bar-chart-o"></i> 数据管理</a></li>
+					<li sec:authorize="hasAnyRole('TEACHER','STUDENT')"><a><i class="fa fa-bar-chart-o"></i> 数据管理</a></li>
 					<!-- <li><a><i class="fa fa-clone"></i>Layouts <span
 							class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">

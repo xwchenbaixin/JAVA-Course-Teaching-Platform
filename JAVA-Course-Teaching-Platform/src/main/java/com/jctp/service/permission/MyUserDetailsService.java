@@ -46,6 +46,7 @@ public class MyUserDetailsService implements UserDetailsService{
 		List<SimpleGrantedAuthority> authorities=new ArrayList<SimpleGrantedAuthority>();
 		//之所以要添加"ROLE_"是因为前端的thymeleaf-extras-springsecurity5校验的时候，
 		//sec:authorize="hasRole('TEACHER')",只有在这里加ROLE_才能识别TEACHER
+		authorities.add(new SimpleGrantedAuthority(role.getName()));
 		authorities.add(new SimpleGrantedAuthority("ROLE_"+role.getName()));
 		
 		System.out.println("role name:"+role.getName());
