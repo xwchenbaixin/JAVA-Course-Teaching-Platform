@@ -35,4 +35,5 @@ public class StudentController {
 	public ResponseModel<CourseJob> submitJob(@RequestBody CourseJob courseJob){
 		return studentService.submitJob(courseJob);
 	}
+	
 }

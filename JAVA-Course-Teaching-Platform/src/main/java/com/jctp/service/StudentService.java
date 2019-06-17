@@ -8,5 +8,5 @@ import com.jctp.model.ResponseModel;
 public interface StudentService {
 	ResponseModel<Course> listCourses(RequestModel<Course> reqModel);
 	ResponseModel<CourseJob> listCourseJobs(RequestModel<CourseJob> reqModel);
-	ResponseModel<CourseJob> submitJob(CourseJob courseJob); 
+	ResponseModel<CourseJob> submitJob(CourseJob courseJob);
 }
