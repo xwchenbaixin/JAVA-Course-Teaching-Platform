@@ -16,9 +16,44 @@ function initAllCourses(){
 	            // 请求成功后的回调函数。
 	            success: function(data){
 	            	console.log(data);
+	            	$.each(data.rows,function(index,row){
+	            		
+	            		var html=[
+		            		'<div class="col-md-3 col-sm-3 col-xs-3">',
+								'<div class="x_panel">',
+									'<div class="x_title">',
+										'<h2><a href="/turnPage?role=student&pn=allStudentCourses-index" title="'+row.courseName+'">'+row.courseName+'</a></h2>',
+										'<ul class="nav navbar-right panel_toolbox">',
+											'<li class="dropdown">',
+												'<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">',
+													'<i class="fa fa-wrench"></i>',
+												'</a>',
+												'<ul class="dropdown-menu" role="menu">',
+													'<li><a href="#">Settings 1</a></li>',
+													'<li><a href="#">Settings 2</a></li>',
+												'</ul>',
+											'</li>',
+										'</ul>',
+										'<div class="clearfix"></div>',
+									'</div>',
+									'<div class="x_content" id="content">',
+										'<div class="content-img" id="testClick"><img src='+row.courseImg+'></div>',
+										'<div class="course-footer">',
+											'<p>任课教师：'+row.teacherName+'</p>',
+											'<p>班级组：'+row.classNo+'</p>',
+										'</div>',
+									'</div>',
+								'</div>',
+							'</div>'
+		            	].join('');
+	            		$("#rows").append(html);
+	            	})
+	            	
+	            	
 	            	$("#resMsg").text(data.msg);
                		$("#resInfoModal").modal('show');
 	                if(data.status==200){
+	                	
 		            	$("#insertModal").modal('hide');
 	                    $('#table').bootstrapTable('refresh');
 	                }

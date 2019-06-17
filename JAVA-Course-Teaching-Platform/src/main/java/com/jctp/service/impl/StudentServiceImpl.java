@@ -17,10 +17,10 @@ public class StudentServiceImpl implements StudentService{
 	@Autowired
 	private StudentMapper studentMapper;
 	@Override
-	public ResponseModel<Course> listCourses(RequestModel<Course> reqModel) {
+	public ResponseModel<Course> listCourses(int classId) {
 		// TODO Auto-generated method stub
-		int total=studentMapper.getCoursesTotal();
-		List<Course> courses=studentMapper.listCourses(reqModel);
+		int total=studentMapper.getCoursesTotal(classId);
+		List<Course> courses=studentMapper.listCourses(classId);
 		return new ResponseModel<Course>(courses, total);
 	}
 

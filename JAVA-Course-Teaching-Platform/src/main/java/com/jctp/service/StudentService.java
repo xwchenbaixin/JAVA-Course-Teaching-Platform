@@ -6,7 +6,7 @@ import com.jctp.model.RequestModel;
 import com.jctp.model.ResponseModel;
 
 public interface StudentService {
-	ResponseModel<Course> listCourses(RequestModel<Course> reqModel);
+	ResponseModel<Course> listCourses(int classId);
 	ResponseModel<CourseJob> listCourseJobs(RequestModel<CourseJob> reqModel);
 	ResponseModel<CourseJob> submitJob(CourseJob courseJob);
 }

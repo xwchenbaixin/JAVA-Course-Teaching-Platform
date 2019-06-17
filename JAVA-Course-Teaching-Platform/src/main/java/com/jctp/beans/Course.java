@@ -5,16 +5,30 @@ public class Course {
 	private String classId;
 	private String teacherId;
 	private String courseName;
-	private String crateDate;
-	private String name;
+	private String createDate;
+	private String teacherName;
 	private int grade;
 	private int term;
+	private String classNo;
+	private String courseImg;
 	
-	public String getName() {
-		return name;
+	public String getCourseImg() {
+		return courseImg;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setCourseImg(String courseImg) {
+		this.courseImg = courseImg;
+	}
+	public String getClassNo() {
+		return classNo;
+	}
+	public void setClassNo(String classNo) {
+		this.classNo = classNo;
+	}
+	public String getTeacherName() {
+		return teacherName;
+	}
+	public void setTeacherName(String teacherName) {
+		this.teacherName = teacherName;
 	}
 	public int getId() {
 		return id;
@@ -40,11 +54,12 @@ public class Course {
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
-	public String getCrateDate() {
-		return crateDate;
+	
+	public String getCreateDate() {
+		return createDate;
 	}
-	public void setCrateDate(String crateDate) {
-		this.crateDate = crateDate;
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
 	}
 	public int getGrade() {
 		return grade;
