@@ -51,9 +51,9 @@ function initMainTable () {
         	console.log(params)
             var temp = {   
         		param:{
-        			name:$("#searchName").val(),
+        			courseName:$("#searchName").val(),
         			workNo:$("#searchWorkNo").val(),
-        			createDate:$("#searchCreateDate").val()
+        			classNo:$("#searchClassNo").val()
         		},
                 pageModel:{
                 	limit: params.limit,                         //页面大小
@@ -74,13 +74,16 @@ function initMainTable () {
             title: 'ID',
             sortable: true
         }, {
-            field: 'classId',
+            field: 'classNo',
             title: '班级'
         }, {
-            field: 'teacherId',
+            field: 'workNo',
             title: '教师工号',
         }, {
-            field: 'name',
+            field: 'teacherId',
+            title: '教师Id',
+        }, {
+            field: 'teachername',
             title: '教师名称',
             sortable: true
             //formatter: linkFormatter
@@ -97,7 +100,11 @@ function initMainTable () {
             title: '年级'
         }, {
             field: 'term',
-            title: '学期/1上2下'
+            title: '学期/1上2下',
+            formatter:"termFormatter"
+        }, {
+            field: 'courseImg',
+            title: '课程封面地址'
         }, {
             field:'ID',
             title: '操作',
@@ -110,7 +117,7 @@ function initMainTable () {
         	
         },
         onLoadError: function () {
-            showTips("数据加载失败！");
+            alert("数据加载失败！");
         },
         /*onDblClickRow: function (row, $element) {
             var id = row.ID;
@@ -127,16 +134,23 @@ function actionFormatter(value,row,index,field){
 		'<button id="tableDelete" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">删除</button>'
 	].join("");
 }
+
+function termFormatter(value,row,index,field){
+	if(value==1)
+		return "上学期";
+	else if(value==2)
+		return "下学期";
+}
 var operateEvents={
 		"click #tableEditor":function(e,value,row,index){
 			$("#updateCouId").val(row.id);
 			$("#updateCouClassId").val(row.classId);
 			$("#updateCouTeacherId").val(row.teacherId);
-			$("#updateCouTeachername").val(row.teacherName);
-			$("#updateCouCourseName").val(row.name);
+			$("#updateCouCourseName").val(row.courseName);
 			$("#updateCouCreateDate").val(row.createDate);
 			$("#updateCouGrade").val(row.grade);
 			$("#updateCouTerm").val(row.term);
+			$("#updateCouCourseImg").val(row.courseImg);
 		},
 		"click #tableDelete":function(e,value,row,index){
 			//设置隐藏域ID
@@ -145,6 +159,43 @@ var operateEvents={
 		}
 }
 
+//初始化增加模态框
+function initInsertModal(){
+	$("#insertModalBtn").click(function(){
+		$.ajax("/courseManager/xcouinsert",
+		        {
+		            dataType: "json", // 预期服务器返回的数据类型。
+		            type: "POST", //  请求方式 POST或GET
+		            crossDomain:true,  // 跨域请求
+		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
+		            // 发送到服务器的数据
+		            data:JSON.stringify({
+		            	//"id"		:	$("#updateStuId").val(),
+		    			"classId"	:	$("#insertCouClassId").val(),
+		    			"teacherId"	:	$("#insertCouTeacherId").val(),
+		    			"courseName":	$("#insertSCouCourseName").val(),
+		    			"createDate":	$("#insertCouCreateDate").val(),
+		    			"grade"		:	$("#insertCouGrade").val(),
+		    			"term"		:	$("#insertCouTerm").val(),
+		    			"courseImg"	:	$("#insertCouCourseImg").val(),
+		            }),
+		            
+		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
+		            // 请求成功后的回调函数。
+		            success: function(data){
+		            	$("#resMsg").text(data.msg);
+	               		$("#resInfoModal").modal('show');
+		                if(data.status==200){
+			            	$("#insertModal").modal('hide');
+		                    $('#table').bootstrapTable('refresh');
+		                }
+		            },
+		            error: function(){
+		                alert("请求错误，请检查网络连接");
+		           }
+		    })
+	})
+}
 
 //数据增加
 function initInsert(){
@@ -162,8 +213,9 @@ function initInsert(){
 		    			"teacherId"	:	$("#insertCouTeacherId").val(),
 		    			"courseName":	$("#insertSCouCourseName").val(),
 		    			"createDate":	$("#insertCouCreateDate").val(),
-		    			"gradeId"	:	$("#insertCouGrade").val(),
-		    			"term"		:	$("#insertCouCouTerm").val(),
+		    			"grade"		:	$("#insertCouGrade").val(),
+		    			"term"		:	$("#insertCouTerm").val(),
+		    			"courseImg"	:	$("#insertCouCourseImg").val(),
 		            }),
 		            
 		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
@@ -196,10 +248,11 @@ function initUpdate(){
 		            	"id"		:	$("#updateCouId").val(),
 		    			"classId"	:	$("#updateCouClassId").val(),
 		    			"teacherId"	:	$("#updateCouTeacherId").val(),
-		    			"courseName":	$("#updateSCouCourseName").val(),
+		    			"courseName":	$("#updateCouCourseName").val(),
 		    			"createDate":	$("#updateCouCreateDate").val(),
-		    			"gradeId"	:	$("#updateCouGrade").val(),
-		    			"term"		:	$("#updateCouCouTerm").val(),
+		    			"grade"		:	$("#updateCouGrade").val(),
+		    			"term"		:	$("#updateCouTerm").val(),
+		    			"courseImg"	:	$("#updateCouCourseImg").val(),
 		            }),
 		          
 		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求

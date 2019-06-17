@@ -25,7 +25,7 @@ public class XTeacherManagerController {
 	 */
 	@RequestMapping("/listTeacher")
 	@ResponseBody
-	public ResponseModel<User> lilstUsers(@RequestBody RequestModel<User> reqModel){
+	public ResponseModel<User>lilstTeacher(@RequestBody RequestModel<User> reqModel){
 		//System.out.println("pageSize:"+reqModel.getPageModel().getPageSize());
 		ResponseModel<User> resModel=teacherService.listTeacher(reqModel);
 		
@@ -47,29 +47,16 @@ public class XTeacherManagerController {
 	 * @param user
 	 * @return ResponseModel
 	 */
-	@RequestMapping("/xtinsert")
+	@RequestMapping("/xteainsert")
 	@ResponseBody
 	public ResponseModel<User> insert(@RequestBody User user) {
 		return teacherService.insert(user);
 	}
 	
-	@RequestMapping("/xstudelete")
+	@RequestMapping("/xteadelete")
 	@ResponseBody
 	public ResponseModel<User> delete(@RequestBody User user) {
 		return teacherService.delete(user);
 	}
-	
-	
-	@RequestMapping("/teacher")
-	@ResponseBody
-	public String teacherTest() {
-		return "teacher welcome";
-	}
-	
-	@RequestMapping("/student")
-	@ResponseBody
-	public String studentTest() {
-		return "student welcome";
-	}
-	
+		
 }

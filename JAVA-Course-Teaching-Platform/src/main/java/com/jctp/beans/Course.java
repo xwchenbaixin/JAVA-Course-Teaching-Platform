@@ -1,20 +1,49 @@
 package com.jctp.beans;
 
+import java.sql.Date;
+
 public class Course {
 	private int id;
 	private String classId;
 	private String teacherId;
+	private String workNo;
 	private String courseName;
-	private String crateDate;
-	private String name;
+	private String teachername;
 	private int grade;
 	private int term;
+	private String classNo;
+	private String courseImg;
 	
-	public String getName() {
-		return name;
+	public String getCreateDate() {
+		return createDate;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+	private String createDate;
+	public String getCourseImg() {
+		return courseImg;
+	}
+	public void setCourseImg(String courseImg) {
+		this.courseImg = courseImg;
+	}
+	public String getClassNo() {
+		return classNo;
+	}
+	public void setClassNo(String classNo) {
+		this.classNo = classNo;
+	}
+	public String getWorkNo() {
+		return workNo;
+	}
+	public void setWorkNo(String workNo) {
+		this.workNo = workNo;
+	}
+	public String getTeachername() {
+		return teachername;
+	}
+	public void setTeachername(String teachername) {
+		this.teachername = teachername;
 	}
 	public int getId() {
 		return id;
@@ -39,12 +68,6 @@ public class Course {
 	}
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
-	}
-	public String getCrateDate() {
-		return crateDate;
-	}
-	public void setCrateDate(String crateDate) {
-		this.crateDate = crateDate;
 	}
 	public int getGrade() {
 		return grade;

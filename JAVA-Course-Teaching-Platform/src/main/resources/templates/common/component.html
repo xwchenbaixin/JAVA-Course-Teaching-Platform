@@ -77,37 +77,37 @@
 							<li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
 							<li><a href="fixed_footer.html">Fixed Footer</a></li>
 						</ul></li> -->
-					<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-home"></i>教师管理<span class="fa fa-chevron-down"></span></a>
+					<li sec:authorize="hasRole('DEAN')"><a th:href="@{/turnPage?role=dean&pn=teacherManager}"><i class="fa fa-home"></i>教师管理<span class="fa fa-chevron-down"></span></a>
 	                    <ul class="nav child_menu">
 	                      <li><a href="addusers" >增加教师</a></li>
 	                      <li><a href="searchallteacher">其他操作</a></li>
 	                    </ul>                  	
 </li>
-                  	<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-edit"></i>学生管理<span class="fa fa-chevron-down"></span></a>
+                  	<li sec:authorize="hasRole('DEAN')"><a th:href="@{/turnPage?role=dean&pn=studentManager}"><i class="fa fa-edit"></i>学生管理<span class="fa fa-chevron-down"></span></a>
 	                    <ul class="nav child_menu">
 	                      <li><a href="addusers1">增加学生</a></li>
 	                      <li><a href="searchallstudent">其他操作</a></li>
 	                    </ul>
                   	</li>
-                  	<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-desktop"></i>课程管理<span class="fa fa-chevron-down"></span></a>
+                  	<li sec:authorize="hasRole('DEAN')"><a th:href="@{/turnPage?role=dean&pn=courseManager}"><i class="fa fa-desktop"></i>课程管理<span class="fa fa-chevron-down"></span></a>
 	                    <ul class="nav child_menu">
 	                      <li><a href="home2.html" >增加课程</a></li>
 	                      <li><a href="media_gallery.html">其他操作</a></li>
 	                    </ul>
                   	</li>
-                  	<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-table"></i>班级管理<span class="fa fa-chevron-down"></span></a>
+                  	<li sec:authorize="hasRole('DEAN')"><a th:href="@{/turnPage?role=dean&pn=coursefileManager}"><i class="fa fa-table"></i>课件管理<span class="fa fa-chevron-down"></span></a>
 	                    <ul class="nav child_menu">
 	                      <li><a href="tables.html">增加班级</a></li>
 	                      <li><a href="tables_dynamic.html">其他操作</a></li>
 	                    </ul>
                   	</li>
-                  	<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-bar-chart-o"></i>题库管理<span class="fa fa-chevron-down"></span></a>
+                  	<li sec:authorize="hasRole('DEAN')"><a th:href="@{/turnPage?role=dean&pn=classManager}"><i class="fa fa-bar-chart-o"></i>班级管理<span class="fa fa-chevron-down"></span></a>
 	                    <ul class="nav child_menu">
 	                      <li><a href="chartjs.html">增加题库</a></li>
 	                      <li><a href="chartjs2.html">其他操作</a></li>
 	                    </ul>
                   	</li>
-                  	<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-clone"></i>作业管理<span class="fa fa-chevron-down"></span></a>
+                  	<li sec:authorize="hasRole('DEAN')"><a th:href="@{/turnPage?role=dean&pn=questionManager}"><i class="fa fa-clone"></i>题库管理<span class="fa fa-chevron-down"></span></a>
 	                    <ul class="nav child_menu">
 	                      <li><a href="fixed_sidebar.html">增加作业</a></li>
 	                      <li><a href="fixed_footer.html">其他操作</a></li>

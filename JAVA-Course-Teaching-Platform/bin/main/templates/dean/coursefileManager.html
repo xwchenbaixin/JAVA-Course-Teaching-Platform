@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>课程教学平台</title>
+
+<!-- 引入公共CSS -->
+<div th:replace="/common/component :: PUBLIC-CSS" ></div>
+
+<!-- 引入Bootstrap-table -->
+<link rel="stylesheet" th:href="@{/bootstrapTable/bootstrap-table.css}">
+
+<!-- My css -->
+<link th:href="@{/css/studentManager.css}" rel="stylesheet">
+
+</head>
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<!-- 引入公共菜单 -->
+			<div th:replace="/common/component :: MENU"  ></div>
+			<!-- top navigation -->
+			<div class="top_nav">
+				<div class="nav_menu">
+					<nav>
+						<div class="nav toggle">
+							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+						</div>
+						<ul class="nav navbar-nav navbar-right">
+							<!-- 引入公共个人数据设置和收件箱预览 -->
+							<li th:include="/common/component :: NAV-RIGHT-SETTING"></li>
+							<li th:include="/common/component :: NAV-RIGHT-INBOX"></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- /top navigation -->
+
+			<!-- page content -->
+			<div class="right_col" role="main">
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div id="toolbar">
+								<div class="row" style="width:800px">
+									<div class="col-md-3 col-sm-3 col-xs-3">
+										<input type="text" class="form-control" id="searchCName" placeholder="请输入课件名">
+									</div>
+									<div class="col-md-3 col-sm-3 col-xs-3">
+										<input type="text" class="form-control" id="searchCouName" placeholder="请输入课程名">
+									</div>
+									<div class="col-md-4 col-sm-4 col-xs-4">
+										<div class="input-group">
+									      <input type="text" class="form-control" id="searchClassNo" placeholder="请输入班级编号">
+									      <span class="input-group-btn">
+									        <button class="btn btn-default" type="button" id="search">搜索</button>
+									      </span>
+									    </div><!-- /input-group -->
+									</div>
+									
+									<div class="col-md-2 col-sm-2 col-xs-2">
+										<button id="tableInsert" type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertModal">新增</button>
+									</div>
+								</div>
+							</div>
+							<table id="table"></table>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<!-- /page content -->
+
+			<!-- footer content -->
+			<footer>
+				<div class="pull-right">
+					Gentelella - Bootstrap Admin Template by <a
+						href="https://colorlib.com">Colorlib</a>
+				</div>
+				<div class="clearfix"></div>
+			</footer>
+			<!-- /footer content -->
+		</div>
+	</div>
+	
+	
+	<!-- 增加 -->
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="insertModal">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">课件数据添加</h4>
+	      </div>
+	      <!-- 主题内容 -->
+	      <div class="modal-body">
+	        <div class="row">
+	               	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >课程id</span>
+					  	<input type="text" class="form-control" id="insertFilCourseId" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	          		<div class="input-group">
+					  <span class="input-group-addon" >课件类型</span>
+					  <input type="text" class="form-control" id="insertFilType" aria-describedby="basic-addon3">
+					</div>
+			  	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >课件名</span>
+					  	<input type="text" class="form-control" id="insertFileName" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	          	 	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >课件地址</span>
+					  	<input type="text" class="form-control" id="insertFilePath" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	        <button type="button" class="btn btn-primary" id="insertBtn">提交</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
+	<!-- 修改 -->
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="updateModal">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">课件数据修改</h4>
+	      </div>
+	      <!-- 主题内容 -->
+	      <div class="modal-body">
+	        <div class="row">
+	        <div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >ID</span>
+					  	<input type="text" class="form-control" id="updateFilId" aria-describedby="basic-addon3" readonly="readonly">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >课程ID</span>
+					  	<input type="text" class="form-control" id="updateFilCourseId" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	          		<div class="input-group">
+					  <span class="input-group-addon" >课件类别</span>
+					  <input type="text" class="form-control" id="updateFilType" aria-describedby="basic-addon3">
+					</div>
+			  	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >课件名</span>
+					  	<input type="text" class="form-control" id="updateFilFileName" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >课件地址</span>
+					  	<input type="text" class="form-control" id="updateFilePath" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >课件状态</span>
+					  	<input type="text" class="form-control" id="updateFileState" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	        </div>
+	 
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	        <button type="button" class="btn btn-primary" id="updateBtn">提交</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<!-- 删除 -->
+	<div class="modal fade=" tabindex="-1" role="dialog" id="deleteModal">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">课件数据删除</h4>
+	      </div>
+	      <!-- 主题内容 -->
+	      <div class="modal-body">
+	      	<!-- 隐藏域 -->
+	      	<input id="deleteId" style="display:none;">
+	      	<h2 style="text-align:center;">确定删除</h2>
+	        <h2 style="text-align:center;" id="deleteInfo"></h2>
+	 
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	        <button type="button" class="btn btn-danger" id="deleteBtn">确定</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
+	<!-- 返回信息 -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="resInfoModal">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">信息</h4>
+	      </div>
+	      <!-- 主题内容 -->
+	      <div class="modal-body">
+	        <h2 id="resMsg" style="text-align:center;"></h2>
+	 		
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">确定</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
+	<!-- 引入公共JS -->
+	<div th:replace="/common/component :: PUBLIC-JS" ></div>
+	
+	<!-- 引入Bootstrap-Table Js -->
+	<script th:src="@{/bootstrapTable/bootstrap-table.js}"></script>
+	<script th:src="@{/bootstrapTable/locale/bootstrap-table-zh-CN.js}"></script>
+	
+	<script th:src="@{/js/XcoursefileManager.js}"></script>
+</body>
+
+</html>

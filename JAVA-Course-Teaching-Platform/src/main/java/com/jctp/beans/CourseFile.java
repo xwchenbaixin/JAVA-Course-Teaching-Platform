@@ -7,8 +7,14 @@ public class CourseFile {
 	private String courseName;
 	private String fileName;
 	private String filePath;
+	private String classNo;
 	private int state;
-	
+	public String getClassNo() {
+		return classNo;
+	}
+	public void setClassNo(String classNo) {
+		this.classNo = classNo;
+	}
 	public int getId() {
 		return id;
 	}

@@ -52,7 +52,7 @@ function initMainTable () {
             var temp = {   
         		param:{
         			college:$("#searchCollege").val(),
-        			id:$("#searchId").val()
+        			classNo:$("#searchClassNo").val()
         		},
                 pageModel:{
                 	limit: params.limit,                         //页面大小
@@ -75,6 +75,10 @@ function initMainTable () {
             field: 'college',
             title: '所属院系名'
             //sortable: true
+        }, {
+            field: 'classNo',
+            title: '班级编号'
+            //sortable: true
         },
         {
             field:'ID',
@@ -88,7 +92,7 @@ function initMainTable () {
         	
         },
         onLoadError: function () {
-            showTips("数据加载失败！");
+            alert("数据加载失败！");
         },
         /*onDblClickRow: function (row, $element) {
             var id = row.ID;
@@ -109,6 +113,7 @@ var operateEvents={
 		"click #tableEditor":function(e,value,row,index){
 			$("#updateClaId").val(row.id);
 			$("#updateClaCollege").val(row.college);
+			$("#updateClaClassNo").val(row.classNo);
 		},
 		"click #tableDelete":function(e,value,row,index){
 			//设置隐藏域ID
@@ -129,8 +134,8 @@ function initInsert(){
 		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
 		            // 发送到服务器的数据
 		            data:JSON.stringify({
-		            	"id"		:	$("#insertClaId").val(),
 		    			"college"	:	$("#insertClaCollege").val(),
+		    			"classNo"	:	$("#insertClaClassNo").val(),
 		            }),
 		            
 		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
@@ -160,8 +165,8 @@ function initUpdate(){
 		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
 		            // 发送到服务器的数据
 		            data:JSON.stringify({
-		            	"id"		:	$("#updateClaId").val(),
 		    			"college"	:	$("#updateClaCollege").val(),
+		    			"classNo"	:	$("#updateClaClassNo").val(),
 		            }),
 		          
 		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求

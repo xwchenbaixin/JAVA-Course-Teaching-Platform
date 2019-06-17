@@ -1,6 +1,6 @@
 package com.jctp.beans;
 
-public class Questions {
+public class Question {
 	 private int id;
 	 private String questionName;
 	 private int questionType;

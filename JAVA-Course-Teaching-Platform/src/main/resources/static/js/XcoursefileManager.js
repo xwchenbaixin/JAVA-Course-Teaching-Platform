@@ -52,7 +52,8 @@ function initMainTable () {
             var temp = {   
         		param:{
         			fileName:$("#searchCName").val(),
-        			courseId:$("#searchCId").val()
+        			courseName:$("#searchCouName").val(),
+        			classNo:$("#searchClassNo").val()
         		},
                 pageModel:{
                 	limit: params.limit,                         //页面大小
@@ -73,12 +74,12 @@ function initMainTable () {
             title: 'ID',
             sortable: true
         }, {
-            field: 'courseId',
-            title: '课程编号'
+            field: 'classNo',
+            title: '班级'
             //sortable: true
         }, {
             field: 'courseName',
-            title: '课程编号'
+            title: '课程名称'
             //sortable: true
         },{
             field: 'type',
@@ -108,7 +109,7 @@ function initMainTable () {
         	
         },
         onLoadError: function () {
-            showTips("数据加载失败！");
+            alert("数据加载失败！");
         },
         /*onDblClickRow: function (row, $element) {
             var id = row.ID;

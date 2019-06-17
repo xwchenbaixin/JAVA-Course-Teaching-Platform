@@ -82,7 +82,8 @@ public class User implements UserDetails, CredentialsContainer {
 	private int state;
 	private int classId;
 	private String className;
-	
+	private String classNo;
+	private String college;
 	@NotBlank(message = "密码不为空")
 	@Size(max=16,min=8,message = "密码长度在8-16位")
 	@Pattern(regexp = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$",message = "密码需要同时含有数字和字母")
@@ -92,6 +93,18 @@ public class User implements UserDetails, CredentialsContainer {
 	// ===================================================================================================
 	public User() {
 		
+	}
+	public String getClassNo() {
+		return classNo;
+	}
+	public void setClassNo(String classNo) {
+		this.classNo = classNo;
+	}
+	public String getCollege() {
+		return college;
+	}
+	public void setCollege(String college) {
+		this.college = college;
 	}
 	public int getId() {
 		return id;

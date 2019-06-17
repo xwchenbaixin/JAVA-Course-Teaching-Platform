@@ -13,8 +13,9 @@ import com.jctp.beans.CourseFile;
 
 @Mapper
 public interface XCourseFileManagerMapper {
-	@Select("SELECT fil.id,fil.course_id,cou.course_name,fil.type,fil.file_name,fil.file_path,fil.state FROM JCTP_COURSE_FILE fil join JCTP_COURSE cou ON fil.course_id=cou.id"
-			+ " WHERE  file_name LIKE CONCAT('%',#{param.fileName},'%')"
+	@Select("SELECT fil.id,fil.course_id,cla.class_no,cou.course_name,fil.type,fil.file_name,fil.file_path,fil.state FROM JCTP_COURSE_FILE fil left join JCTP_COURSE cou ON fil.course_id=cou.id"
+			+ " left join JCTP_CLASS cla on cou.class_id=cla.id"
+			+ " WHERE  file_name LIKE CONCAT('%',#{param.fileName},'%') and course_name LIKE CONCAT('%',#{param.courseName},'%') and class_no LIKE CONCAT('%',#{param.classNo},'%')"
 			+ " ORDER BY ${pageModel.sort} ${pageModel.order} "
 			+ "limit #{pageModel.offset},#{pageModel.limit} ")
 	List<CourseFile> listCourseFile(RequestModel<CourseFile> reqModel);
@@ -30,7 +31,4 @@ public interface XCourseFileManagerMapper {
 
 	@Insert("INSERT INTO JCTP_COURSE_FILE(course_id,type,file_name,file_path,state) values(#{courseId},#{type},#{fileName},#{filePath},#{state})")
 	int insert(CourseFile coursefile);
-
-	
-	
 }

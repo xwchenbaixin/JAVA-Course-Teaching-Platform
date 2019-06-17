@@ -52,7 +52,8 @@ function initMainTable () {
             var temp = {   
         		param:{
         			name:$("#searchName").val(),
-        			workNo:$("#searchWorkNo").val()
+        			workNo:$("#searchWorkNo").val(),
+        			classNo:$("#searchClassNo").val()
         		},
                 pageModel:{
                 	limit: params.limit,                         //页面大小
@@ -93,10 +94,15 @@ function initMainTable () {
         }, {
             field: 'phone',
             title: '电话号码'
-        },
-        {
+        }, {
             field: 'classId',
-            title: '所在班级'
+            title: '班级ID'
+        }, {
+            field: 'college',
+            title: '所属院系'
+        }, {
+            field: 'classNo',
+            title: '班级编号'
         }, {
             field:'ID',
             title: '操作',
@@ -109,7 +115,7 @@ function initMainTable () {
         	
         },
         onLoadError: function () {
-            showTips("数据加载失败！");
+            alert("数据加载失败！");
         },
         /*onDblClickRow: function (row, $element) {
             var id = row.ID;
@@ -132,8 +138,8 @@ var operateEvents={
 			$("#updateStuWorkNo").val(row.workNo);
 			$("#updateStuName").val(row.name);
 			$("#updateStuSex").val(row.sex);
-			$("#updateStuClassId").val(row.classId);
 			$("#updateStuPhone").val(row.phone);
+			$("#updateStuClassId").val(row.classId);
 		},
 		"click #tableDelete":function(e,value,row,index){
 			//设置隐藏域ID
