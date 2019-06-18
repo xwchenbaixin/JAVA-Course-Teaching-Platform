@@ -1,0 +1,18 @@
+@charset "UTF-8";
+ .CodeMirror {
+    border: 1px solid #eee;
+    height: auto;
+    min-height:600px;
+}
+
+.CodeMirror-scroll {
+    height: auto;
+    min-height:600px;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+.run-btn{
+	margin: 0;
+    line-height: 14px;
+    position: relative;
+}
