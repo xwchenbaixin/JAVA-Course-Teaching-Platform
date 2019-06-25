@@ -35,20 +35,7 @@
 							</div>
 						</div>
 						
-						<ul class="nav navbar-nav navbar-right">
-							
-				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-index}">首页</a></li>
-				            <li class="nav-li"><a href="#">任务</a></li>
-				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-dataStatistics}">统计</a></li>
-				            <li class="nav-li nav-li-active"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-material}">资料</a></li>
-				            <li class="nav-li"><a href="#">通知</a></li>
-				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-homework}">作业</a></li>
-				            <li class="nav-li"><a href="#">考试</a></li>
-				            <li class="nav-li"><a href="#">讨论</a></li>
-				         	
-				         	<!-- 引入公共个人数据设置和收件箱预览 -->
-							<li th:include="/common/component :: NAV-RIGHT-SETTING"></li>
-							<li th:include="/common/component :: NAV-RIGHT-INBOX"></li>
+						<ul class="nav navbar-nav navbar-right" th:replace="/common/component :: NAV-COURSE—TOP-MENU">
 							
 						</ul>
 					</nav>

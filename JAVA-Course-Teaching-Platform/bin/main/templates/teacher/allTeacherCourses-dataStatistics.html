@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org" 
+>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>课程教学平台</title>
+<div th:replace="/common/component :: PUBLIC-CSS" ></div>
+<!-- My css -->
+<link th:href="@{/css/dataStatistics.css}" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			
+			<!-- 引入公共菜单 -->
+			<div th:replace="/common/component :: MENU"  ></div>
+
+			
+			<!-- top navigation -->
+			<div class="top_nav">
+				<div class="nav_menu">
+					<nav>
+						<div class="nav toggle">
+							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+						</div>
+						<div class="nav c-toggle" >
+							<div class="c-title">
+								<h2><a href="/turnPage/teacher/allTeacherCourses" title="Java高级编程Java高级编程Java高级编程">Java高级编程Java高级编程Java高级编程</a></h2>
+							</div>
+						</div>
+						
+					<ul class="nav navbar-nav navbar-right" th:replace="/common/component :: NAV-COURSE—TOP-MENU">
+
+							
+				          <li class="nav-li"><a th:href="@{/turnPage?role=teacher&pn=allTeacherCourses-index}">首页</a></li>
+				            <li class="nav-li"><a href="#">任务</a></li>
+				            <li class="nav-li"><a th:href="@{/turnPage?role=teacher&pn=allTeacherCourses-dataStatistics}">统计</a></li>
+				            <li class="nav-li"><a th:href="@{/turnPage?role=teacher&pn=allTeacherCourses-material}">资料</a></li>
+				            <li class="nav-li"><a href="#">通知</a></li>
+				            <li class="nav-li nav-li-active"><a th:href="@{/turnPage?role=teacher&pn=allTeacherCourses-homework}">作业</a></li>
+				            <li class="nav-li"><a href="#">考试</a></li>
+				            <li class="nav-li"><a href="#">讨论</a></li>
+				         	
+				         	<!-- 引入公共个人数据设置和收件箱预览 -->
+							<li th:include="/common/component :: NAV-RIGHT-SETTING"></li>
+							<li th:include="/common/component :: NAV-RIGHT-INBOX"></li>
+							
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- /top navigation -->
+
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+					
+
+					<div class="clearfix"></div>
+
+					<div class="row">
+						<div class="col-md-8 col-sm-8 col-xs-8">
+							<div id="bar" style="height:400px;"></div>
+						</div>
+
+						<div class="col-md-4 col-sm-4 col-xs-4">
+							<div id="radar" style="height:400px;"></div>
+						</div>
+
+						<div class="col-md-6 col-sm-6 col-xs-6">
+							
+						</div>
+
+						<div class="col-md-6 col-sm-6 col-xs-6">
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<!-- /page content -->
+
+			<!-- footer content -->
+			<footer>
+				<div class="pull-right">
+					Gentelella - Bootstrap Admin Template by <a
+						href="https://colorlib.com">Colorlib</a>
+				</div>
+				<div class="clearfix"></div>
+			</footer>
+			<!-- /footer content -->
+		</div>
+	</div>
+	<!-- 引入公共JS -->
+	<div th:replace="/common/component :: PUBLIC-JS" ></div>
+	<script type="text/javascript" th:src="@{/gentelella/vendors/echarts/build/source/echarts-all.js}"></script>
+	<script type="text/javascript" th:src="@{/js/dataStatistics.js}"></script>
+	
+</body>
+</html>

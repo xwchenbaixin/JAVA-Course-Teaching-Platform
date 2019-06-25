@@ -12,7 +12,7 @@ var $table;
 //初始化bootstrap-table的内容
 function initMainTable () {
     //记录页面bootstrap-table全局变量$table，方便应用
-    var queryUrl = '/quentionsManager/listQuentions';
+    var queryUrl = '/questionManager/listQuestion';
 	//var rows= $("#table").bootstrapTable('getSelections');
 	$table = $('#table').bootstrapTable({
         url: queryUrl,                      //请求后台的URL（*）
@@ -80,7 +80,7 @@ function initMainTable () {
             field: 'questionType',
             title: '题目类型',
             //sortable: true,
-            //formatter: emailFormatter
+            formatter: termFormatter
         }, {
             field: 'answer',
             title: '答案',
@@ -102,7 +102,7 @@ function initMainTable () {
         	
         },
         onLoadError: function () {
-            showTips("数据加载失败！");
+            alert("数据加载失败！");
         },
         /*onDblClickRow: function (row, $element) {
             var id = row.ID;
@@ -113,6 +113,14 @@ function initMainTable () {
     
 };
 
+function termFormatter(value,row,index,field){
+	if(value==1)
+		return "选择题";
+	else if(value==2)
+		return "填空题";
+	else if(value==3)
+		return "简答题";
+}
 function actionFormatter(value,row,index,field){
 	return [
 		'<button id="tableEditor" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#updateModal">编辑</button>',
@@ -138,7 +146,7 @@ var operateEvents={
 //数据增加
 function initInsert(){
 	$("#insertBtn").click(function(){
-		$.ajax("/quentionsManager/xqueinsert",
+		$.ajax("/questionManager/xqueinsert",
 		        {
 		            dataType: "json", // 预期服务器返回的数据类型。
 		            type: "POST", //  请求方式 POST或GET
@@ -147,10 +155,10 @@ function initInsert(){
 		            // 发送到服务器的数据
 		            data:JSON.stringify({
 		            	//"id"		:	$("#updateStuId").val(),
-		    			"questionName"	:	$("#insertQueWorkNo").val(),
-		    			"questionType"	:	$("#insertQueName").val(),
-		    			"answer"		:	$("#insertQueSex").val(),
-		    			"seq"			:	$("#insertQueClassId").val(),
+		    			"questionName"	:	$("#insertQueQuestionName").val(),
+		    			"questionType"	:	$("#insertQueQuestionType").val(),
+		    			"answer"		:	$("#insertQueAnswer").val(),
+		    			"seq"			:	$("#insertQueSep").val(),
 		            }),
 		            
 		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
@@ -172,7 +180,7 @@ function initInsert(){
 //数据修改
 function initUpdate(){
 	$("#updateBtn").click(function(){
-		$.ajax("/quentionsManager/xqueupdate",
+		$.ajax("/questionManager/xqueupdate",
 		        {
 		            dataType: "json", // 预期服务器返回的数据类型。
 		            type: "POST", //  请求方式 POST或GET
@@ -181,10 +189,10 @@ function initUpdate(){
 		            // 发送到服务器的数据
 		            data:JSON.stringify({
 		            	"id"			:	$("#updateQueId").val(),
-		            	"questionName"	:	$("#updateQueWorkNo").val(),
-		    			"questionType"	:	$("#updateQueName").val(),
-		    			"answer"		:	$("#updateQueSex").val(),
-		    			"seq"			:	$("#updateQueClassId").val(),
+		    			"questionName"	:	$("#updateQueQuestionName").val(),
+		    			"questionType"	:	$("#updateQueQuestionType").val(),
+		    			"answer"		:	$("#updateQueAnswer").val(),
+		    			"seq"			:	$("#updateQueSep").val(),
 		            }),
 		          
 		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
@@ -206,7 +214,7 @@ function initUpdate(){
 //数据删除
 function initDelete(){
 	$("#deleteBtn").click(function(){
-		$.ajax("/quentionsManager/xquedelete",
+		$.ajax("/questionManager/xquedelete",
 		        {
 		            dataType: "json", // 预期服务器返回的数据类型。
 		            type: "POST", //  请求方式 POST或GET

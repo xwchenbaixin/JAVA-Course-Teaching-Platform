@@ -1,0 +1,444 @@
+﻿<!DOCTYPE HTML>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>答题</title>
+
+<!-- CodeMirror -->
+<link rel="stylesheet" href="/codemirror/codemirror.css">
+<link th:href="@{/doJob/css/main.css}" rel="stylesheet" type="text/css" />
+<link th:href="@{/doJob/css/test.css}" rel="stylesheet" type="text/css" />
+<style>
+.hasBeenAnswer {
+	background: #5d9cec;
+	color:#fff;
+}
+</style>
+
+</head>
+<body>
+<div class="main">
+	<!--nr start-->
+	<div class="test_main">
+		<div class="nr_left">
+			<div class="test">
+				<form action="fwaf" method="" id="ansform">
+					<div class="test_title">
+						<p class="test_time">
+							<i class="icon iconfont">&#xe6fb;</i><b class="alt-1" th:text="${lastTime}"></b>
+						</p>
+						<font><input type="button" id="submit" value="交卷"></font>
+					</div>
+						<div id="questionType0" th:if="${questions.type0.size()!=0}">
+							<div class="test_content" >
+								<div class="test_content_title">
+									<h2>单选题</h2>
+									<p>
+										<span>共</span><i class="content_lit" th:text="${questions.type0.size()}"></i><span>题，</span><span>合计</span><i class="content_fs" th:text="${sumScore0}"></i><span>分</span>
+									</p>
+								</div>
+							</div>
+							<div class="test_content_nr">
+								<ul>
+									<li th:id="${question.id}" th:each="question:${questions.type0}">
+										<div class="test_content_nr_tt">
+											<i th:text="${question.seq}"></i><span th:text="'('+${question.questionScore}+'分)'"></span><font th:text="${question.questionName}"></font><b class="icon iconfont">&#xe881;</b>
+										</div>
+										<div class="test_content_nr_main">
+											<ul th:with="options=${question.select}" >
+													<li class="option" th:each="option:${options}">
+														<input type="radio" class="radioOrCheck" th:name="'['+${question.id}+']'"
+															th:id="'id_'+${question.id}+'_option_'+${option.selectName}" th:value="${option.selectName}"
+														/>
+														<label th:for="'id_'+${question.id}+'_option_'+${option.selectName}">
+														[[${option.selectName}]].
+															<p class="ue" style="display: inline;" th:text="${option.selectAns}"></p>
+														</label>
+													</li>
+											</ul>
+										</div>
+									</li>
+									
+										
+								</ul>
+							</div>
+						</div>
+						
+						<div id="questionType1" th:if="${questions.type1.size()!=0}">
+							<div class="test_content" >
+								<div class="test_content_title">
+									<h2>填空题</h2>
+									<p>
+										<span>共</span><i class="content_lit" th:text="${questions.type1.size()}"></i><span>题，</span><span>合计</span><i class="content_fs" th:text="${sumScore1}"></i><span>分</span>
+									</p>
+								</div>
+							</div>
+							<div class="test_content_nr">
+								<ul>
+									<li th:id="${question.id}" th:each="question:${questions.type1}">
+										<div class="test_content_nr_tt">
+											<i th:text="${question.seq}"></i><span th:text="'('+${question.questionScore}+'分)'"></span><font th:text="${question.questionName}"></font><b class="icon iconfont">&#xe881;</b>
+										</div>
+										<div class="test_content_nr_main">
+											<ul th:with="selectors=${question.select}">
+													<li  th:each="select:${selectors}">
+														<label th:for="'id_'+${question.id}+'_option_'+${select.selectName}">
+														[[${select.selectName}]].
+															<input style="margin: 10px;width: 200px;height: 25px;" type="text" class="radioOrCheck" th:name="${question.id}+'['+${select.selectName}+']'"
+																th:id="'id_'+${question.id}+'_option_'+${select.selectName}"
+															/>
+														</label>
+													</li>
+											</ul>
+										</div>
+									</li>
+									
+										
+								</ul>
+							</div>
+						</div>
+						<div id="questionType2" th:if="${questions.type2.size()!=0}">
+							<div class="test_content" >
+								<div class="test_content_title">
+									<h2>判断题</h2>
+									<p>
+										<span>共</span><i class="content_lit" th:text="${questions.type2.size()}"></i><span>题，</span><span>合计</span><i class="content_fs" th:text="${sumScore2}"></i><span>分</span>
+									</p>
+								</div>
+							</div>
+							<div class="test_content_nr">
+								<ul>
+									<li th:id="${question.id}" th:each="question:${questions.type2}">
+										<div class="test_content_nr_tt">
+											<i th:text="${question.seq}"></i><span th:text="'('+${question.questionScore}+'分)'"></span><font th:text="${question.questionName}"></font><b class="icon iconfont">&#xe881;</b>
+										</div>
+										<div class="test_content_nr_main">
+											<ul th:with="options=${question.select}" >
+													<li class="option" th:each="option:${options}">
+														<input type="radio" class="radioOrCheck" th:name="'['+${question.id}+']'"
+															th:id="'id_'+${question.id}+'_option_'+${option.selectName}"
+															th:value="${option.selectName}"
+														/>
+														<label th:for="'id_'+${question.id}+'_option_'+${option.selectName}">
+														[[${option.selectName}]].
+															<p class="ue" style="display: inline;" th:text="${option.selectAns}"></p>
+														</label>
+													</li>
+											</ul>
+										</div>
+									</li>
+									
+										
+								</ul>
+							</div>
+						</div>
+						<div id="questionType3" th:if="${questions.type3.size()!=0}">
+							<div class="test_content" >
+								<div class="test_content_title">
+									<h2>简答题</h2>
+									<p>
+										<span>共</span><i class="content_lit" th:text="${questions.type3.size()}"></i><span>题，</span><span>合计</span><i class="content_fs" th:text="${sumScore3}"></i><span>分</span>
+									</p>
+								</div>
+							</div>
+							<div class="test_content_nr">
+								<ul>
+									<li th:id="${question.id}" th:each="question:${questions.type3}">
+										<div class="test_content_nr_tt">
+											<i th:text="${question.seq}"></i><span th:text="'('+${question.questionScore}+'分)'"></span><font th:text="${question.questionName}"></font><b class="icon iconfont">&#xe881;</b>
+										</div>
+										<div class="test_content_nr_main">
+											<ul  >
+													<li class="option">
+														<textarea class="short_answer_textarea"  type="text"  th:name="'['+${question.id}+']'" th:id="'ans'+${question.id}"/></textarea>
+													</li>
+											</ul>
+										</div>
+									</li>
+									
+										
+								</ul>
+							</div>
+						</div>
+						
+						<div id="questionType4" th:if="${questions.type4.size()!=0}">
+							<div class="test_content" >
+								<div class="test_content_title">
+									<h2>编程题</h2>
+									<p>
+										<span>共</span><i class="content_lit" th:text="${questions.type4.size()}"></i><span>题，</span><span>合计</span><i class="content_fs" th:text="${sumScore4}"></i><span>分</span>
+									</p>
+								</div>
+							</div>
+							<div class="test_content_nr">
+								<ul>
+									<li th:id="${question.id}" th:each="question:${questions.type4}">
+										<div class="test_content_nr_tt">
+											<i th:text="${question.seq}"></i><span th:text="'('+${question.questionScore}+'分)'"></span><font th:text="${question.questionName}"></font><b class="icon iconfont">&#xe881;</b>
+										</div>
+										<div class="test_content_nr_main">
+											<ul>
+													<li>
+														<textarea  type="text"  th:name="'['+${question.id}+']'" th:id="'ans'+${question.id}"/></textarea>
+													</li>
+											</ul>
+										</div>
+									</li>
+									
+										
+								</ul>
+							</div>
+						</div>
+						
+				</form>
+			</div>
+
+		</div>
+		<div class="nr_right">
+			<div class="nr_rt_main">
+				<div class="rt_nr1">
+					<div class="rt_nr1_title">
+						<h1>
+							<i class="icon iconfont">&#xe692;</i>答题卡
+						</h1>
+						<p class="test_time">
+							<i class="icon iconfont">&#xe6fb;</i><b class="alt-1" th:text="${lastTime}"></b>
+						</p>
+					</div>
+					
+						<div class="rt_content" th:if="${questions.type0.size()!=0}">
+							<div class="rt_content_tt">
+								<h2>单选题</h2>
+								<p>
+									<span>共</span><i class="content_lit" th:text="${questions.type0.size()}"></i><span>题</span>
+								</p>
+							</div>
+							<div class="rt_content_nr answerSheet">
+								<ul>
+										<li th:each="question:${questions.type0}"><a th:href="'#'+${question.id}" th:text="${question.seq}"></a></li>
+					
+								</ul>
+							</div>
+						</div>
+					
+						
+						<div class="rt_content" th:if="${questions.type1.size()!=0}">
+							<div class="rt_content_tt">
+								<h2>填空题</h2>
+								<p>
+									<span>共</span><i class="content_lit" th:text="${questions.type1.size()}">1</i><span>题</span>
+								</p>
+							</div>
+							<div class="rt_content_nr answerSheet">
+								<ul>
+									
+									<li th:each="question:${questions.type1}"><a th:href="'#'+${question.id}" th:text="${question.seq}"></a></li>
+					
+								</ul>
+							</div>
+						</div>
+						<div class="rt_content" th:if="${questions.type2.size()!=0}">
+							<div class="rt_content_tt">
+								<h2>判断题</h2>
+								<p>
+									<span>共</span><i class="content_lit" th:text="${questions.type2.size()}">1</i><span>题</span>
+								</p>
+							</div>
+							<div class="rt_content_nr answerSheet">
+								<ul>
+									
+									<li th:each="question:${questions.type2}"><a th:href="'#'+${question.id}" th:text="${question.seq}"></a></li>
+					
+								</ul>
+							</div>
+						</div>
+						
+						<div class="rt_content">
+							<div class="rt_content_tt">
+								<h2>简答题</h2>
+								<p>
+									<span>共</span><i class="content_lit">1</i><span>题</span>
+								</p>
+							</div>
+							<div class="rt_content_nr answerSheet">
+								<ul>
+									
+										<li><a href="#qu_1_0">1</a></li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="rt_content">
+							<div class="rt_content_tt">
+								<h2>编程题</h2>
+								<p>
+									<span>共</span><i class="content_lit">1</i><span>题</span>
+								</p>
+							</div>
+							<div class="rt_content_nr answerSheet">
+								<ul>
+									
+										<li><a href="#qu_1_0">1</a></li>
+									
+										
+									
+								</ul>
+							</div>
+						</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!--nr end-->
+	<div class="foot"></div>
+</div>
+<script th:src="@{/doJob/js/jquery-3.4.1.js}"></script>
+<script th:src="@{/doJob/js/jquery.easy-pie-chart.js}"></script>
+<!-- CodeMirror -->
+	<script src="/codemirror/codemirror.js"></script>
+	<!--编辑器高亮-->
+	<script src="/codemirror/mode/clike/clike.js"></script>
+	<!--代码折叠-->
+	<link rel="stylesheet" href="/codemirror/addon/fold/foldgutter.css"/>
+	<script src="/codemirror/addon/fold/foldcode.js"></script>
+	<script src="/codemirror/addon/fold/foldgutter.js"></script>
+	<script src="/codemirror/addon/fold/brace-fold.js"></script>
+	<script src="/codemirror/addon/fold/comment-fold.js"></script>
+	<link rel="stylesheet" href="/codemirror/addon/hint/show-hint.css">
+	<script src="/codemirror/addon/hint/show-hint.js"></script>
+	
+	<script src="/codemirror/addon/edit/matchbrackets.js"></script>
+	
+	<!-- 引入序列化表单插件 -->
+	<script th:src="@{/jquery.serializeJSON/jquery.serializejson.js}"> </script>
+
+<!--时间js-->
+<script th:src="@{/doJob/js/jquery.countdown.js}"></script>
+<script>
+	window.jQuery(function($) {
+		"use strict";
+		
+		$('time').countDown({
+			with_separators : false
+		});
+		$('.alt-1').countDown({
+			css_class : 'countdown-alt-1'
+		});
+		$('.alt-2').countDown({
+			css_class : 'countdown-alt-2'
+		});
+		
+	});
+	
+	
+	$(document).ready(function() {
+		//console.log([[param.jid]])
+		$(".option label").click(function() {
+		//debugger;
+			var examId = $(this).closest('.test_content_nr_main').closest('li').attr('id'); // 得到题目ID
+			console.log(examId)
+			var cardLi = $('a[href=\\#' + examId + ']'); // 根据题目ID找到对应答题卡
+			// 设置已答题
+			if(!cardLi.hasClass('hasBeenAnswer')){
+				cardLi.addClass('hasBeenAnswer');
+			}
+			
+		});
+		
+		$("#questionType1 input").blur(function(){
+			var examId = $(this).closest('.test_content_nr_main').closest('li').attr('id'); // 得到题目ID
+			var flag=true;
+			$(this).closest("ul").find("input").each(function(){
+				if($(this).val()==""){
+					flag=false;
+				}
+				console.log($(this).val())
+			})
+			var cardLi = $('a[href=\\#' + examId + ']'); // 根据题目ID找到对应答题卡
+			if(flag){
+				// 设置已答题
+				if(!cardLi.hasClass('hasBeenAnswer')){
+					cardLi.addClass('hasBeenAnswer');
+				}
+			}else{
+				//设置未答题
+				if(cardLi.hasClass('hasBeenAnswer')){
+					cardLi.removeClass('hasBeenAnswer');
+				}
+			}
+		})
+		var option= {
+			    mode: "text/x-java",
+				lineNumbers: true,	//显示行号
+				//theme: "blackboard",	//设置主题
+				foldGutter: true,
+				//gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+				matchBrackets: true,	//括号匹配
+				autofocus: false,	//初始化自动获取焦点,默认未false
+				smartIndent : true,  // 是否智能缩进
+				indentUnit:4,
+				//readOnly: true,        //只读
+				
+			};
+		var CodeMirrors={};
+		$("#questionType4 textarea").each(function(){
+			var areaId=$(this).attr("id");
+			var ansId=areaId.replace("ans","");
+			CodeMirrors[ansId]=CodeMirror.fromTextArea(document.getElementById(areaId),option);
+			
+		})
+		$("#submit").click(function(){
+			var formSerialize=$('#ansform').serializeJSON();
+			
+			for(var key in CodeMirrors){
+				formSerialize[key]=CodeMirrors[key].getValue();
+			}
+			
+			//console.log(formSerialize);
+			var questions=new Array();
+			for(var key in formSerialize){
+				var temp={};
+				temp['id']=key;
+				
+				if(typeof formSerialize[key] == 'string')
+					temp['upAnswer']=formSerialize[key];
+				else
+					temp['upAnswer']=JSON.stringify(formSerialize[key]);
+				questions.push(temp)
+			}
+			var param={};
+			param["jid"]=[[${param.jid}]];
+			param["questions"]=questions;
+			
+			console.log(param)
+			$.ajax("/student/submitJob",
+		        {
+		            dataType: "json", // 预期服务器返回的数据类型。
+		            type: "POST", //  请求方式 POST或GET
+		            crossDomain:true,  // 跨域请求
+		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
+		            // 发送到服务器的数据
+		            data:JSON.stringify(param),
+		            
+		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
+		            // 请求成功后的回调函数。
+		            success: function(data){
+		            	alert(data.msg)
+		            },
+		            error: function(){
+		                alert("请求错误，请检查网络连接");
+		           }
+		    })
+		})
+		
+	});
+	
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+</div>
+</body>
+</html>

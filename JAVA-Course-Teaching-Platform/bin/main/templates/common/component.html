@@ -62,13 +62,19 @@
 			<div class="menu_section">
 				<h3>基础功能</h3>
 				<ul class="nav side-menu">
-					<li sec:authorize="hasAnyRole('STUDENT','TEACHER')" th:class="${#strings.contains(param.pn,'allStudentCourses')}?'active':'' "	><a href="/turnPage?role=student&pn=allStudentCourses"><i class="fa fa-home" ></i> 所有课程 </a></li>
-					<li sec:authorize="hasAnyRole('STUDENT','TEACHER')" th:class="${#strings.contains(param.pn,'codeEditor')}?'active':'' "			><a href="/turnPage?role=student&pn=codeEditor"><i class="fa fa-edit"></i> 代码编辑器</a></li>
+					<li sec:authorize="hasRole('STUDENT')" th:class="${#strings.contains(param.pn,'allStudentCourses')}?'active':'' "	><a href="/turnPage?role=student&pn=allStudentCourses"><i class="fa fa-home" ></i> 所有课程 </a></li>
+					<li sec:authorize="hasRole('STUDENT')" th:class="${#strings.contains(param.pn,'codeEditor')}?'active':'' "			><a href="/turnPage?role=student&pn=codeEditor"><i class="fa fa-edit"></i> 代码编辑器</a></li>
 					<li sec:authorize="hasRole('STUDENT')" th:class="${#strings.contains(param.pn,'inbox')}?'active':'' "				><a href="/turnPage?role=student&pn=inbox"><i class="fa fa-envelope-o"></i> 收件箱</a></li>
 					<li sec:authorize="hasRole('STUDENT')" th:class="${#strings.contains(param.pn,'inbox')}?'active':'' "				><a href="/turnPage?role=student&pn=inbox"><i class="fa fa-comment-o"></i> 动态</a></li>
 					
-					<li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'dataTable')}?'active':'' "			><a href="/turnPage?role=student&pn=dataTable"><i class="fa fa-table"></i> 数据表格</a> </li>
-					<li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'dataStatistics')}?'active':'' "		><a href="/turnPage?role=student&pn=dataStatistics"><i class="fa fa-bar-chart-o"></i> 数据统计</a></li>
+					
+					<li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'allTeacherCourses')}?'active':'' "	><a href="/turnPage?role=teacher&pn=allTeacherCourses"><i class="fa fa-home" ></i> 所有课程 </a></li>
+					
+					<li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'codeEditor')}?'active':'' "			><a href="/turnPage?role=teacher&pn=codeEditor"><i class="fa fa-edit"></i> 代码编辑器</a></li>
+					<li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'inbox')}?'active':'' "				><a href="/turnPage?role=teacher&pn=inbox"><i class="fa fa-envelope-o"></i> 收件箱</a></li>
+					<li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'inbox')}?'active':'' "				><a href="/turnPage?role=teacher&pn=inbox"><i class="fa fa-comment-o"></i> 动态</a></li>
+					<li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'dataTable')}?'active':'' "			><a href="/turnPage?role=teacher&pn=dataTable"><i class="fa fa-table"></i> 数据表格</a> </li>
+					<li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'dataStatistics')}?'active':'' "		><a href="/turnPage?role=teacher&pn=dataStatistics"><i class="fa fa-bar-chart-o"></i> 数据统计</a></li>
 					
 					<li sec:authorize="hasAnyRole('TEACHER','STUDENT')"><a><i class="fa fa-bar-chart-o"></i> 数据管理</a></li>
 					<!-- <li><a><i class="fa fa-clone"></i>Layouts <span
@@ -77,37 +83,37 @@
 							<li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
 							<li><a href="fixed_footer.html">Fixed Footer</a></li>
 						</ul></li> -->
-					<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-home"></i>教师管理<span class="fa fa-chevron-down"></span></a>
+										<li sec:authorize="hasRole('DEAN')"><a th:href="@{/turnPage?role=dean&pn=teacherManager}"><i class="fa fa-home"></i>教师管理<span class="fa fa-chevron-down"></span></a>
 	                    <ul class="nav child_menu">
 	                      <li><a href="addusers" >增加教师</a></li>
 	                      <li><a href="searchallteacher">其他操作</a></li>
 	                    </ul>                  	
 </li>
-                  	<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-edit"></i>学生管理<span class="fa fa-chevron-down"></span></a>
+                  	<li sec:authorize="hasRole('DEAN')"><a th:href="@{/turnPage?role=dean&pn=studentManager}"><i class="fa fa-edit"></i>学生管理<span class="fa fa-chevron-down"></span></a>
 	                    <ul class="nav child_menu">
 	                      <li><a href="addusers1">增加学生</a></li>
 	                      <li><a href="searchallstudent">其他操作</a></li>
 	                    </ul>
                   	</li>
-                  	<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-desktop"></i>课程管理<span class="fa fa-chevron-down"></span></a>
+                  	<li sec:authorize="hasRole('DEAN')"><a th:href="@{/turnPage?role=dean&pn=courseManager}"><i class="fa fa-desktop"></i>课程管理<span class="fa fa-chevron-down"></span></a>
 	                    <ul class="nav child_menu">
 	                      <li><a href="home2.html" >增加课程</a></li>
 	                      <li><a href="media_gallery.html">其他操作</a></li>
 	                    </ul>
                   	</li>
-                  	<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-table"></i>班级管理<span class="fa fa-chevron-down"></span></a>
+                  	<li sec:authorize="hasRole('DEAN')"><a th:href="@{/turnPage?role=dean&pn=coursefileManager}"><i class="fa fa-table"></i>课件管理<span class="fa fa-chevron-down"></span></a>
 	                    <ul class="nav child_menu">
 	                      <li><a href="tables.html">增加班级</a></li>
 	                      <li><a href="tables_dynamic.html">其他操作</a></li>
 	                    </ul>
                   	</li>
-                  	<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-bar-chart-o"></i>题库管理<span class="fa fa-chevron-down"></span></a>
+                  	<li sec:authorize="hasRole('DEAN')"><a th:href="@{/turnPage?role=dean&pn=classManager}"><i class="fa fa-bar-chart-o"></i>班级管理<span class="fa fa-chevron-down"></span></a>
 	                    <ul class="nav child_menu">
 	                      <li><a href="chartjs.html">增加题库</a></li>
 	                      <li><a href="chartjs2.html">其他操作</a></li>
 	                    </ul>
                   	</li>
-                  	<li sec:authorize="hasRole('DEAN')"><a><i class="fa fa-clone"></i>作业管理<span class="fa fa-chevron-down"></span></a>
+                  	<li sec:authorize="hasRole('DEAN')"><a th:href="@{/turnPage?role=dean&pn=questionManager}"><i class="fa fa-clone"></i>题库管理<span class="fa fa-chevron-down"></span></a>
 	                    <ul class="nav child_menu">
 	                      <li><a href="fixed_sidebar.html">增加作业</a></li>
 	                      <li><a href="fixed_footer.html">其他操作</a></li>
@@ -177,61 +183,87 @@
 
 </div>
 
-<!-- 右上角个人数据设置 -->
-<li th:fragment="NAV-RIGHT-SETTING" class=""><a  href="javascript:;"
-	class="user-profile dropdown-toggle" data-toggle="dropdown"
-	aria-expanded="false"> <img th:src="${session.SPRING_SECURITY_CONTEXT.authentication.principal.avatar}" alt="" th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.name}"> 
-	<span class=" fa fa-angle-down"></span>
-</a>
-	<ul class="dropdown-menu dropdown-usermenu pull-right">
-		<li><a href="javascript:;"> Profile</a></li>
-		<li><a href="javascript:;"> <span
-				class="badge bg-red pull-right">50%</span> <span>Settings</span>
-		</a></li>
-		<li><a href="javascript:;">Help</a></li>
-		<li><a href="login.html"><i
-				class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-	</ul>
-</li>
+<ul class="nav navbar-nav navbar-right" th:fragment="NAV-COURSE—TOP-MENU">
+	<li sec:authorize="hasRole('STUDENT')" th:class="${#strings.contains(param.pn,'index')}?'nav-li nav-li-active':'nav-li'"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-index(cid=${param.cid})}">首页</a></li>
+    <li sec:authorize="hasRole('STUDENT')" th:class="${#strings.contains(param.pn,'inbox')}?'nav-li nav-li-active':'nav-li'"><a href="#">任务</a></li>
+    <li sec:authorize="hasRole('STUDENT')" th:class="${#strings.contains(param.pn,'dataStatistics')}?'nav-li nav-li-active':'nav-li'"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-dataStatistics(cid=${param.cid})}">统计</a></li>
+    <li sec:authorize="hasRole('STUDENT')" th:class="${#strings.contains(param.pn,'material')}?'nav-li nav-li-active':'nav-li'"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-material(cid=${param.cid})}">资料</a></li>
+    <li sec:authorize="hasRole('STUDENT')" th:class="${#strings.contains(param.pn,'inbox')}?'nav-li nav-li-active':'nav-li'"><a href="#">通知</a></li>
+    <li sec:authorize="hasRole('STUDENT')" th:class="${#strings.contains(param.pn,'homework')}?'nav-li nav-li-active':'nav-li'"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-homework(cid=${param.cid})}">作业</a></li>
+    <li sec:authorize="hasRole('STUDENT')" th:class="${#strings.contains(param.pn,'inbox')}?'nav-li nav-li-active':'nav-li'"><a href="#">考试</a></li>
+    <li sec:authorize="hasRole('STUDENT')" th:class="${#strings.contains(param.pn,'inbox')}?'nav-li nav-li-active':'nav-li'"><a href="#">讨论</a></li>
+    
+	
+	
+    
+    <li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'index')}?'nav-li nav-li-active':'nav-li'"><a th:href="@{/turnPage?role=teacher&pn=allTeacherCourses-index(cid=${param.cid})}">首页</a></li>
+    <li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'inbox')}?'nav-li nav-li-active':'nav-li'"><a href="#">任务</a></li>
+    <li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'dataStatistics')}?'nav-li nav-li-active':'nav-li'"><a th:href="@{/turnPage?role=teacher&pn=allTeacherCourses-dataStatistics(cid=${param.cid})}">统计</a></li>
+    <li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'material')}?'nav-li nav-li-active':'nav-li'"><a th:href="@{/turnPage?role=teacher&pn=allTeacherCourses-material(cid=${param.cid})}">资料</a></li>
+    <li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'inbox')}?'nav-li nav-li-active':'nav-li'"><a href="#">通知</a></li>
+    <li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'homework')}?'nav-li nav-li-active':'nav-li'"><a th:href="@{/turnPage?role=teacher&pn=allTeacherCourses-homework(cid=${param.cid})}">作业</a></li>
+    <li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'inbox')}?'nav-li nav-li-active':'nav-li'"><a href="#">考试</a></li>
+    <li sec:authorize="hasRole('TEACHER')" th:class="${#strings.contains(param.pn,'inbox')}?'nav-li nav-li-active':'nav-li'"><a href="#">讨论</a></li>
+    
+    <!-- 右上角个人数据设置 -->
+	<li th:fragment="NAV-RIGHT-SETTING" class=""><a  href="javascript:;"
+		class="user-profile dropdown-toggle" data-toggle="dropdown"
+		aria-expanded="false"> <img th:src="${session.SPRING_SECURITY_CONTEXT.authentication.principal.avatar}" alt="" th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.name}"> 
+		<span class=" fa fa-angle-down"></span>
+	</a>
+		<ul class="dropdown-menu dropdown-usermenu pull-right">
+			<li><a href="javascript:;"> Profile</a></li>
+			<li><a href="javascript:;"> <span
+					class="badge bg-red pull-right">50%</span> <span>Settings</span>
+			</a></li>
+			<li><a href="javascript:;">Help</a></li>
+			<li><a href="login.html"><i
+					class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+		</ul>
+	</li>
+	
+	<!-- 右上角收件箱预览 -->
+	<li th:fragment="NAV-RIGHT-INBOX" role="presentation" class="dropdown"><a
+		href="javascript:;" class="dropdown-toggle info-number"
+		data-toggle="dropdown" aria-expanded="false"> <i
+			class="fa fa-envelope-o"></i> <span class="badge bg-green">6</span>
+	</a>
+		<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
+			role="menu">
+			<li><a> <span class="image"><img
+						src="/gentelella/images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+							Smith</span> <span class="time">3 mins ago</span>
+				</span> <span class="message"> Film festivals used to be
+						do-or-die moments for movie makers. They were where... </span>
+			</a></li>
+			<li><a> <span class="image"><img
+						src="/gentelella/images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+							Smith</span> <span class="time">3 mins ago</span>
+				</span> <span class="message"> Film festivals used to be
+						do-or-die moments for movie makers. They were where... </span>
+			</a></li>
+			<li><a> <span class="image"><img
+						src="/gentelella/images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+							Smith</span> <span class="time">3 mins ago</span>
+				</span> <span class="message"> Film festivals used to be
+						do-or-die moments for movie makers. They were where... </span>
+			</a></li>
+			<li><a> <span class="image"><img
+						src="/gentelella/images/img.jpg" alt="Profile Image" /></span> <span> <span>John
+							Smith</span> <span class="time">3 mins ago</span>
+				</span> <span class="message"> Film festivals used to be
+						do-or-die moments for movie makers. They were where... </span>
+			</a></li>
+			<li>
+				<div class="text-center">
+					<a> <strong>See All Alerts</strong> <i
+						class="fa fa-angle-right"></i>
+					</a>
+				</div>
+			</li>
+		</ul>
+	</li>
+</ul>
 
-<!-- 右上角收件箱预览 -->
-<li th:fragment="NAV-RIGHT-INBOX" role="presentation" class="dropdown"><a
-	href="javascript:;" class="dropdown-toggle info-number"
-	data-toggle="dropdown" aria-expanded="false"> <i
-		class="fa fa-envelope-o"></i> <span class="badge bg-green">6</span>
-</a>
-	<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
-		role="menu">
-		<li><a> <span class="image"><img
-					src="/gentelella/images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-						Smith</span> <span class="time">3 mins ago</span>
-			</span> <span class="message"> Film festivals used to be
-					do-or-die moments for movie makers. They were where... </span>
-		</a></li>
-		<li><a> <span class="image"><img
-					src="/gentelella/images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-						Smith</span> <span class="time">3 mins ago</span>
-			</span> <span class="message"> Film festivals used to be
-					do-or-die moments for movie makers. They were where... </span>
-		</a></li>
-		<li><a> <span class="image"><img
-					src="/gentelella/images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-						Smith</span> <span class="time">3 mins ago</span>
-			</span> <span class="message"> Film festivals used to be
-					do-or-die moments for movie makers. They were where... </span>
-		</a></li>
-		<li><a> <span class="image"><img
-					src="/gentelella/images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-						Smith</span> <span class="time">3 mins ago</span>
-			</span> <span class="message"> Film festivals used to be
-					do-or-die moments for movie makers. They were where... </span>
-		</a></li>
-		<li>
-			<div class="text-center">
-				<a> <strong>See All Alerts</strong> <i
-					class="fa fa-angle-right"></i>
-				</a>
-			</div>
-		</li>
-	</ul>
-</li>
+
+

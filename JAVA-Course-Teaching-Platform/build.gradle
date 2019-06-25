@@ -25,5 +25,6 @@ dependencies {
 	compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.47'
 	compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity5', version: '3.0.4.RELEASE'
 
-
+	compile group: 'com.janeluo', name: 'ikanalyzer', version: '2012_u6'
+	
 }

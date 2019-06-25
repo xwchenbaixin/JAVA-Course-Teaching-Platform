@@ -11,6 +11,10 @@
 
 <title>课程教学平台</title>
 <div th:replace="/common/component :: PUBLIC-CSS" ></div>
+
+<!-- 引入Bootstrap-table -->
+<link rel="stylesheet" th:href="@{/bootstrapTable/bootstrap-table.css}">
+
 <!-- My css -->
 <link th:href="@{/css/studentIndex.css}" rel="stylesheet">
 </head>
@@ -35,20 +39,9 @@
 							</div>
 						</div>
 						
-						<ul class="nav navbar-nav navbar-right">
+						<ul class="nav navbar-nav navbar-right" th:replace="/common/component :: NAV-COURSE—TOP-MENU">
 							
-				            <li class="nav-li nav-li-active"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-index}">首页</a></li>
-				            <li class="nav-li"><a href="#">任务</a></li>
-				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-dataStatistics}">统计</a></li>
-				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-material}">资料</a></li>
-				            <li class="nav-li"><a href="#">通知</a></li>
-				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-homework}">作业</a></li>
-				            <li class="nav-li"><a href="#">考试</a></li>
-				            <li class="nav-li"><a href="#">讨论</a></li>
-				         
-							<!-- 引入公共个人数据设置和收件箱预览 -->
-							<li th:include="/common/component :: NAV-RIGHT-SETTING"></li>
-							<li th:include="/common/component :: NAV-RIGHT-INBOX"></li>
+				            
 						</ul>
 					</nav>
 				</div>
@@ -61,44 +54,15 @@
 					
 
 					<div class="clearfix"></div>
-
+					
+					<input type="text" id="cid" th:value="${param.cid}" style="display:none;">
 					<div class="row">
 						<div class="col-md-6 col-sm-6 col-xs-6">
 							<div class="panel panel-danger">
 							 	<div class="panel-heading">需上交作业</div>
-						    	<table class="table table-hover">
-			                      <thead>
-			                        <tr>
-			                          <th>序号</th>
-			                          <th>作业名称</th>
-			                          <th>截止时间</th>
-			                          <th>剩余时间</th>
-			                          <th>操作</th>
-			                        </tr>
-			                      </thead>
-			                      <tbody>
-			                        <tr>
-			                          <th scope="row">1</th>
-			                          <td>第一次作业</td>
-			                          <td>2019年8月1日 18:00:00</td>
-			                          <td>8h</td>
-			                          <td><button type="button" class="btn btn-danger btn-sm">做作业</button></td>
-			                        </tr>
-			                        <tr>
-			                          <th scope="row">2</th>
-			                          <td>第二次作业</td>
-			                          <td>2019年8月1日 18:00:00</td>
-			                          <td>8h</td>
-			                          <td><button type="button" class="btn btn-danger btn-sm">做作业</button></td>
-			                        </tr>
-			                        <tr>
-			                          <th scope="row">3</th>
-			                          <td>第三次作业</td>
-			                          <td>2019年8月1日 18:00:00</td>
-			                          <td>8h</td>
-			                          <td><button type="button" class="btn btn-danger btn-sm">做作业</button></td>
-			                        </tr>
-			                      </tbody>
+							 	
+						    	<table id="courseJobsTable">
+			                     
 			                    </table>
 							</div>
 							
@@ -133,7 +97,9 @@
 	</div>
 	<!-- 引入公共JS -->
 	<div th:replace="/common/component :: PUBLIC-JS" ></div>
-	
-	
+	<!-- 引入Bootstrap-Table Js -->
+	<script th:src="@{/bootstrapTable/bootstrap-table.js}"></script>
+	<script th:src="@{/bootstrapTable/locale/bootstrap-table-zh-CN.js}"></script>
+	<script th:src="@{/js/allStudentCourses-index.js}"></script>	
 </body>
 </html>

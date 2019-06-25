@@ -23,7 +23,7 @@ public class XStudentManagerController {
 	 * @param reqModel
 	 * @return ResponseModel
 	 */
-	@RequestMapping("/listStudent")
+	@RequestMapping("/xlistStudent")
 	@ResponseBody
 	public ResponseModel<User> listStudent(@RequestBody RequestModel<User> reqModel){
 		//System.out.println("pageSize:"+reqModel.getPageModel().getPageSize());

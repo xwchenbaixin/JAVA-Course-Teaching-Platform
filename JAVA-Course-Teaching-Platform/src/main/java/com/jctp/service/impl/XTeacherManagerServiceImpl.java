@@ -22,8 +22,7 @@ public class XTeacherManagerServiceImpl implements XTeacherManagerService{
 	public ResponseModel<User> listTeacher(RequestModel<User> reqModel) {
 		// TODO Auto-generated method stub
 		int total=teacherManagerMapper.getTotal();
-		
-		List<User> userList=teacherManagerMapper.listStudent(reqModel);
+		List<User> userList=teacherManagerMapper.listTeacher(reqModel);
 		
 		return new ResponseModel<User>(userList, total);
 	}

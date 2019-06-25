@@ -14,8 +14,8 @@ import com.jctp.beans.Constants;
 
 @Mapper
 public interface XStudentManagerMapper {
-	@Select("SELECT * FROM JCTP_USER "
-			+ "WHERE state=1 and name LIKE CONCAT('%',#{param.name},'%') and work_no LIKE CONCAT('%',#{param.workNo},'%') and role_id="+Constants.STUDENT
+	@Select("SELECT stu.id,stu.name,stu.sex,stu.work_no,stu.password,stu.phone,stu.state,stu.class_id,cla.college,cla.class_no FROM JCTP_USER stu join JCTP_CLASS cla ON	stu.class_id=cla.id"
+			+ " WHERE state=1 and name LIKE CONCAT('%',#{param.name},'%') and work_no LIKE CONCAT('%',#{param.workNo},'%') and class_no LIKE CONCAT('%',#{param.classNo},'%') and role_id="+Constants.STUDENT
 			+ " ORDER BY ${pageModel.sort} ${pageModel.order} "
 			+ "limit #{pageModel.offset},#{pageModel.limit} ")
 	List<User> listStudent(RequestModel<User> reqModel);

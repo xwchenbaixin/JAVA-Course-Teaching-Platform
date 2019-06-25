@@ -52,7 +52,8 @@ function initMainTable () {
             var temp = {   
         		param:{
         			fileName:$("#searchCName").val(),
-        			courseId:$("#searchCId").val()
+        			courseName:$("#searchCouName").val(),
+        			classNo:$("#searchClassNo").val()
         		},
                 pageModel:{
                 	limit: params.limit,                         //页面大小
@@ -73,16 +74,17 @@ function initMainTable () {
             title: 'ID',
             sortable: true
         }, {
-            field: 'courseId',
-            title: '课程编号'
+            field: 'classNo',
+            title: '班级'
             //sortable: true
         }, {
             field: 'courseName',
-            title: '课程编号'
+            title: '课程名称'
             //sortable: true
         },{
             field: 'type',
             title: '课件类别',
+            formatter:"termFormatter",
             sortable: true
             //formatter: linkFormatter
         }, {
@@ -96,6 +98,10 @@ function initMainTable () {
         {
             field: 'state',
             title: '状态'
+        },
+        {
+            field: 'upDate',
+            title: '上传时间'
         }, {
             field:'ID',
             title: '操作',
@@ -108,7 +114,7 @@ function initMainTable () {
         	
         },
         onLoadError: function () {
-            showTips("数据加载失败！");
+            alert("数据加载失败！");
         },
         /*onDblClickRow: function (row, $element) {
             var id = row.ID;
@@ -134,6 +140,7 @@ var operateEvents={
 			$("#updateFilFileName").val(row.fileName);
 			$("#updateFilePath").val(row.filePath);
 			$("#updateFileState").val(row.state);
+			$("#updateFileDate").val(row.upDate);
 		},
 		"click #tableDelete":function(e,value,row,index){
 			//设置隐藏域ID
@@ -142,7 +149,12 @@ var operateEvents={
 		}
 }
 
-
+function termFormatter(value,row,index,field){
+	if(value==1)
+		return "文档";
+	else if(value==2)
+		return "PPT";
+}
 //数据增加
 function initInsert(){
 	$("#insertBtn").click(function(){
@@ -160,6 +172,7 @@ function initInsert(){
 		    			"fileName"	:	$("#insertFileName").val(),
 		    			"filePath"	:	$("#insertFilePath").val(),
 		    			"state"		:	$("#insertFileState").val(),
+		    			"upDate"	:	$("#insertFileupDate").val(),
 		            }),
 		            
 		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
@@ -195,6 +208,7 @@ function initUpdate(){
 		    			"fileName"	:	$("#updateFilFileName").val(),
 		    			"filePath"	:	$("#updateFilePath").val(),
 		    			"state"		:	$("#updateFileState").val(),
+		    			"upDate"		:	$("#updateFileDate").val(),
 		            }),
 		          
 		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求

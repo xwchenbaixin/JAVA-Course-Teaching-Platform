@@ -30,6 +30,6 @@ public class TurnPageController {
 		user=userPermissionMapper.getUserByWorkNo(userDetails.getUsername());
 		model.addAttribute("user", user);
 		*/
-		return "index";
+		return "login";
 	}
 }

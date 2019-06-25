@@ -106,7 +106,7 @@ function initMainTable () {
         	
         },
         onLoadError: function () {
-            showTips("数据加载失败！");
+            alert("数据加载失败！");
         },
         /*onDblClickRow: function (row, $element) {
             var id = row.ID;

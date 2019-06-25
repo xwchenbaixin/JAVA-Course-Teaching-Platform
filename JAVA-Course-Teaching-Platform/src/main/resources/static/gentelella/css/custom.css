@@ -3221,7 +3221,7 @@ ul.project_files li a i {
     display: block !important;
 }
 .form-group .btn {
-    margin-bottom: -6px;
+    margin-bottom: 0px;
 }
 
 .input-group-btn .btn { margin-bottom:0; }

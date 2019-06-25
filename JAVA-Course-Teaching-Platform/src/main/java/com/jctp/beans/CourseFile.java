@@ -7,8 +7,21 @@ public class CourseFile {
 	private String courseName;
 	private String fileName;
 	private String filePath;
+	private String classNo;
 	private int state;
-	
+	private String upDate;
+	public String getUpDate() {
+		return upDate;
+	}
+	public void setUpDate(String upDate) {
+		this.upDate = upDate;
+	}
+	public String getClassNo() {
+		return classNo;
+	}
+	public void setClassNo(String classNo) {
+		this.classNo = classNo;
+	}
 	public int getId() {
 		return id;
 	}

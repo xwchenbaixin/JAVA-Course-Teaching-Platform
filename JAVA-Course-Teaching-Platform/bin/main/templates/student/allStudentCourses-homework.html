@@ -35,21 +35,8 @@
 							</div>
 						</div>
 						
-						<ul class="nav navbar-nav navbar-right">
-							
-				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-index}">首页</a></li>
-				            <li class="nav-li"><a href="#">任务</a></li>
-				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-dataStatistics}">统计</a></li>
-				            <li class="nav-li"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-material}">资料</a></li>
-				            <li class="nav-li"><a href="#">通知</a></li>
-				            <li class="nav-li nav-li-active"><a th:href="@{/turnPage?role=student&pn=allStudentCourses-homework}">作业</a></li>
-				            <li class="nav-li"><a href="#">考试</a></li>
-				            <li class="nav-li"><a href="#">讨论</a></li>
-				         	
-				         
-							<!-- 引入公共个人数据设置和收件箱预览 -->
-							<li th:include="/common/component :: NAV-RIGHT-SETTING"></li>
-							<li th:include="/common/component :: NAV-RIGHT-INBOX"></li>
+						<ul class="nav navbar-nav navbar-right" th:replace="/common/component :: NAV-COURSE—TOP-MENU">
+						
 						</ul>
 					</nav>
 				</div>
@@ -79,129 +66,10 @@
 					</div>
 
 					<div class="clearfix"></div>
-
-					<div class="row">
-						<div class="col-md-3 col-sm-3 col-xs-3">
-							<div class="x_panel">
-								<div class="x_title">
-									<h2>
-										<a th:href="@{/turnPage/student/doHomework}" title="作业">作业一作业一作业一作业一</a>
-									</h2>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content" id="content">
-									<div class="content-info" id="testClick">
-										<font size="3">开始时间：2019年6月1日 8:20:00</font> <br> <font size="3">截止时间：2019年6月6日 8:20:00</font>
-										<br> <font size="3">作业状态：未提交</font> <br>
-									</div>
-
-									<div id="footer">
-
-										<button onclick="window.location.href='doHomework.html'"
-											type="button" class="btn btn-danger btn-sm"
-											style="width: 100%;">做作业</button>
-									</div>
-								</div>
-
-							</div>
-						</div>
-
-						<div class="col-md-3 col-sm-3 col-xs-3">
-							<div class="x_panel">
-								<div class="x_title">
-									<h2>
-										<a th:href="@{/turnPage/student/doHomework}" title="作业">作业一作业一作业一作业一</a>
-									</h2>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content" id="content">
-									<div class="content-info" id="testClick">
-										<font size="3">开始时间：2019年6月1日 8:20:00</font> <br> <font size="3">截止时间：2019年6月6日 8:20:00</font>
-										<br> <font size="3">作业状态：未提交</font> <br>
-									</div>
-
-									<div id="footer">
-
-										<button onclick="window.location.href='doHomework.html'"
-											type="button" class="btn btn-danger btn-sm"
-											style="width: 100%;">做作业</button>
-									</div>
-								</div>
-
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-3 col-xs-3">
-							<div class="x_panel">
-								<div class="x_title">
-									<h2>
-										<a th:href="@{/turnPage/student/doHomework}" title="作业">作业一作业一作业一作业一</a>
-									</h2>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content" id="content">
-									<div class="content-info" id="testClick">
-										<font size="3">开始时间：2019年6月1日 8:20:00</font> <br> <font size="3">截止时间：2019年6月6日 8:20:00</font>
-										<br> <font size="3">作业状态：未提交</font> <br>
-									</div>
-
-									<div id="footer">
-
-										<button onclick="window.location.href='doHomework.html'"
-											type="button" class="btn btn-danger btn-sm"
-											style="width: 100%;">做作业</button>
-									</div>
-								</div>
-
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-3 col-xs-3">
-							<div class="x_panel">
-								<div class="x_title">
-									<h2>
-										<a th:href="@{/turnPage/student/doHomework}" title="作业">作业一作业一作业一作业一</a>
-									</h2>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content" id="content">
-									<div class="content-info" id="testClick">
-										<font size="3">开始时间：2019年6月1日 8:20:00</font> <br> <font size="3">截止时间：2019年6月6日 8:20:00</font>
-										<br> <font size="3">作业状态：未提交</font> <br>
-									</div>
-
-									<div id="footer">
-
-										<button onclick="window.location.href='doHomework.html'"
-											type="button" class="btn btn-danger btn-sm"
-											style="width: 100%;">做作业</button>
-									</div>
-								</div>
-
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-3 col-xs-3">
-							<div class="x_panel">
-								<div class="x_title">
-									<h2>
-										<a th:href="@{/turnPage/student/doHomework}" title="作业">作业一作业一作业一作业一</a>
-									</h2>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content" id="content">
-									<div class="content-info" id="testClick">
-										<font size="3">开始时间：2019年6月1日 8:20:00</font> <br> <font size="3">截止时间：2019年6月6日 8:20:00</font>
-										<br> <font size="3">作业状态：未提交</font> <br>
-									</div>
-
-									<div id="footer">
-
-										<button onclick="window.location.href='doHomework.html'"
-											type="button" class="btn btn-danger btn-sm"
-											style="width: 100%;">做作业</button>
-									</div>
-								</div>
-
-							</div>
-						</div>
+					<!-- 隐藏域course_id -->
+					<input type="text" id="cid" th:value="${param.cid}" style="display:none;">
+					<div class="row" id="rows">
+						
 
 						
 						
@@ -223,7 +91,7 @@
 	</div>
 	<!-- 引入公共JS -->
 	<div th:replace="/common/component :: PUBLIC-JS" ></div>
-	
+	<script type="text/javascript" th:src="@{/js/allStudentCourses-homework.js}"></script>
 	
 </body>
 </html>

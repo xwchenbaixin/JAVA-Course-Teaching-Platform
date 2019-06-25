@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>课程教学平台</title>
+
+<!-- 引入公共CSS -->
+<div th:replace="/common/component :: PUBLIC-CSS" ></div>
+
+<!-- My css -->
+<link th:href="@{/css/allTeacherCourses.css}" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<!-- 引入公共菜单 -->
+			<div th:replace="/common/component :: MENU"  ></div>
+
+			<!-- top navigation -->
+			<div class="top_nav">
+				<div class="nav_menu">
+					<nav>
+						<div class="nav toggle">
+							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+						</div>
+
+						<ul class="nav navbar-nav navbar-right" >
+							<!-- 引入公共个人数据设置和收件箱预览 -->
+							<li th:include="/common/component :: NAV-RIGHT-SETTING"></li>
+							<li th:include="/common/component :: NAV-RIGHT-INBOX"></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- /top navigation -->
+
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+					<div class="page-title">
+						<div class="title_left">
+							<h3>所有课程</h3>
+						</div>
+
+						<div class="title_right">
+							<div
+								class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+								<div class="input-group">
+									<input type="text" class="form-control"
+										placeholder="Search for..." id ="search"> <span
+										class="input-group-btn">
+										<button class="btn btn-default" type="button">Go!</button>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="clearfix"></div>
+
+					<div class="row" id="rows">
+					
+						
+						
+						
+					</div>
+				</div>
+			</div>
+			<!-- /page content -->
+
+			<!-- footer content -->
+			<footer>
+				<div class="pull-right">
+					Gentelella - Bootstrap Admin Template by <a
+						href="https://colorlib.com">Colorlib</a>
+				</div>
+				<div class="clearfix"></div>
+			</footer>
+			<!-- /footer content -->
+		</div>
+	</div>
+
+	<!-- 引入公共JS -->
+	<div th:replace="/common/component :: PUBLIC-JS" ></div>
+	<script type="text/javascript" th:src="@{js/allTeacherCourse.js}"></script>
+</body>
+</html>
